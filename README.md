@@ -18,23 +18,23 @@
 	* @Klement Tobias
 
 ## Aufgabenbereich
-1. Pfarrhofer Philip
-	2. Backend
-	3. Server
-	4. Multiplayer
-	5. Roomcode, etc.
+1. Pfarrhofer Philip <br>
+	* Backend
+	* Server
+	* Multiplayer
+	* Roomcode, etc.
 2. Alexander Hahn
-	1. Frontend
-	2. Design
-	3. Charakterauswahl
-	4. Dokumentation, Markdown
+	* Frontend
+	* Design
+	* Charakterauswahl
+	* Dokumentation, Markdown
 3. Raphael Reisinger
-	1. Frontend
-	2. Design
-	3. Spielfeld
-	4. ...
+	* Frontend
+	* Design
+	* Spielfeld
+	* ...
 4. Tobias Klement
-	1. Frontend
-	2. Design
-	3. Audio
-	4. ...
+	* Frontend
+	* Design
+	* Audio
+	* ...
