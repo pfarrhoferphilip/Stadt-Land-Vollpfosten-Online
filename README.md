@@ -1,4 +1,5 @@
 # Stadt-Land-Vollpfosten Online Browser
+
 ## Regeln
 1. Commit Messages die genau beschreiben, was man commited und nicht nur zb. `commit`.
 2. Falls dir VS-Code sagt, dass nicht commited werden kann, weil gerade wer anderer daran arbeitet, **NICHT COMMITTEN!!** Dann lokal abspeichern und sich absprechen.
