@@ -14,5 +14,6 @@ socket.onmessage = function (event) {
 };
 
 function setReadyStatus(ready_status) {
-    socket.send(ready_status);
+    let message = "1;" + ready_status;
+    socket.send(message);
 }
