@@ -27,11 +27,11 @@ class ChatServer implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-
+        echo "message recieved";
         foreach ($this->clients as $client) {
-            if ($client !== $from) {
-                $client->send("Ready status set to: " + $msg);
-            }
+            //if ($client !== $from) {
+            $client->send("Ready status set to: " . $msg);
+            //}
         }
 
     }
