@@ -3,6 +3,8 @@
 1. Commit Messages die genau beschreiben, was man commited und nicht nur zb. `commit`.
 2. Falls dir VS-Code sagt, dass nicht commited werden kann, weil gerade wer anderer daran arbeitet, **NICHT COMMITTEN!!** Dann lokal abspeichern und sich absprechen.
 3. Datein die im Frontend oder/und im Backend sein können, immer mit der Dazugehörigen Endung abspeichern. Fürs Frontend `datei_f.end`, und fürs Backend `datei_b.end`
+4. Ordnernamen Großschreiben
+5. Dateinamen Kleinschreiben
 
 ## Spielinfos
 * Multiplayer
