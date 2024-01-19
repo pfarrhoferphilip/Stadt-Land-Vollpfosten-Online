@@ -1,5 +1,10 @@
 /* CHANGE THIS TO YOUR SERVERS IP-ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
 
+let room_code;
+
+function setRoomCode() {
+
+}
 
 console.log(`${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
