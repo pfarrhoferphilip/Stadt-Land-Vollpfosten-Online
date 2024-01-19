@@ -1,6 +1,7 @@
 /* CHANGE THIS TO YOUR SERVERS IP-ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
 
 let room_code;
+setRoomCode();
 
 function setRoomCode() {
     room_code = document.getElementById("room-code").value;
@@ -24,6 +25,6 @@ function joinRoom() {
 }
 
 function setReadyStatus(ready_status) {
-    let message = "1;" + ready_status;
+    let message = "1;" + room_code + ";" + ready_status;
     socket.send(message);
 }

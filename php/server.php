@@ -34,6 +34,7 @@ class ChatServer implements MessageComponentInterface
         echo "Server started on Port 8080! \n";
         echo "Press Ctr+C to Quit \n";
         array_push($this->rooms, new Room(5555));
+        array_push($this->rooms, new Room(4444));
     }
 
 
@@ -51,17 +52,20 @@ class ChatServer implements MessageComponentInterface
         if ($msg_arr[0] == 0) {
             //JOIN ROOM
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
-                foreach ($this->clients as $client) {
+                $current_room = $this->searchRoomByCode($msg_arr[1], $this->rooms);
+                $current_room->addPlayer($from);
+                foreach ($current_room->players as $client) {
 
+                    
                     $client->send("joined room: " . $msg_arr[1]);
 
                 }
             }
         } else if ($msg_arr[0] == 1) {
             //SET READY STATUS
-            foreach ($this->clients as $client) {
+            foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $client) {
                 //if ($client !== $from) {
-                $client->send($msg_arr[1]);
+                $client->send($msg_arr[2]);
                 //}
             }
         }
