@@ -15,7 +15,7 @@
 * Verschiedene Gamemodes
 	* Weihnachten
 	* Ostern
-	* Rotlichversion (FSK 18)
+	* Rotlichtversion (FSK 18)
 	* ...
 * Background Music
 	* @Klement Tobias
