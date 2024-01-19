@@ -7,9 +7,25 @@ use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 use Ratchet\Http\HttpServer;
 
+class Room
+{
+    public $code;
+    public $players = array();
+    public function __construct($code)
+    {
+        $this->code = $code;
+    }
+    public function addPlayer($p)
+    {
+        array_push($this->players, $p);
+    }
+}
+
 class ChatServer implements MessageComponentInterface
 {
     protected $clients;
+
+    protected $rooms = array();
 
     public function __construct()
     {
@@ -17,19 +33,32 @@ class ChatServer implements MessageComponentInterface
         $this->clients = new \SplObjectStorage;
         echo "Server started on Port 8080! \n";
         echo "Press Ctr+C to Quit \n";
+        array_push($this->rooms, new Room(5555));
     }
+
 
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
         echo "New connection! ({$conn->resourceId})\n";
+        echo $this->clients->count();
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $msg_arr = explode(";", $msg);
         echo $msg;
-        if ($msg_arr[0] == 1) {
+        if ($msg_arr[0] == 0) {
+            //JOIN ROOM
+            if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
+                foreach ($this->clients as $client) {
+
+                    $client->send("joined room: " . $msg_arr[1]);
+
+                }
+            }
+        } else if ($msg_arr[0] == 1) {
+            //SET READY STATUS
             foreach ($this->clients as $client) {
                 //if ($client !== $from) {
                 $client->send($msg_arr[1]);
@@ -38,6 +67,17 @@ class ChatServer implements MessageComponentInterface
         }
 
     }
+
+    public function searchRoomByCode($code, $rooms)
+    {
+        foreach ($rooms as $room) {
+            if ($room->code == $code) {
+                return $room; // Found the room with the specified code
+            }
+        }
+        return null;
+    }
+
 
     public function onClose(ConnectionInterface $conn)
     {

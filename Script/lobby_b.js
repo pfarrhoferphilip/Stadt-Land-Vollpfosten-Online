@@ -3,7 +3,8 @@
 let room_code;
 
 function setRoomCode() {
-
+    room_code = document.getElementById("room-code").value;
+    console.log("Set new Room Code: " + room_code);
 }
 
 console.log(`${Protocol}://${address}`)
@@ -17,6 +18,10 @@ socket.onopen = function (event) {
 socket.onmessage = function (event) {
     console.log(event.data);
 };
+
+function joinRoom() {
+    socket.send("0;" + room_code);
+}
 
 function setReadyStatus(ready_status) {
     let message = "1;" + ready_status;
