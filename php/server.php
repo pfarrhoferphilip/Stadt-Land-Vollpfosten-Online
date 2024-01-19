@@ -42,13 +42,12 @@ class ChatServer implements MessageComponentInterface
     {
         $this->clients->attach($conn);
         echo "New connection! ({$conn->resourceId})\n";
-        echo $this->clients->count();
+        echo $this->clients->count() . "\n";
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $msg_arr = explode(";", $msg);
-        echo $msg;
         if ($msg_arr[0] == 0) {
             //JOIN ROOM
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
