@@ -21,6 +21,17 @@ class Room
     }
 }
 
+class Player
+{
+    public $username;
+    public $client;
+    public function __construct($username, $client)
+    {
+        $this->username = $username;
+        $this->client = $client;
+    }
+}
+
 class ChatServer implements MessageComponentInterface
 {
     protected $clients;
@@ -52,23 +63,60 @@ class ChatServer implements MessageComponentInterface
             //JOIN ROOM
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
                 $current_room = $this->searchRoomByCode($msg_arr[1], $this->rooms);
-                $current_room->addPlayer($from);
-                foreach ($current_room->players as $client) {
+                $current_room->addPlayer(new Player($msg_arr[2], $from));
+                foreach ($current_room->players as $player) {
 
-                    
-                    $client->send("joined room: " . $msg_arr[1]);
+                    $player->client->send($msg_arr[2] . " joined room: " . $msg_arr[1]);
 
                 }
             }
         } else if ($msg_arr[0] == 1) {
             //SET READY STATUS
-            foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $client) {
+            foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
                 //if ($client !== $from) {
-                $client->send($msg_arr[2]);
+                $player->client->send($msg_arr[2]);
                 //}
             }
-        }
+        } else if ($msg_arr[0] == 2) {
+            //SET USERNAME
+            if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
+                $this->searchPlayerByClient($from, $this->searchRoomByCode($msg_arr[1], $this->rooms)->players)->username = $msg_arr[2];
+                $from->send("Username updated succesfully to: " . $msg_arr[2]);
+            } else {
+                $from->send("Player not in a Room");
+            }
 
+        } else if ($msg_arr[0] == 3) {
+            //CREATE ROOM
+            $current_room = new Room($this->generateNewRoomCode());
+            $current_room->addPlayer(new Player($msg_arr[1], $from));
+            array_push($this->rooms, $current_room);
+            $from->send("Created Room with code: " . $current_room->code);
+        }
+    }
+
+    public function generateNewRoomCode()
+    {
+        $found_code = false;
+        $code = 0000;
+        while ($found_code == false) {
+            $code = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
+            if ($this->searchRoomByCode($code, $this->rooms) == null) {
+                $found_code = true;
+            }
+        }
+        return $code;
+    }
+
+    public function searchPlayerByClient($client, $players)
+    {
+        var_dump($players);
+        foreach ($players as $player) {
+            if ($player->client == $client) {
+                return $player; // Found the room with the specified code
+            }
+        }
+        return null;
     }
 
     public function searchRoomByCode($code, $rooms)
