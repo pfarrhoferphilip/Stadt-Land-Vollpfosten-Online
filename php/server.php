@@ -91,7 +91,7 @@ class ChatServer implements MessageComponentInterface
             $current_room = new Room($this->generateNewRoomCode());
             $current_room->addPlayer(new Player($msg_arr[1], $from));
             array_push($this->rooms, $current_room);
-            $from->send("Created Room with code: " . $current_room->code);
+            $from->send("0;" . $current_room->code);
         }
     }
 
@@ -110,7 +110,6 @@ class ChatServer implements MessageComponentInterface
 
     public function searchPlayerByClient($client, $players)
     {
-        var_dump($players);
         foreach ($players as $player) {
             if ($player->client == $client) {
                 return $player; // Found the room with the specified code

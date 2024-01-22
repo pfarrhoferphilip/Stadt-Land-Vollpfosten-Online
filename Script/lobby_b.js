@@ -14,6 +14,11 @@ socket.onopen = function (event) {
 //HANDLE MESSAGES SENT FROM SERVER
 socket.onmessage = function (event) {
     console.log(event.data);
+
+    let output = event.data.split(';');
+    if (output[0] == 0) {
+        room_code = output[1];
+    }
 };
 
 /*PROTOCOL LIST
@@ -25,7 +30,7 @@ socket.onmessage = function (event) {
 
 //CREATE A ROOM
 function createRoom() {
-    socket.send("3;" + username)
+    socket.send("3;" + username);
 }
 
 //JOIN A ROOM
