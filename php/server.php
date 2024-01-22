@@ -20,7 +20,8 @@ class Room
         array_push($this->players, $p);
     }
 
-    public function removePlayer($p) {
+    public function removePlayer($p)
+    {
         echo "removing player: " . $p . "\n";
         unset($this->players[$p]);
     }
@@ -58,7 +59,7 @@ class ChatServer implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
-        array_push($this->players, new Player("Gast",$conn));
+        array_push($this->players, new Player("Gast", $conn));
         echo "New connection! ({$conn->resourceId})\n";
         echo $this->clients->count() . "\n";
     }
@@ -78,13 +79,15 @@ class ChatServer implements MessageComponentInterface
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
                 $player = $this->searchPlayerByClient($from, $this->players);
                 $this->removePlayer($player);
-                $current_room = $this->searchRoomByCode($msg_arr[1], $this->rooms);
-                $current_room->addPlayer($player);
-                $from->send("0;" . $current_room->code);
-                foreach ($current_room->players as $player) {
+                if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
+                    $current_room = $this->searchRoomByCode($msg_arr[1], $this->rooms);
+                    $current_room->addPlayer($player);
+                    $from->send("0;" . $current_room->code);
+                    foreach ($current_room->players as $player) {
 
-                    $player->client->send($msg_arr[2] . " joined room: " . $msg_arr[1]);
+                        $player->client->send($msg_arr[2] . " joined room: " . $msg_arr[1]);
 
+                    }
                 }
             }
         } else if ($msg_arr[0] == 1) {
@@ -130,14 +133,25 @@ class ChatServer implements MessageComponentInterface
         return $code;
     }
 
-    public function removePlayer($p) {
+    public function removePlayer($p)
+    {
         foreach ($this->rooms as $room) {
             if (in_array($p, $room->players)) {
                 $key = array_search($p, $room->players);
                 $room->removePlayer($key);
                 echo "Removed Player: " . $p->username . " from room: " . $room->code . "\n";
             }
+            if (count($room->players) == 0) {
+                $this->removeRoom($room);
+                echo "Removed Room: " . $room->code . "\n";
+            }
         }
+    }
+
+    public function removeRoom($r)
+    {
+        $key = array_search($r, $this->rooms);
+        unset($this->rooms[$key]);
     }
 
     public function searchPlayerByClient($client, $players)
