@@ -19,6 +19,11 @@ class Room
     {
         array_push($this->players, $p);
     }
+
+    public function removePlayer($p) {
+        echo "removing player: " . $p . "\n";
+        unset($this->players[$p]);
+    }
 }
 
 class Player
@@ -37,6 +42,7 @@ class ChatServer implements MessageComponentInterface
     protected $clients;
 
     protected $rooms = array();
+    protected $players = array();
 
     public function __construct()
     {
@@ -52,8 +58,16 @@ class ChatServer implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
+        array_push($this->players, new Player("Gast",$conn));
         echo "New connection! ({$conn->resourceId})\n";
         echo $this->clients->count() . "\n";
+    }
+
+    public function onClose(ConnectionInterface $conn)
+    {
+        $this->removePlayer($this->searchPlayerByClient($conn, $this->players));
+        $this->clients->detach($conn);
+        echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
@@ -62,8 +76,11 @@ class ChatServer implements MessageComponentInterface
         if ($msg_arr[0] == 0) {
             //JOIN ROOM
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
+                $player = $this->searchPlayerByClient($from, $this->players);
+                $this->removePlayer($player);
                 $current_room = $this->searchRoomByCode($msg_arr[1], $this->rooms);
-                $current_room->addPlayer(new Player($msg_arr[2], $from));
+                $current_room->addPlayer($player);
+                $from->send("0;" . $current_room->code);
                 foreach ($current_room->players as $player) {
 
                     $player->client->send($msg_arr[2] . " joined room: " . $msg_arr[1]);
@@ -89,9 +106,14 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 3) {
             //CREATE ROOM
             $current_room = new Room($this->generateNewRoomCode());
-            $current_room->addPlayer(new Player($msg_arr[1], $from));
+            $this->removePlayer($this->searchPlayerByClient($from, $this->players));
+            $current_room->addPlayer($this->searchPlayerByClient($from, $this->players));
             array_push($this->rooms, $current_room);
             $from->send("0;" . $current_room->code);
+        } else if ($msg[0] == 4) {
+            //LEAVE ALL ROOMS
+            $this->removePlayer($this->searchPlayerByClient($from, $this->players));
+            $from->send("Left all Rooms.");
         }
     }
 
@@ -106,6 +128,16 @@ class ChatServer implements MessageComponentInterface
             }
         }
         return $code;
+    }
+
+    public function removePlayer($p) {
+        foreach ($this->rooms as $room) {
+            if (in_array($p, $room->players)) {
+                $key = array_search($p, $room->players);
+                $room->removePlayer($key);
+                echo "Removed Player: " . $p->username . " from room: " . $room->code . "\n";
+            }
+        }
     }
 
     public function searchPlayerByClient($client, $players)
@@ -126,13 +158,6 @@ class ChatServer implements MessageComponentInterface
             }
         }
         return null;
-    }
-
-
-    public function onClose(ConnectionInterface $conn)
-    {
-        $this->clients->detach($conn);
-        echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)

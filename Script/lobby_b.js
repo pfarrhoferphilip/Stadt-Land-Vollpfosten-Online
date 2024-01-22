@@ -15,10 +15,13 @@ socket.onopen = function (event) {
 socket.onmessage = function (event) {
     console.log(event.data);
 
+    //0 = set room code
+
     let output = event.data.split(';');
     if (output[0] == 0) {
         room_code = output[1];
     }
+      
 };
 
 /*PROTOCOL LIST
@@ -26,6 +29,7 @@ socket.onmessage = function (event) {
 1: Send Ready Status [room_code; ready_status(true or false)]
 2: Set Username [room_code; new username]
 3: Create Room [username]
+4: Leave Rooms
 */
 
 //CREATE A ROOM
@@ -35,8 +39,11 @@ function createRoom() {
 
 //JOIN A ROOM
 function joinRoom() {
-    room_code = document.getElementById("room-code").value;
-    socket.send("0;" + room_code + ";" + username);
+    socket.send("0;" + document.getElementById("room-code").value + ";" + username);
+}
+
+function leaveRoom() {
+    socket.send("4");
 }
 
 //READY UP AND NOTIFY ALL OTHER PLAYERS
