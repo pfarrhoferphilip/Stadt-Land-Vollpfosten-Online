@@ -20,8 +20,16 @@ socket.onmessage = function (event) {
     let output = event.data.split(';');
     if (output[0] == 0) {
         room_code = output[1];
+    } else {
+
+        document.getElementById("output").innerHTML += `
+            <p>${event.data}</p>
+        `;
+
     }
-      
+
+
+
 };
 
 /*PROTOCOL LIST
@@ -47,8 +55,8 @@ function leaveRoom() {
 }
 
 //READY UP AND NOTIFY ALL OTHER PLAYERS
-function setReadyStatus(ready_status) {
-    let message = "1;" + room_code + ";" + ready_status;
+function setReadyStatus() {
+    let message = "1;" + room_code + ";" + document.getElementById("message").value;
     socket.send(message);
 }
 
