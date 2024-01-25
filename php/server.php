@@ -85,7 +85,7 @@ class ChatServer implements MessageComponentInterface
                     $from->send("0;" . $current_room->code);
                     foreach ($current_room->players as $player) {
 
-                        $player->client->send($msg_arr[2] . " joined room: " . $msg_arr[1]);
+                        $player->client->send("1;" . $msg_arr[2]);
 
                     }
                 }
@@ -117,6 +117,10 @@ class ChatServer implements MessageComponentInterface
             //LEAVE ALL ROOMS
             $this->removePlayer($this->searchPlayerByClient($from, $this->players));
             $from->send("Left all Rooms.");
+        } else if ($msg[0] == 5) {
+            //GET ALL PLAYERS IN ROOM
+            $player_array = $this->searchRoomByCode($msg_arr[1], $this->rooms)->players;
+            $from->send("2;" . json_encode($player_array));
         }
     }
 
