@@ -7,6 +7,7 @@ body {
     margin: 0;
     background-image: url(../images/BackgroundImageIndexLight.jpg);
     background-size: cover;
+    background-position: 0vw -25vh;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -29,7 +30,7 @@ svg {
 }
 
 svg text {
-    animation: stroke 5s infinite alternate;
+    animation: stroke 5s alternate;
     stroke-width: 2;
     stroke: #365FA0;
     font-size: 100px;
@@ -59,10 +60,6 @@ svg text {
         stroke-dasharray: 50% 0;
         stroke-width: 0;
     }
-}
-
-.wrapper {
-    background-color: #FFFFFF
 }
 
 ;
