@@ -6,6 +6,7 @@
 
 # Dokumentation 25.01.24
 
+* ToDos verteilt
 * Präsentation überarbeiten
 * Projektantrag
 * Anfrage an Inhaber von Stadt-Land-Vollpfosten bzgl Name und Copyright Rechte
