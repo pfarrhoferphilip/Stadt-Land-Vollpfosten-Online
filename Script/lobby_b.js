@@ -1,4 +1,4 @@
-/* SERVER ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
+/* SERVER ADRESS =>*/ const address = "be61-193-170-158-243.ngrok-free.app"; const Protocol = "ws";
 
 let room_code;
 let username = "Gast";

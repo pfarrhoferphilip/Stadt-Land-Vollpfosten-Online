@@ -1,2 +1,3 @@
 php/vendor/
 .DS_Store
+php/ngrok.exe
