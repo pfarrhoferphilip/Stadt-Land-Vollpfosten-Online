@@ -2,7 +2,7 @@
 
 let room_code;
 let username = "Gast";
-let players_in_room;
+let players_in_room = [];
 
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
@@ -30,6 +30,7 @@ socket.onmessage = function (event) {
     else if (output[0] == 2) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
+        displayPlayers();
     }
     else {
 
@@ -53,6 +54,19 @@ socket.onmessage = function (event) {
 4: Leave Rooms
 5: Get all Players in Room
 */
+
+//DISPLAY ALL PLAYERS IN CURRENT ROOM
+function displayPlayers() {
+    console.log("Displaying Players...")
+    let html_code = "";
+    for (let i = 0; i < Object.keys(players_in_room).length; i++) {
+        console.log(players_in_room[Object.keys(players_in_room)[i]]);
+        html_code += `
+            <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+        `;
+    }
+    document.getElementById("players").innerHTML = html_code;
+}
 
 //CREATE A ROOM
 function createRoom() {
@@ -79,7 +93,8 @@ function setReadyStatus() {
 }
 
 //SET USERNAME AND NOTIFY ALL OTHER PLAYERS
-function setUsername() {
-    username = document.getElementById("username").value;
+function setUsername(name) {
+    //username = document.getElementById("username").value;
+    username = name;
     socket.send("2;" + room_code + ";" + username)
 }
