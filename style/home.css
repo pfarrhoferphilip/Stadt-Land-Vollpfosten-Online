@@ -1,0 +1,49 @@
+/*---------Startside----------*/
+
+
+/*---General---*/
+
+body {
+    margin: 0;
+    background-image: url(../images/BackgroundImageIndexLight.jpg);
+    background-size: cover;
+    background-position: 0vw -25vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3vw;
+}
+
+
+/*--- Headline ---*/
+
+:root {
+    --fontSizeHeadline: 4vw;
+}
+
+.headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vw;
+    flex-direction: column;
+}
+
+.text1 {
+    font-weight: bold;
+    letter-spacing: 0.6vw;
+    font-size: var(--fontSizeHeadline);
+    color: #333;
+}
+
+.text2 {
+    font-weight: bold;
+    font-size: var(--fontSizeHeadline);
+    color: #f00;
+    letter-spacing: 2px;
+}
