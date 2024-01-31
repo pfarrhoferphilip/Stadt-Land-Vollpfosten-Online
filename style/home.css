@@ -29,14 +29,14 @@ body {
     flex-direction: column;
 }
 
-.text1 {
+.headline-text1 {
     font-weight: bold;
     letter-spacing: 0.73vw;
     font-size: var(--fontSizeHeadline);
     color: #333;
 }
 
-.text2 {
+.headline-text2 {
     font-weight: bold;
     font-size: var(--fontSizeHeadline);
     color: #f00;
@@ -59,7 +59,7 @@ body {
     }
 }
 
-.text1,
-.text2 {
+.headline-text1,
+.headline-text2 {
     animation: pulse 3s ease-in-out infinite;
 }
