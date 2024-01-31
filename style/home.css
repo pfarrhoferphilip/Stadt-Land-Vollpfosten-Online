@@ -15,6 +15,44 @@ body {
 }
 
 
+/*--- Main *---*/
+
+#main {
+    display: flex;
+}
+
+
+/*--- Room Code ---*/
+
+#room-code-box {
+    width: 60vw;
+    aspect-ratio: 2/1;
+    background-color: rgba(131, 74, 255, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*--- Char Select ---*/
+
+#char-select {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 20vw;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#char-select-image-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 17vw;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /*--- Headline ---*/
 
 :root {
@@ -29,14 +67,14 @@ body {
     flex-direction: column;
 }
 
-.text1 {
+.headline-text1 {
     font-weight: bold;
     letter-spacing: 0.73vw;
     font-size: var(--fontSizeHeadline);
     color: #333;
 }
 
-.text2 {
+.headline-text2 {
     font-weight: bold;
     font-size: var(--fontSizeHeadline);
     color: #f00;
@@ -59,7 +97,21 @@ body {
     }
 }
 
-.text1,
-.text2 {
+.headline-text1,
+.headline-text2 {
     animation: pulse 3s ease-in-out infinite;
+}
+
+
+/*--- text input ---*/
+
+input[type="text"] {
+    padding: 0.5vw;
+    font-size: 1.5vw;
+    border: 0.1vw solid black;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    width: 15%;
+    text-align: left;
+    margin-left: 30vw;
 }
