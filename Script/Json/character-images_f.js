@@ -1,0 +1,16 @@
+let sources = {
+    images: [
+        {
+            "source": "character-1.jpg"
+        },
+        {
+            "source": "character-2.jpg"
+        },
+        {
+            "source": "character-3.jpg"
+        },
+        {
+            "source": "character-4.jpg"
+        }
+    ]
+}
