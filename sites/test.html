@@ -4,29 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TEST</title>
     <script src="../Script/lobby_b.js" defer></script>
 </head>
 
 <style>
-    html {
-        color-scheme: dark;
+    .lobby-flex-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .lobby-flex-item {
+        width: 50%;
     }
 </style>
 
 <body>
-    <h1>Seite zum Testen von Javascript und Server Code.</h1>
-    <button onclick="createRoom()">Create Room</button>
-    <input type="text" placeholder="Room Code" value="5555" name="room-code" id="room-code">
-    <button onclick="joinRoom()">Join Room</button>
-    <input type="text" name="username" placeholder="Username" id="username">
-    <button onclick="setUsername()">Set Username</button>
-    <button onclick="leaveRoom()">Leave Room</button>
-    <br>
-    <input type="text" name="message" id="message">
-    <button onclick="setReadyStatus()">Send</button>
-    <div id="output">
+    <h1>TEST</h1>
+    <div class="lobby-flex-container">
+        <!--LOBBY SCREEN-->
+        <div class="lobby-flex-item">
+            <div id="players">
 
+            </div>
+        </div>
+
+        <!--CHARACTER CUSTOMIZATION-->
+        <div class="lobby-flex-item">
+
+        </div>
     </div>
 </body>
 
