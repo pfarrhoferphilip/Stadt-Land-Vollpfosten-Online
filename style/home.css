@@ -63,3 +63,17 @@ body {
 .headline-text2 {
     animation: pulse 3s ease-in-out infinite;
 }
+
+
+/*--- text input ---*/
+
+input[type="text"] {
+    padding: 0.5vw;
+    font-size: 1.5vw;
+    border: 0.1vw solid black;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+    width: 15%;
+    text-align: left;
+    margin-left: 30vw;
+}
