@@ -3,14 +3,18 @@
 let room_code;
 let username = "Gast";
 let players_in_room = [];
+let player_id = -1;
 
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
 socket.onopen = function (event) {
     console.log('WebSocket is connected.');
+    
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
+    
 };
+
 
 //HANDLE MESSAGES SENT FROM SERVER
 socket.onmessage = function (event) {
@@ -19,10 +23,14 @@ socket.onmessage = function (event) {
     //0 = set room code
     //1 = Player joined Room
     //2 = Get all Players in current Room
+    //3 = Get Player ID
+    //4 = Server reboot check
+    //5 = Rejoin Lobby
 
     let output = event.data.split(';');
     if (output[0] == 0) {
         room_code = output[1];
+        localStorage['room_code'] = room_code;
     } 
     else if (output[0] == 1) {
         loadPlayers();
@@ -31,6 +39,41 @@ socket.onmessage = function (event) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
         displayPlayers();
+    } else if (output[0] == 3) {
+        player_id = output[1];
+        localStorage["player_id"] = output[1];
+    } else if (output[0] == 4) {
+        //REBOOT CHECK
+        if (localStorage["last_start_time"]) {
+            if (localStorage["last_start_time"] < output[1]) {
+                localStorage.clear();
+                console.log("Server restarted...")
+            }
+        } else {
+            localStorage.clear();
+            console.log("Client wasn't online before...")
+        }
+        localStorage["last_start_time"] = new Date().getTime();
+
+        
+
+        
+        if (localStorage['player_id']) {
+            player_id = localStorage.getItem("player_id");
+        }
+        
+        if (localStorage['username']) {
+            username = localStorage.getItem("username");
+        }
+
+        socket.send("6;" + player_id);
+
+        
+    } else if(output[0] == 5) {
+        if (localStorage['room_code']) {
+            room_code = localStorage['room_code'];
+            joinRoom(room_code);
+        }
     }
     else {
 
@@ -96,5 +139,6 @@ function setReadyStatus() {
 function setUsername(name) {
     //username = document.getElementById("username").value;
     username = name;
+    localStorage.setItem("username", username);
     socket.send("2;" + room_code + ";" + username)
 }
