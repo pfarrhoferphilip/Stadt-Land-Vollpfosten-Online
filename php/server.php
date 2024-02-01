@@ -54,7 +54,8 @@ class Player
         $this->username = $username;
     }
 
-    public function setClient($client) {
+    public function setClient($client)
+    {
         $this->client = $client;
     }
 }
@@ -67,12 +68,12 @@ class ChatServer implements MessageComponentInterface
     protected $rooms = array();
     protected $players = array();
     protected $server_start_date;
-    
+
 
     public function __construct()
     {
         $this->server_start_date = time();
-        echo "". $this->server_start_date ."\n";
+        echo "" . $this->server_start_date . "\n";
         $this->clients = new \SplObjectStorage;
         echo "Server started on Port 8080! \n";
         echo "Press Ctr+C to Quit \n";
@@ -84,7 +85,7 @@ class ChatServer implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
-        
+
         echo "New connection! ({$conn->resourceId})\n";
         echo $this->clients->count() . "\n";
         $conn->send("4;" . $this->server_start_date);
@@ -131,10 +132,15 @@ class ChatServer implements MessageComponentInterface
             //SET USERNAME
             if ($this->searchPlayerById($msg_arr[1], $this->players) != null) {
                 $this->searchPlayerById($msg_arr[1], $this->players)->setUsername($msg_arr[3]);
-                $this->searchRoomByCode($msg_arr[2], $this->rooms)->sendToAllPlayers("1");
-                $from->send("Username updated succesfully to: " . $msg_arr[3]);
+                if ($this->searchRoomByCode($msg_arr[2], $this->rooms) != null) {
+                    $this->searchRoomByCode($msg_arr[2], $this->rooms)->sendToAllPlayers("1");
+                    $from->send("Username updated succesfully to: " . $msg_arr[3]);
+                } else {
+                    $from->send("Player not in a room!");
+                }
+
             } else {
-                $from->send("Player not in a Room");
+                $from->send("Player doesn't exist!");
             }
 
         } else if ($msg_arr[0] == 3) {
@@ -154,10 +160,10 @@ class ChatServer implements MessageComponentInterface
             //GET ALL PLAYERS IN ROOM
             $player_array = $this->searchRoomByCode($msg_arr[1], $this->rooms)->players;
             $from->send("2;" . json_encode($player_array));
-        } else if ($msg_arr[0] == 6) { 
+        } else if ($msg_arr[0] == 6) {
             //Connect to Websocket
             if ($msg_arr[1] == -1) {
-             
+
                 array_push($this->players, new Player("Gast", $from, $this->current_player_id));
                 $from->send("3;" . $this->current_player_id);
                 $this->current_player_id++;
@@ -168,8 +174,8 @@ class ChatServer implements MessageComponentInterface
                 $from->send("5");
                 $from->send("Player reconnected");
             }
-            
-        } else if($msg_arr[0] == 7) {
+
+        } else if ($msg_arr[0] == 7) {
             //Check if Room exists
             if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
                 $from->send("6;" . true);
@@ -179,7 +185,8 @@ class ChatServer implements MessageComponentInterface
         }
     }
 
-    public function searchPlayerById($id, $players) {
+    public function searchPlayerById($id, $players)
+    {
         foreach ($players as $player) {
             if ($player->id == $id) {
                 return $player; // Found the room with the specified code
@@ -211,7 +218,7 @@ class ChatServer implements MessageComponentInterface
             }
             if (count($room->players) == 0) {
                 $this->removeRoom($room);
-                echo "Removed Room: " . $room->code . "\n";
+                //echo "Removed Room: " . $room->code . "\n";
             }
         }
     }

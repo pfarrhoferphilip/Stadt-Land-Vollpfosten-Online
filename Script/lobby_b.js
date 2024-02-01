@@ -52,11 +52,15 @@ socket.onmessage = function (event) {
         //REBOOT CHECK
         if (localStorage["last_start_time"]) {
             if (localStorage["last_start_time"] < output[1]) {
+                username = localStorage['username'];
                 localStorage.clear();
+                localStorage['username'] = username;
                 console.log("Server restarted...")
             }
         } else {
+            username = localStorage['username'];
             localStorage.clear();
+            localStorage['username'] = username;
             console.log("Client wasn't online before...")
         }
         localStorage["last_start_time"] = new Date().getTime();
@@ -78,16 +82,16 @@ socket.onmessage = function (event) {
     } else if (output[0] == 5) {
         if (localStorage['room_code']) {
             room_code = localStorage['room_code'];
-            
+
             socket.send("7;" + window.location.href.split('?')[1]);
         } else {
             joinRoomViaURL();
         }
-    } else if(output[0] == 6) {
+    } else if (output[0] == 6) {
         if (output[1] == true) {
             //room exists
             joinRoomViaURL();
-            
+
         } else {
             //room does not exist
             joinRoom(room_code);
@@ -112,9 +116,6 @@ function joinRoomViaURL() {
     if (splited_url[1]) {
         joinRoom(splited_url[1]);
         console.log("joining room via URL...");
-        localStorage['username'] = splited_url[2];
-        username = splited_url[2];
-        //setUsername(splited_url[2]);
     } else {
         console.log("no roomcode in URL...");
     }

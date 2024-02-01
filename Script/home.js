@@ -21,7 +21,34 @@ function joinRoom() {
 
     console.log(array_string);
 
-    window.open("./lobby.html?" + array_string + "?" + userName.value, "_self");
+    // Wert in localStorage speichern
+    localStorage.setItem('username', userName.value);
+
+    // Zum Testen können Sie den gespeicherten Wert auslesen und in der Konsole ausgeben
+    let storedUsername = localStorage.getItem('username');
+    console.log('Gespeicherter Benutzername:', storedUsername);
+
+    window.open("./lobby.html?" + array_string, "_self");
+}
+
+
+/*--- HandleInputFields ---*/
+
+function handleInput(inputElement, nextInputId) {
+    inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+    if (nextInputId && inputElement.value.length === inputElement.maxLength) {
+        jumpNextField(nextInputId);
+    }
+}
+
+function handleBackspace(inputElement, prevInputId) {
+    if (event.key === "Backspace" && inputElement.value.length === 0 && prevInputId) {
+        jumpNextField(prevInputId);
+    }
+}
+
+function jumpNextField(nextInputId) {
+    document.getElementById(nextInputId).focus();
 }
 
 /*--- jumpNextInputField ---*/

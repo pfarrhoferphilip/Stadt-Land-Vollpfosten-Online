@@ -36,10 +36,10 @@
             </div>
         </div>
         <div id="room-code-box">
-            <input id="input1" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input2')">
-            <input id="input2" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input3')">
-            <input id="input3" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input4')">
-            <input id="input4" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <input id="input1" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input2')" onkeydown="handleBackspace(this, 'input1')">
+            <input id="input2" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input3')" onkeydown="handleBackspace(this, 'input1')">
+            <input id="input3" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input4')" onkeydown="handleBackspace(this, 'input2')">
+            <input id="input4" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, null)" onkeydown="handleBackspace(this, 'input3')">
         </div>
     </div>
 </body>
