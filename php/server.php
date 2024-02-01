@@ -132,10 +132,15 @@ class ChatServer implements MessageComponentInterface
             //SET USERNAME
             if ($this->searchPlayerById($msg_arr[1], $this->players) != null) {
                 $this->searchPlayerById($msg_arr[1], $this->players)->setUsername($msg_arr[3]);
-                $this->searchRoomByCode($msg_arr[2], $this->rooms)->sendToAllPlayers("1");
-                $from->send("Username updated succesfully to: " . $msg_arr[3]);
+                if ($this->searchRoomByCode($msg_arr[2], $this->rooms) != null) {
+                    $this->searchRoomByCode($msg_arr[2], $this->rooms)->sendToAllPlayers("1");
+                    $from->send("Username updated succesfully to: " . $msg_arr[3]);
+                } else {
+                    $from->send("Player not in a room!");
+                }
+
             } else {
-                $from->send("Player not in a Room");
+                $from->send("Player doesn't exist!");
             }
 
         } else if ($msg_arr[0] == 3) {
