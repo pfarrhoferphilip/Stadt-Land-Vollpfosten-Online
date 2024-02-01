@@ -169,6 +169,13 @@ class ChatServer implements MessageComponentInterface
                 $from->send("Player reconnected");
             }
             
+        } else if($msg_arr[0] == 7) {
+            //Check if Room exists
+            if ($this->searchRoomByCode($msg_arr[1], $this->rooms) != null) {
+                $from->send("6;" . true);
+            } else {
+                $from->send("6;" . false);
+            }
         }
     }
 

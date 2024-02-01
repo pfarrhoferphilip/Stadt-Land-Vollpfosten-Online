@@ -26,6 +26,7 @@ socket.onmessage = function (event) {
     //3 = Get Player ID
     //4 = Server reboot check
     //5 = Rejoin Lobby
+    //6 = Get if room exists
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -76,9 +77,19 @@ socket.onmessage = function (event) {
     } else if (output[0] == 5) {
         if (localStorage['room_code']) {
             room_code = localStorage['room_code'];
-            joinRoom(room_code);
+            
+            socket.send("7;" + window.location.href.split('?')[1]);
         } else {
             joinRoomViaURL();
+        }
+    } else if(output[0] == 6) {
+        if (output[1] == true) {
+            //room exists
+            joinRoomViaURL();
+            
+        } else {
+            //room does not exist
+            joinRoom(room_code);
         }
     }
     else {
@@ -112,6 +123,8 @@ function joinRoomViaURL() {
 3: Create Room [username]
 4: Leave Rooms
 5: Get all Players in Room
+6: Connect to Websocket
+7: Check if Room exists [room_code]
 */
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
