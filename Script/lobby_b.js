@@ -1,4 +1,4 @@
-/* SERVER ADRESS =>*/ const address = "ecd0-193-170-158-243.ngrok-free.app"; const Protocol = "ws";
+/* SERVER ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
 
 let room_code;
 let username = "Gast";
@@ -32,6 +32,7 @@ socket.onmessage = function (event) {
     if (output[0] == 0) {
         room_code = output[1];
         localStorage['room_code'] = room_code;
+        setUsername(username);
     }
     else if (output[0] == 1) {
         loadPlayers();
@@ -111,8 +112,6 @@ function joinRoomViaURL() {
     if (splited_url[1]) {
         joinRoom(splited_url[1]);
         console.log("joining room via URL...");
-        localStorage['username'] = splited_url[2];
-        setUsername(splited_url[2]);
     } else {
         console.log("no roomcode in URL...");
     }
@@ -171,5 +170,5 @@ function setUsername(name) {
     //username = document.getElementById("username").value;
     username = name;
     localStorage.setItem("username", username);
-    socket.send("2;" + room_code + ";" + username)
+    socket.send("2;" + player_id + ";" + room_code + ";" + username)
 }
