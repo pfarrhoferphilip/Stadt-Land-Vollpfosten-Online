@@ -1,4 +1,4 @@
-/* SERVER ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
+/* SERVER ADRESS =>*/ const address = "ecd0-193-170-158-243.ngrok-free.app"; const Protocol = "ws";
 
 let room_code;
 let username = "Gast";
@@ -111,6 +111,8 @@ function joinRoomViaURL() {
     if (splited_url[1]) {
         joinRoom(splited_url[1]);
         console.log("joining room via URL...");
+        localStorage['username'] = splited_url[2];
+        setUsername(splited_url[2]);
     } else {
         console.log("no roomcode in URL...");
     }

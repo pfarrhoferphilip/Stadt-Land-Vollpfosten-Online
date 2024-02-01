@@ -77,7 +77,7 @@ class ChatServer implements MessageComponentInterface
         echo "Server started on Port 8080! \n";
         echo "Press Ctr+C to Quit \n";
         array_push($this->rooms, new Room(5555));
-        array_push($this->rooms, new Room(4444));
+        array_push($this->rooms, new Room(0000));
     }
 
 
@@ -218,8 +218,8 @@ class ChatServer implements MessageComponentInterface
 
     public function removeRoom($r)
     {
-        $key = array_search($r, $this->rooms);
-        unset($this->rooms[$key]);
+        //$key = array_search($r, $this->rooms);
+        //unset($this->rooms[$key]);
     }
 
     public function searchPlayerByClient($client, $players)
