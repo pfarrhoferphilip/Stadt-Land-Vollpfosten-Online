@@ -1,4 +1,5 @@
 function getInputValues() {
+    let array_string;
     var inputs = document.getElementsByClassName("room-code-input");
     var values = [];
 
@@ -6,5 +7,9 @@ function getInputValues() {
         values.push(inputs[i].value);
     }
 
-    console.log(values);
+    array_string = values.join("");
+
+    console.log(array_string);
+
+    window.open("./lobby.html?" + array_string, "_self");
 }
