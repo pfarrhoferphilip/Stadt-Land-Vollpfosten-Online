@@ -1,6 +1,4 @@
-
-
-#char-select{
+#char-select {
     background-color: rgba(255, 255, 255, 0.5);
     width: 20vw;
     aspect-ratio: 1/1;
@@ -8,7 +6,8 @@
     margin-right: auto;
     text-align: center;
 }
-#char-select-image-box{
+
+#char-select-image-box {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     width: 17vw;
@@ -16,15 +15,45 @@
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    margin-top: 3vh;
 }
-#char-select-image-image{
+
+#char-select-image-image {
     width: 17vw;
 }
-#char-select-refresh-box{
+
+#char-select-refresh-box {
     width: 4vw;
     margin-left: auto;
     margin-right: auto;
+    float: top;
+    margin-top: -1.5vh;
 }
-#char-select-refresh-image{
+
+#char-select-refresh-image {
     width: 4vw;
 }
+
+input[type="text"], [name="char-select-username-input"] {
+    width: 50%;
+    padding: 4%;
+    border: 1px solid #606060;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+    margin-top: 3vh;
+}
+
+/*
+@media screen and (min-width: 768px) {
+    input[type="text"], [name="char-select-username-input"] {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    input[type="text"], [name="char-select-username-input"] {
+        font-size: 0.9em;
+    }
+}
+*/
