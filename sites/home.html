@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../style/home.css">
     <script src="../Script/home.js" defer></script>
 </head>
+<script>
+    window.onload = function() {
+        console.log('Window onload function activated');
+        jumpNextField('input1')
+    }
+</script>
 
 <body>
 
@@ -22,15 +28,12 @@
             </div>
         </div>
         <div id="room-code-box">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <input id="input1" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input2')">
+            <input id="input2" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input3')">
+            <input id="input3" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input4')">
+            <input id="input4" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
         </div>
     </div>
-
-
-
 </body>
 
 </html>

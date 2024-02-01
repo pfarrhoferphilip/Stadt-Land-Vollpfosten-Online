@@ -1,4 +1,4 @@
-function getInputValues() {
+function joinRoom() {
     let array_string;
     var inputs = document.getElementsByClassName("room-code-input");
     var values = [];
@@ -12,4 +12,8 @@ function getInputValues() {
     console.log(array_string);
 
     window.open("./lobby.html?" + array_string, "_self");
+}
+
+function jumpNextField(nextInputId) {
+    document.getElementById(nextInputId).focus();
 }
