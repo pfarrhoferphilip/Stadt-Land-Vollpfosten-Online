@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../style/home.css">
     <script src="../Script/home.js" defer></script>
 </head>
+<script>
+    window.onload = function() {
+        console.log('Window onload function activated');
+        jumpNextField('input1')
+    }
+</script>
 
 <body>
 
@@ -19,18 +25,22 @@
     <div id="main">
         <div id="char-select">
             <div id="char-select-image-box">
+                <img id="char-select-image-image" src="../images/characters/character-2.jpg">
+            </div>
+            <div id="char-select-refresh-box">
+                <img id="char-select-refresh-image" src="../images/characters/refresh.png" onclick="randomCharImg()">
+            </div>
+            <div id="char-select-username-box">
+                <input type="text" name="char-select-username-input" id="char-select-username-input">
             </div>
         </div>
         <div id="room-code-box">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <input class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <input id="input1" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input2')">
+            <input id="input2" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input3')">
+            <input id="input3" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');jumpNextField('input4')">
+            <input id="input4" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
         </div>
     </div>
-
-
-
 </body>
 
 </html>
