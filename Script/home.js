@@ -1,10 +1,12 @@
 /*--- Variables ---*/
 let charImgBox = document.getElementById('char-select-image-box')
 let refreshImg = document.getElementById('char-select-refresh-image')
+let userName = document.getElementById('char-select-username-input');
 let testBox = document.getElementById('test')
 let imageArray = sources.images
 
 /*--- JoinRoom() ---*/
+
 
 function joinRoom() {
     let array_string;
@@ -19,7 +21,7 @@ function joinRoom() {
 
     console.log(array_string);
 
-    window.open("./lobby.html?" + array_string, "_self");
+    window.open("./lobby.html?" + array_string + "?" + userName.value, "_self");
 }
 
 /*--- jumpNextInputField ---*/
@@ -33,6 +35,7 @@ function jumpNextField(nextInputId) {
 console.log(imageArray);
 
 function randomCharImg() {
+    console.log(userName.value);
     charImgBox.innerHTML = `
         <img id="char-select-image-image" src="../images/characters/character-${getRandomNumberFromArray(imageArray)}.jpg">
     `
