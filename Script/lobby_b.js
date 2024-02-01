@@ -112,9 +112,6 @@ function joinRoomViaURL() {
     if (splited_url[1]) {
         joinRoom(splited_url[1]);
         console.log("joining room via URL...");
-        localStorage['username'] = splited_url[2];
-        username = splited_url[2];
-        //setUsername(splited_url[2]);
     } else {
         console.log("no roomcode in URL...");
     }
