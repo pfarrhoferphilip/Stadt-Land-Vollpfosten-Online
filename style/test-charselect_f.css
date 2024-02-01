@@ -6,6 +6,7 @@
     aspect-ratio: 1/1;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 #char-select-image-box{
     background-color: rgba(0, 0, 0, 0.5);
@@ -14,4 +15,16 @@
     aspect-ratio: 1/1;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
+}
+#char-select-image-image{
+    width: 17vw;
+}
+#char-select-refresh-box{
+    width: 4vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+#char-select-refresh-image{
+    width: 4vw;
 }
