@@ -41,12 +41,14 @@ class Player
 {
     public $id;
     public $username;
+    public $profile_pic;
     public $client;
-    public function __construct($username, $client, $id)
+    public function __construct($username, $client, $id, $profile_pic)
     {
         $this->username = $username;
         $this->client = $client;
         $this->id = $id;
+        $this->profile_pic = $profile_pic;
     }
 
     public function setUsername($username)
@@ -57,6 +59,10 @@ class Player
     public function setClient($client)
     {
         $this->client = $client;
+    }
+
+    public function setProfilePic($profile_pic) {
+        $this->profile_pic = $profile_pic;
     }
 }
 
@@ -164,13 +170,14 @@ class ChatServer implements MessageComponentInterface
             //Connect to Websocket
             if ($msg_arr[1] == -1) {
 
-                array_push($this->players, new Player("Gast", $from, $this->current_player_id));
+                array_push($this->players, new Player("Gast", $from, $this->current_player_id, $msg_arr[2]));
                 $from->send("3;" . $this->current_player_id);
                 $this->current_player_id++;
                 echo $this->current_player_id . " current Player id";
             } else if ($this->searchPlayerById($msg_arr[1], $this->players)) {
                 $curr_player = $this->searchPlayerById($msg_arr[1], $this->players);
                 $curr_player->setClient($from);
+                $curr_player->setProfilePic($msg_arr[2]);
                 $from->send("5");
                 $from->send("Player reconnected");
             }

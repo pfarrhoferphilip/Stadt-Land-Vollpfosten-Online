@@ -2,6 +2,7 @@
 
 let room_code;
 let username = "Gast";
+let profile_pic;
 let players_in_room = [];
 let player_id = -1;
 
@@ -76,7 +77,9 @@ socket.onmessage = function (event) {
             username = localStorage.getItem("username");
         }
 
-        socket.send("6;" + player_id);
+        profile_pic = localStorage['profile_pic'];
+
+        socket.send("6;" + player_id + ";" + profile_pic);
 
 
     } else if (output[0] == 5) {
@@ -140,6 +143,7 @@ function displayPlayers() {
         console.log(players_in_room[Object.keys(players_in_room)[i]]);
         html_code += `
             <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+            <img id="char-select-image-image" src="../images/characters/character-${players_in_room[i].profile_pic}.jpg">
         `;
     }
     document.getElementById("players").innerHTML = html_code;
