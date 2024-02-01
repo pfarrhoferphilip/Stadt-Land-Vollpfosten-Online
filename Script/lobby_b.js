@@ -1,4 +1,4 @@
-/* SERVER ADRESS =>*/ const address = "9fcd-193-170-158-243.ngrok-free.app"; const Protocol = "ws";
+/* SERVER ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
 
 let room_code;
 let username = "Gast";
@@ -10,9 +10,9 @@ console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
 socket.onopen = function (event) {
     console.log('WebSocket is connected.');
-    
+
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
-    
+
 };
 
 
@@ -31,10 +31,10 @@ socket.onmessage = function (event) {
     if (output[0] == 0) {
         room_code = output[1];
         localStorage['room_code'] = room_code;
-    } 
+    }
     else if (output[0] == 1) {
         loadPlayers();
-    } 
+    }
     else if (output[0] == 2) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
@@ -42,6 +42,10 @@ socket.onmessage = function (event) {
     } else if (output[0] == 3) {
         player_id = output[1];
         localStorage["player_id"] = output[1];
+
+        //JOIN ROOM VIA URL
+        joinRoomViaURL();
+
     } else if (output[0] == 4) {
         //REBOOT CHECK
         if (localStorage["last_start_time"]) {
@@ -55,24 +59,26 @@ socket.onmessage = function (event) {
         }
         localStorage["last_start_time"] = new Date().getTime();
 
-        
 
-        
+
+
         if (localStorage['player_id']) {
             player_id = localStorage.getItem("player_id");
         }
-        
+
         if (localStorage['username']) {
             username = localStorage.getItem("username");
         }
 
         socket.send("6;" + player_id);
 
-        
-    } else if(output[0] == 5) {
+
+    } else if (output[0] == 5) {
         if (localStorage['room_code']) {
             room_code = localStorage['room_code'];
             joinRoom(room_code);
+        } else {
+            joinRoomViaURL();
         }
     }
     else {
@@ -88,6 +94,16 @@ socket.onmessage = function (event) {
 
 
 };
+
+function joinRoomViaURL() {
+    splited_url = window.location.href.split('?');
+    if (splited_url[1]) {
+        joinRoom(splited_url[1]);
+        console.log("joining room via URL...");
+    } else {
+        console.log("no roomcode in URL...");
+    }
+}
 
 /*PROTOCOL LIST
 0: Join Room [room_code; username]
