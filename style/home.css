@@ -12,6 +12,15 @@ body {
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 
@@ -77,6 +86,10 @@ body {
     margin-right: auto;
     float: top;
     margin-top: -1.5vh;
+}
+
+#char-select-refresh-box:hover {
+    cursor: pointer;
 }
 
 #char-select-refresh-image {
