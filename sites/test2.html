@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,12 @@
     <script src="../Script/Json/character-names_f.js" defer></script>
     <script src="../Script/test-charselect_f.js" defer></script>
 </head>
-    <script>
-        window.onload = function (){
-            throwsDice()
-        }
-    </script>
+<script>
+    window.onload = function() {
+        throwsDice()
+    }
+</script>
+
 <body>
     <div class="headline">
         <span class="headline-text1">STADT LAND</span>
@@ -29,9 +31,9 @@
                 <img id="char-select-refresh-image" src="../images/characters/refresh.png" onclick="randomCharImg()">
             </div>
             <div id="char-select-username-box">
-                <input type="text" name="char-select-username-input" id="char-select-username-input" onchange="console.log('onchange activated');"placeholder="funny Treester">
+                <input type="text" name="char-select-username-input" id="char-select-username-input" onchange="console.log('onchange activated');" placeholder="funny Treester">
                 <div id="char-select-username-dice-box">
-                    <img id="char-select-username-dice-image" src="../images/dices/dice1.png" alt="dice" onclick="throwsDice()" >
+                    <img id="char-select-username-dice-image" src="../images/dices/dice1.png" alt="dice" onclick="throwsDice()">
                 </div>
             </div>
         </div>
@@ -39,6 +41,7 @@
 
         </div>
     </div>
-    
+
 </body>
+
 </html>

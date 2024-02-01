@@ -1,13 +1,16 @@
 /*--- Variables ---*/
 let charImgBox = document.getElementById('char-select-image-box')
 let refreshImg = document.getElementById('char-select-refresh-image')
-let userName = document.getElementById('char-select-username-input');
 let testBox = document.getElementById('test')
+let diceBox = document.getElementById('char-select-username-dice-box')
+let userName = document.getElementById('char-select-username-input')
+let animationInterval;
+let animationFrames = [];
+let currentFrameIndex = 0;
+
 let imageArray = sources.images
 
 /*--- JoinRoom() ---*/
-
-
 function joinRoom() {
     let array_string;
     var inputs = document.getElementsByClassName("room-code-input");
@@ -30,7 +33,6 @@ function joinRoom() {
 
     window.open("./lobby.html?" + array_string, "_self");
 }
-
 
 /*--- HandleInputFields ---*/
 
@@ -62,7 +64,6 @@ function jumpNextField(nextInputId) {
 console.log(imageArray);
 
 function randomCharImg() {
-    console.log(userName.value);
     charImgBox.innerHTML = `
         <img id="char-select-image-image" src="../images/characters/character-${getRandomNumberFromArray(imageArray)}.jpg">
     `
@@ -83,6 +84,21 @@ function getRandomNumberFromArray(array) {
     return randomIndex;
 }
 
-function rotateImage() {
-    refreshImg.style.transform = 'rotate(360deg)'; // Rotate the image 360 degrees
+/*--- RandomName ---*/
+
+function getRandomName() {
+    // Zufällige Auswahl eines firstpart-Namens
+    let randomFirstPart = names.firstpart[Math.floor(Math.random() * names.firstpart.length)].name;
+
+    // Zufällige Auswahl eines secondpart-Namens
+    let randomSecondPart = names.secondpart[Math.floor(Math.random() * names.secondpart.length)].name;
+
+    // Zusammensetzen der beiden Teile
+    let randomName = `${randomFirstPart}${randomSecondPart}`;
+
+    userName.value = randomName;
+
+    console.log(randomName);
 }
+
+/*--- RandomDice ---*/

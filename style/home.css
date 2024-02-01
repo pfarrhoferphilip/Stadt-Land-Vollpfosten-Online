@@ -88,22 +88,32 @@ img {
     margin-top: -1.5vh;
 }
 
-#char-select-refresh-box:hover {
-    cursor: pointer;
-}
-
 #char-select-refresh-image {
     width: 4vw;
 }
 
+#char-select-username-box {
+    display: flex;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+}
+
 #char-select-username-input {
-    width: 50%;
+    width: 100%;
     padding: 4%;
     border: 1px solid #606060;
     border-radius: 0.5em;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 1.5vw;
     margin-top: 3vh;
+}
+
+#char-select-username-dice-image {
+    width: 3vw;
+    padding-left: 1vw;
+    margin-top: 3.5vh;
+    margin-left: auto;
 }
 
 
