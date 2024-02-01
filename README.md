@@ -9,7 +9,6 @@
 6. CSS Klassen & IDs mit "-" (zB: animal-grid)
 7. JS & PHP Variabeln mit "_" (zB: animal_name)
 8. JS & PHP Funktionen mit CamelCase (zB: getAnimalName())
-
 ## Spielinfos
 * Multiplayer
 	* Roomcode
@@ -46,3 +45,6 @@
 	* Präsentation
 	* ...
 
+
+## Zukünftig
+randomCharimg als svg

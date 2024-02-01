@@ -5,6 +5,9 @@ let testBox = document.getElementById('test')
 let diceBox = document.getElementById('char-select-username-dice-box')
 let inputBox = document.getElementById('char-select-username-input')
 //  variables
+let animationInterval;
+let animationFrames = [];
+let currentFrameIndex = 0;
 
 let imageArray = sources.images
 
@@ -35,13 +38,38 @@ function rotateImage() {
     refreshImg.style.transform = 'rotate(360deg)'; // Rotate the image 360 degrees
 }
 function throwsDice() {
-    let random = Math.floor(Math.random() * 6) + 1
+    let random = Math.floor(Math.random() * 6) + 1;
+
+    let randomFirst, randomSecond;
+    do {
+        randomFirst = names.firstpart[getRandomNumberFromArray(names.firstpart)].name;
+        randomSecond = names.secondpart[getRandomNumberFromArray(names.secondpart)].name;
+    } while (inputBox.value === randomFirst + " " + randomSecond);
     diceBox.innerHTML = `
-        <img id = "char-select-username-dice-image" src = "../images/dices/dice${random}.png" alt = "dice" onclick = "throwsDice()">
-    `
-    console.log(names);
-    let randomFirst = names.firstpart[getRandomNumberFromArray(names.firstpart)].name;
-    let randomSecond = names.secondpart[getRandomNumberFromArray(names.secondpart)].name;
-    
-    inputBox.value = randomFirst + " " + randomSecond
+        <img id="char-select-username-dice-image" src="../images/dices/dice${random}.png" alt="dice" onclick="animateDice()">
+    `;
+
+    inputBox.value = randomFirst + " " + randomSecond;
+}
+function animateDice() {
+    clearInterval(animationInterval);
+
+    for (let i = 0; i < 5; i++) {
+        let randomDice = Math.floor(Math.random() * 6) + 1;
+        animationFrames.push(`../images/dices/dice${randomDice}.png`);
+    }
+
+    animationInterval = setInterval(changeDiceImage, 100);
+}
+
+function changeDiceImage() {
+    if (currentFrameIndex < animationFrames.length) {
+        document.getElementById('char-select-username-dice-image').src = animationFrames[currentFrameIndex];
+        currentFrameIndex++;
+    } else {
+        clearInterval(animationInterval);
+        currentFrameIndex = 0;
+        animationFrames = [];
+        throwsDice();
+    }
 }
