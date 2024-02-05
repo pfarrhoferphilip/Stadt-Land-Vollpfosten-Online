@@ -100,5 +100,3 @@ function getRandomName() {
 
     console.log(randomName);
 }
-
-/*--- RandomDice ---*/

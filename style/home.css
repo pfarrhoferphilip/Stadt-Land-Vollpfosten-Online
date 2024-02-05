@@ -62,7 +62,7 @@ img {
 
 #char-select {
     background-color: rgba(255, 255, 255, 0.5);
-    width: 20vw;
+    width: 25vw;
     aspect-ratio: 1/1;
     margin-left: auto;
     margin-right: auto;
@@ -121,6 +121,9 @@ img {
 }
 
 
+/*--- RandomName ---*/
+
+
 /*--- Headline ---*/
 
 :root {
@@ -174,7 +177,7 @@ img {
 /*------ Responsive ------*/
 
 
-/* Styles for full-screen displays */
+/*--- fullscreen ---*/
 
 @media all and (display-mode :fullscreen) {
     #main {

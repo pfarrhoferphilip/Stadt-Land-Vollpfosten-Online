@@ -15,6 +15,7 @@
         console.log('Window onload function activated');
         jumpNextField('input1')
         getRandomName()
+        randomCharImg()
     }
 </script>
 
@@ -36,7 +37,7 @@
             <div id="char-select-username-box">
                 <input type="text" name="char-select-username-input" id="char-select-username-input" onchange="console.log('onchange activated');">
                 <div id="char-select-username-dice-box">
-                    <img id="char-select-username-dice-image" src="../images/dices/dice1.png" alt="dice" onclick="throwsDice()">
+                    <img id="char-select-username-dice-image" src="../images/characters/refresh.png" alt="refresh" onclick="getRandomName()">
                 </div>
             </div>
         </div>
