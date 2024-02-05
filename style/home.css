@@ -56,6 +56,10 @@ img {
 
 /*--- Char Select ---*/
 
+#main {
+    margin-top: 2vw;
+}
+
 #char-select {
     background-color: rgba(255, 255, 255, 0.5);
     width: 20vw;
@@ -164,4 +168,16 @@ img {
 .headline-text1,
 .headline-text2 {
     animation: pulse 3s ease-in-out infinite;
+}
+
+
+/*------ Responsive ------*/
+
+
+/* Styles for full-screen displays */
+
+@media all and (display-mode :fullscreen) {
+    #main {
+        margin-top: 5vw;
+    }
 }
