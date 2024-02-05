@@ -41,8 +41,14 @@ img {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* Updated to column layout */
+    align-items: center;
+}
+
+.room-code-inputs {
     gap: 1vw;
+    display: flex;
 }
 
 .room-code-input {
@@ -51,6 +57,12 @@ img {
     font-size: 5vw;
     height: 10vw;
     width: 10vw;
+}
+
+#button {
+    background-color: red;
+    width: 10%;
+    margin-top: 1vw;
 }
 
 
