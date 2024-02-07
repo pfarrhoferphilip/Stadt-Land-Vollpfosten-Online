@@ -7,8 +7,11 @@ let userName = document.getElementById('char-select-username-input')
 let animationInterval;
 let animationFrames = [];
 let currentFrameIndex = 0;
+let current_image_id;
 
 let imageArray = sources.images
+
+randomCharImg();
 
 /*--- JoinRoom() ---*/
 function joinRoom() {
@@ -25,7 +28,9 @@ function joinRoom() {
     console.log(array_string);
 
     // Wert in localStorage speichern
-    localStorage.setItem('username', userName.value);
+    localStorage['username'] = userName.value;
+
+    localStorage['image_id'] = current_image_id;
 
     // Zum Testen können Sie den gespeicherten Wert auslesen und in der Konsole ausgeben
     let storedUsername = localStorage.getItem('username');
@@ -64,8 +69,9 @@ function jumpNextField(nextInputId) {
 console.log(imageArray);
 
 function randomCharImg() {
+    current_image_id = getRandomNumberFromArray(imageArray);
     charImgBox.innerHTML = `
-        <img id="char-select-image-image" src="../images/characters/character-${getRandomNumberFromArray(imageArray)}.jpg">
+        <img id="char-select-image-image" src="../images/characters/character-${current_image_id}.jpg">
     `
 }
 

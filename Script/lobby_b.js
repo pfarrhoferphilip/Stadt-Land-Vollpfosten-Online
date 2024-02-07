@@ -77,7 +77,12 @@ socket.onmessage = function (event) {
             username = localStorage.getItem("username");
         }
 
-        profile_pic = localStorage['profile_pic'];
+        if (localStorage['image_id']) {
+            profile_pic = localStorage['image_id'];
+        } else {
+            profile_pic = 1;
+        }
+        
 
         socket.send("6;" + player_id + ";" + profile_pic);
 
@@ -143,7 +148,7 @@ function displayPlayers() {
         console.log(players_in_room[Object.keys(players_in_room)[i]]);
         html_code += `
             <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
-            <img id="char-select-image-image" src="../images/characters/character-${players_in_room[i].profile_pic}.jpg">
+            <img class="profile-pic" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg">
         `;
     }
     document.getElementById("players").innerHTML = html_code;
