@@ -54,14 +54,12 @@ socket.onmessage = function (event) {
         if (localStorage["last_start_time"]) {
             if (localStorage["last_start_time"] < output[1]) {
                 username = localStorage['username'];
-                localStorage.clear();
-                localStorage['username'] = username;
+                localStorage.removeItem('player_id');
                 console.log("Server restarted...")
             }
         } else {
             username = localStorage['username'];
-            localStorage.clear();
-            localStorage['username'] = username;
+            localStorage.removeItem('player_id');
             console.log("Client wasn't online before...")
         }
         localStorage["last_start_time"] = new Date().getTime();
