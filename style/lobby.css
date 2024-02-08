@@ -1,0 +1,12 @@
+.profile-pic {
+    width: 20%;
+}
+
+.lobby-flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.lobby-flex-item {
+    width: 50%;
+}
