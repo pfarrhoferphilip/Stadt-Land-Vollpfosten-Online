@@ -11,7 +11,6 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
     user-select: none;
 }
 
@@ -59,10 +58,16 @@ img {
     width: 10vw;
 }
 
-#button {
+.button {
+    font-size: 2vw;
     background-color: red;
-    width: 10%;
+    width: 100%;
+    text-align: center;
     margin-top: 1vw;
+}
+
+.buttons-box {
+    display: flex;
 }
 
 
@@ -131,9 +136,6 @@ img {
     margin-top: 3.5vh;
     margin-left: auto;
 }
-
-
-/*--- RandomName ---*/
 
 
 /*--- Headline ---*/
