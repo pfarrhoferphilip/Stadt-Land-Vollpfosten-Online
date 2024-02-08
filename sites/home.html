@@ -48,8 +48,13 @@
                 <input id="input3" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input4')" onkeydown="handleBackspace(this, 'input2')">
                 <input id="input4" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, null)" onkeydown="handleBackspace(this, 'input3')">
             </div>
-            <div onclick="joinRoom()" id="button">
-                <p>Click me</p>
+            <div id="buttons-box">
+                <div onclick="joinRoom()" class="button">
+                    <p>Join Room</p>
+                </div>
+                <div onclick="createRoom()" class="button">
+                    <p>Create Room</p>
+                </div>
             </div>
         </div>
 

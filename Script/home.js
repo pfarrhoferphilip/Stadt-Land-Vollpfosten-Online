@@ -1,12 +1,12 @@
 /*--- Variables ---*/
-let charImgBox = document.getElementById('char-select-image-box')
-let refreshImg = document.getElementById('char-select-refresh-image')
-let testBox = document.getElementById('test')
-let diceBox = document.getElementById('char-select-username-dice-box')
-let userName = document.getElementById('char-select-username-input')
-let animationInterval;
-let animationFrames = [];
-let currentFrameIndex = 0;
+let username = document.getElementById('char-select-username-input')
+let char_img_box = document.getElementById('char-select-image-box')
+    // let refreshImg = document.getElementById('char-select-refresh-image')
+    // let testBox = document.getElementById('test')
+    // let diceBox = document.getElementById('char-select-username-dice-box')
+    // let animationInterval;
+    // let animationFrames = [];
+    // let currentFrameIndex = 0;
 
 let imageArray = sources.images
 
@@ -27,13 +27,19 @@ function joinRoom() {
     console.log(array_string);
 
     // Wert in localStorage speichern
-    localStorage['username'] = userName.value;
+    localStorage['username'] = username.value;
 
     // Zum Testen können Sie den gespeicherten Wert auslesen und in der Konsole ausgeben
     let storedUsername = localStorage.getItem('username');
     console.log('Gespeicherter Benutzername:', storedUsername);
 
     window.open("./lobby.html?" + array_string, "_self");
+}
+
+/*--- createRoom() ---*/
+
+function createRoom() {
+
 }
 
 /*--- HandleInputFields ---*/
@@ -67,7 +73,7 @@ console.log(imageArray);
 
 function randomCharImg() {
     localStorage['image_id'] = getRandomNumberFromArray(imageArray);
-    charImgBox.innerHTML = `
+    char_img_box.innerHTML = `
         <img id="char-select-image-image" src="../images/characters/character-${localStorage['image_id']}.jpg">
     `
 }
@@ -99,7 +105,7 @@ function getRandomName() {
     // Zusammensetzen der beiden Teile
     let randomName = `${randomFirstPart}${randomSecondPart}`;
 
-    userName.value = randomName;
+    username.value = randomName;
 
     console.log(randomName);
 }
