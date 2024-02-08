@@ -43,12 +43,14 @@ class Player
     public $username;
     public $profile_pic;
     public $client;
+    public $is_host;
     public function __construct($username, $client, $id, $profile_pic)
     {
         $this->username = $username;
         $this->client = $client;
         $this->id = $id;
         $this->profile_pic = $profile_pic;
+        $this->is_host = false;
     }
 
     public function setUsername($username)
@@ -155,6 +157,7 @@ class ChatServer implements MessageComponentInterface
             $player = $this->searchPlayerByClient($from, $this->players);
             $player->setUsername($msg_arr[1]);
             $this->removePlayer($player);
+            $player->is_host = true;
             $current_room->addPlayer($player);
             array_push($this->rooms, $current_room);
             $from->send("0;" . $current_room->code);
