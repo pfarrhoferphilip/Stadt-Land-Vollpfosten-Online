@@ -51,11 +51,13 @@ let names = {
         { "name": "Bombastic" },
         { "name": "Cute" },
         { "name": "Kind" },
-        { "name": "Brave" }
+        { "name": "Brave" },
+        { "name": "Exploded" }
     ],
     "secondpart": [
         { "name": "Whiskers" },
         { "name": "Sunshine" },
+        { "name": "Mevwer" },
         { "name": "Meadow" },
         { "name": "Breezey" },
         { "name": "Harmony" },
