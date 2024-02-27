@@ -1,12 +1,112 @@
+/*---------Lobby----------*/
+/*---General---*/
+
+body {
+    margin: 0;
+    background-image: url(../images/BackgroundImageIndexLight.jpg);
+    background-size: cover;
+    background-position: 0vw -25vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    user-select: none;
+}
+
+
+
+/*--- Main *---*/
+
+#main {
+    display: flex;
+    margin-top: 5vw;
+}
+
+
+/*--- Headline ---*/
+
+:root {
+    --fontSizeHeadline: 6vw;
+}
+
+.headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vw;
+    flex-direction: column;
+}
+
+.headline-text1 {
+    font-weight: bold;
+    letter-spacing: 0.73vw;
+    font-size: var(--fontSizeHeadline);
+    color: #333;
+}
+
+.headline-text2 {
+    font-weight: bold;
+    font-size: var(--fontSizeHeadline);
+    color: #f00;
+    letter-spacing: 0vw;
+    margin-top: -0.5vw;
+}
+
+
+
+/*--- Textpulse animation ---*/
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.headline-text1,
+.headline-text2 {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/*---  Lobby  ---*/
+
 .profile-pic {
     width: 20%;
 }
 
 .lobby-flex-container {
     display: flex;
-    width: 100%;
+    width: 100vw;
 }
-
-.lobby-flex-item {
-    width: 50%;
+.lobby-flex-headline{
+    text-align: center;
+    font-size: 2em;
+}
+#lobby-players-box{
+    width: 40vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    background: rgba(255, 255, 255, 0.7);
+    aspect-ratio: 6/5;
+}
+#lobby-players-box-players{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 1vw;
+    text-align: center;
+}
+.player-image{
+    width: 5vw;
+}
+#lobby-gameoptions-box {
+    width: 40vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    background: rgb(255, 255, 255, 0.7);
+    aspect-ratio: 6/5;
 }
