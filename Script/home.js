@@ -1,14 +1,17 @@
 /*--- Variables ---*/
-let username = document.getElementById('char-select-username-input')
-let char_img_box = document.getElementById('char-select-image-box')
-    // let refreshImg = document.getElementById('char-select-refresh-image')
-    // let testBox = document.getElementById('test')
-    // let diceBox = document.getElementById('char-select-username-dice-box')
-    // let animationInterval;
-    // let animationFrames = [];
-    // let currentFrameIndex = 0;
+
+let charImgBox = document.getElementById('char-select-image-box')
+let refreshImg = document.getElementById('char-select-refresh-image')
+let testBox = document.getElementById('test')
+let diceBox = document.getElementById('char-select-username-dice-box')
+let userName = document.getElementById('char-select-username-input')
+let animationInterval;
+let animationFrames = [];
+let currentFrameIndex = 0;
 
 let imageArray = sources.images
+
+console.log(lobby_bs)
 
 randomCharImg();
 
@@ -27,7 +30,7 @@ function joinRoom() {
     console.log(array_string);
 
     // Wert in localStorage speichern
-    localStorage['username'] = username.value;
+    localStorage['username'] = userName.value;
 
     // Zum Testen können Sie den gespeicherten Wert auslesen und in der Konsole ausgeben
     let storedUsername = localStorage.getItem('username');
@@ -36,10 +39,10 @@ function joinRoom() {
     window.open("./lobby.html?" + array_string, "_self");
 }
 
-/*--- createRoom() ---*/
-
 function createRoom() {
+    localStorage['username'] = userName.value;
 
+    window.open("./lobby.html?createRoom", "_self");
 }
 
 /*--- HandleInputFields ---*/
@@ -73,7 +76,7 @@ console.log(imageArray);
 
 function randomCharImg() {
     localStorage['image_id'] = getRandomNumberFromArray(imageArray);
-    char_img_box.innerHTML = `
+    charImgBox.innerHTML = `
         <img id="char-select-image-image" src="../images/characters/character-${localStorage['image_id']}.jpg">
     `
 }
@@ -105,7 +108,7 @@ function getRandomName() {
     // Zusammensetzen der beiden Teile
     let randomName = `${randomFirstPart}${randomSecondPart}`;
 
-    username.value = randomName;
+    userName.value = randomName;
 
     console.log(randomName);
 }

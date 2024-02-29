@@ -80,7 +80,7 @@ socket.onmessage = function (event) {
         } else {
             profile_pic = 1;
         }
-        
+
 
         socket.send("6;" + player_id + ";" + profile_pic);
 
@@ -119,10 +119,13 @@ socket.onmessage = function (event) {
 
 function joinRoomViaURL() {
     splited_url = window.location.href.split('?');
-    if (splited_url[1]) {
+    if (splited_url[1] && splited_url[1] != "createRoom") {
         joinRoom(splited_url[1]);
         console.log("joining room via URL...");
-    } else {
+    } else if (splited_url[1] == "createRoom") {
+        createRoom();
+    }
+    else {
         console.log("no roomcode in URL...");
     }
 }
@@ -145,11 +148,13 @@ function displayPlayers() {
     for (let i = 0; i < Object.keys(players_in_room).length; i++) {
         console.log(players_in_room[Object.keys(players_in_room)[i]]);
         html_code += `
+        <div class="player">
+            <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
             <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
-            <img class="profile-pic" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg">
+        </div>
         `;
     }
-    document.getElementById("players").innerHTML = html_code;
+    document.getElementById("lobby-players-box-players").innerHTML = html_code;
 }
 
 //CREATE A ROOM
