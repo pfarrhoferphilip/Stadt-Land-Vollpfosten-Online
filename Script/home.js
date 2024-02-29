@@ -11,7 +11,9 @@ let currentFrameIndex = 0;
 
 let imageArray = sources.images
 
-console.log(lobby_bs)
+//console.log(lobby_bs)
+
+localStorage.clear();
 
 randomCharImg();
 
