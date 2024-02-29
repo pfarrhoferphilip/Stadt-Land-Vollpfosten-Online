@@ -93,12 +93,14 @@ body {
     margin-right: 5vw;
     background: rgba(255, 255, 255, 0.7);
     aspect-ratio: 6/5;
+    height: 33.3vw;
 }
 #lobby-players-box-players{
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 1vw;
     text-align: center;
+    overflow-y: scroll;
 }
 .player-image{
     width: 5vw;
