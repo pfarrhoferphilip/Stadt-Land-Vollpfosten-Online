@@ -55,6 +55,7 @@ let names = {
         { "name": "Exploded" }
     ],
     "secondpart": [
+        { "name": "Niqer" },
         { "name": "Whiskers" },
         { "name": "Sunshine" },
         { "name": "Mevwer" },
