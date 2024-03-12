@@ -1,4 +1,6 @@
 /*---------Startside----------*/
+
+
 /*---General---*/
 
 body {
@@ -57,15 +59,26 @@ img {
 }
 
 .button {
+    color: white;
     font-size: 2vw;
     background-color: red;
-    width: 100%;
     text-align: center;
-    margin-top: 1vw;
+    margin-top: 5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 0.5vw;
 }
 
-.buttons-box {
+.button:hover {
+    cursor: pointer;
+}
+
+#buttons-box {
+    gap: 1vw;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 
