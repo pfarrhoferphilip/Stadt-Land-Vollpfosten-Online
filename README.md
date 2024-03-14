@@ -39,6 +39,7 @@
 	* Spielfeld
 	* ...
 4. Tobias Klement
+	* Dokumentation, Markdown
 	* Frontend
 	* Design
 	* Audio
