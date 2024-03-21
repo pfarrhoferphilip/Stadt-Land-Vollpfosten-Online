@@ -22,6 +22,10 @@ body {
     margin-top: 5vw;
 }
 
+#room-code {
+    color: red;
+}
+
 
 /*--- Headline ---*/
 

@@ -155,6 +155,7 @@ function displayPlayers() {
         `;
     }
     document.getElementById("lobby-players-box-players").innerHTML = html_code;
+    document.getElementById("room-code").innerHTML = room_code;
 }
 
 //CREATE A ROOM
@@ -187,4 +188,9 @@ function setUsername(name) {
     username = name;
     localStorage.setItem("username", username);
     socket.send("2;" + player_id + ";" + room_code + ";" + username)
+}
+
+function copyRoomCode() {
+    navigator.clipboard.writeText(room_code);
+    alert("Room Code copied to clipboard.");
 }
