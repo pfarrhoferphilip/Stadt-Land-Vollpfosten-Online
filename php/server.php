@@ -192,6 +192,11 @@ class ChatServer implements MessageComponentInterface
             } else {
                 $from->send("6;" . false);
             }
+        } else if ($msg_arr[0] == 8) {
+            //Load Game for all Players in Room
+            foreach($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
+                $player->client->send("7");
+            }
         }
     }
 
