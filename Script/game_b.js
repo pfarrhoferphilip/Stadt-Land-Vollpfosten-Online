@@ -42,7 +42,8 @@ socket.onmessage = function (event) {
     else if (output[0] == 2) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
-        displayPlayers();
+        //displayPlayers();
+        
     } else if (output[0] == 3) {
         player_id = output[1];
         localStorage["player_id"] = output[1];
@@ -57,6 +58,7 @@ socket.onmessage = function (event) {
                 username = localStorage['username'];
                 localStorage.removeItem('player_id');
                 console.log("Server restarted...")
+                window.open("./../Sites/home.html", "_self");
             }
         } else {
             username = localStorage['username'];
@@ -163,8 +165,10 @@ function displayPlayers() {
         </div>
         `;
     }
-    document.getElementById("lobby-players-box-players").innerHTML = html_code;
-    document.getElementById("room-code").innerHTML = room_code;
+    //.getElementById("lobby-players-box-players").innerHTML = html_code;
+    //document.getElementById("room-code").innerHTML = room_code;
+    console.log(html_code);
+    console.log(room_code);
 }
 
 //CREATE A ROOM
