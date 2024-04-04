@@ -218,3 +218,10 @@ function copyRoomCode() {
     navigator.clipboard.writeText(room_code);
     alert("Room Code copied to clipboard.");
 }
+
+
+//SET GAMEOPTIONS
+function setGameoptions(version){
+    console.log(version);
+    
+}
