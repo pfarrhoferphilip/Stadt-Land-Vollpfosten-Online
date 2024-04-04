@@ -1,3 +1,6 @@
+/*-------- Variables --------*/
+let counter = document.getElementById('counter');
+
 /*-------- Random Letter --------*/
 
 function generate_random_letter() {
@@ -15,19 +18,16 @@ var random_letter = generate_random_letter();
 document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 /*-------- Counter --------*/
+function start_counter(seconds) {
+    let timer = setInterval(function() {
+        counter.innerHTML = seconds;
+        seconds--;
 
-function startCounter(startValue) {
-    let count = startValue;
-
-    function decrease() {
-        if (count > 0) {
-            console.log(count);
-            count--;
-            setTimeout(decrease, 1000); // Decrease count every second
-        } else {
-            console.log("Counter reached zero!");
+        if (seconds < 0) {
+            clearInterval(timer);
+            console.log("Countdown abgelaufen!");
         }
-    }
-
-    decrease(); // Start the counter
+    }, 1000);
 }
+
+start_counter(240);
