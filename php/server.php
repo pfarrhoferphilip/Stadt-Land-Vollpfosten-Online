@@ -44,6 +44,7 @@ class Player
     public $profile_pic;
     public $client;
     public $is_host;
+    public $is_in_game;
     public function __construct($username, $client, $id, $profile_pic)
     {
         $this->username = $username;
@@ -51,6 +52,7 @@ class Player
         $this->id = $id;
         $this->profile_pic = $profile_pic;
         $this->is_host = false;
+        $this->is_in_game = false;
     }
 
     public function setUsername($username)
@@ -197,6 +199,7 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 8) {
             //Load Game for all Players in Room
             foreach($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
+                $player->is_in_game = true;
                 $player->client->send("7");
             }
         }
