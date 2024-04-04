@@ -29,6 +29,7 @@ socket.onmessage = function (event) {
     //5 = Rejoin Lobby
     //6 = Get if room exists
     //7 = Load Game
+    //8 = Error on join
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -103,11 +104,13 @@ socket.onmessage = function (event) {
             //room does not exist
             joinRoom(room_code);
         }
-    } else if(output[0] == 7) {
+    } else if (output[0] == 7) {
         //Load Game
         window.open("./../Sites/game.html", "_self");
-    }
-    else {
+    } else if (output[0] == 8) {
+        //ERROR ON JOIN
+        window.open("./../Sites/error_page.html", "_self");
+    } else {
 
         console.log(event.data);
 
@@ -156,12 +159,24 @@ function displayPlayers() {
     let html_code = "";
     for (let i = 0; i < Object.keys(players_in_room).length; i++) {
         console.log(players_in_room[Object.keys(players_in_room)[i]]);
-        html_code += `
-        <div class="player">
-            <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
-            <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
-        </div>
-        `;
+        //PLAYER IN LOBBY
+        if (players_in_room[Object.keys(players_in_room)[i]].is_in_game == false) {
+            html_code += `
+            <div class="player">
+                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+            </div>
+            `;
+        //PLAYER IS IN GAME
+        } else {
+            html_code += `
+            <div class="player">
+                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <p style="color: rgba(0, 0, 0, 0.7);">${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+            </div>
+            `;
+        }
+
     }
     document.getElementById("lobby-players-box-players").innerHTML = html_code;
     document.getElementById("room-code").innerHTML = room_code;
