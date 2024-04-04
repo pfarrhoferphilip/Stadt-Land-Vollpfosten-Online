@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Stadt-Land-Vollpfosten" company="" webLink="http://" view-date="2023-12-04" view-index="0" gantt-divider-location="414" resource-divider-location="300" version="3.3.3305" locale="de_DE">
+<?xml version="1.0" encoding="UTF-8"?><project name="Stadt-Land-Vollpfosten" company="" webLink="http://" view-date="2024-01-01" view-index="0" gantt-divider-location="413" resource-divider-location="300" version="3.3.3305" locale="de_DE">
     <description/>
     <view zooming-state="default:7" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="236" order="0"/>
+        <field id="tpd3" name="Vorgang" width="234" order="0"/>
         <field id="tpd4" name="Anfang" width="73" order="1"/>
         <field id="tpd5" name="Ende" width="104" order="2"/>
         <field id="tpd15" name="Notizen" width="20" order="3"/>
@@ -69,7 +69,7 @@
             <task id="10" uid="5ac5ac26371a44a5a2d0ac53fd205908" name="Login Page erstellen" meeting="false" start="2024-03-18" duration="15" complete="0" expand="true"/>
             <task id="11" uid="34bf11d3c4c4429c9e6fe1c34e405016" name="Game Page erstellen" meeting="false" start="2024-04-15" duration="20" complete="0" expand="true"/>
         </task>
-        <task id="13" uid="34e052babd1f49849dec064bf806ffc1" name="Medien" meeting="false" start="2024-01-29" duration="50" complete="0" expand="false">
+        <task id="13" uid="34e052babd1f49849dec064bf806ffc1" name="Medien" meeting="false" start="2024-01-29" duration="50" complete="0" expand="true">
             <task id="14" uid="e44c98cc7645466088577050dba051b7" name="Charaktere erstellen" meeting="false" start="2024-01-29" duration="20" complete="0" expand="true"/>
             <task id="15" uid="e905ac2ec2c74d82b7cc2b85dec41f43" name="Grafiken erstellen" meeting="false" start="2024-02-26" duration="15" complete="0" expand="true"/>
             <task id="16" uid="245937a30d4a434b8b06af287493225e" name="Musik recherchieren" meeting="false" start="2024-03-18" duration="15" complete="0" expand="true"/>

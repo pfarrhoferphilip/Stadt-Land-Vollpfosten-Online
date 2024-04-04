@@ -17,7 +17,7 @@
     <div class="lobby-flex-container">
         <!--CHARACTER LIST-->
         <div id="lobby-players-box">
-            <h2 class="lobby-flex-headline">Players</h2>
+            <h2 class="lobby-flex-headline">Spieler</h2>
             <div id="lobby-players-box-players">
                 <div class="player">
                     <img class="player-image" src="../images/characters/character-2.jpg" alt="char1">
@@ -28,23 +28,43 @@
 
         <!--GAMEOPTIONS-->
         <div id="lobby-gameoptions-box">
-            <h2 class="lobby-flex-headline">Gameoptions</h2>
-
+            <h2 class="lobby-flex-headline">Spieloptionen</h2>
+            
+            <!-- //TODO url kopieren-->
             <p id="looby-flex-gameoptions-room-code">Room-code:<span onclick="copyRoomCode()" id="room-code"></span></p>
 
             <div id="looby-flex-gameoptions-category-box">
-                <div id="looby-flex-gameoptions-category-normal">
-                    <h3>Normal</h3>
-                    <p>Rounds: 3x</p>
-                    <p>Round-time: 2min</p>
-                    <p>Categories count: 5x</p>
+                <div class="card" onclick="setGameoptions('normal')">
+                    <div class="card-content">
+                        <h2>Normal</h2>
+                        <div class="more-text">
+                            <p>Runden: 3x</p>
+                            <p>Rundenzeit: 2min</p>
+                            <p>Kategorien: 8</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <strong>Normal</strong>
-                    <span>
-                        <p>Rounds:3x Round-time:2min Categories-count:5x</p><br>
-                    </span>
+                <div class="card" onclick="setGameoptions('schnell')">
+                    <div class="card-content">
+                        <h2>Schnell</h2>
+                        <div class="more-text">
+                            <p>Runden: 1x</p>
+                            <p>Rundenzeit: 1min</p>
+                            <p>Kategorien: 5</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="card" onclick="setGameoptions('senioren')">
+                    <div class="card-content">
+                        <h2>Senioren</h2>
+                        <div class="more-text">
+                            <p>Runden: 5x</p>
+                            <p>Rundenzeit: 4min</p>
+                            <p>Kategorien: 6</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
 
