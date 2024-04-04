@@ -128,6 +128,8 @@ class ChatServer implements MessageComponentInterface
 
                     }
                 }
+            } else {
+                $from->send("8");
             }
         } else if ($msg_arr[0] == 1) {
             //SET READY STATUS

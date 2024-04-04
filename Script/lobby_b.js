@@ -29,6 +29,7 @@ socket.onmessage = function (event) {
     //5 = Rejoin Lobby
     //6 = Get if room exists
     //7 = Load Game
+    //8 = Error on join
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -106,8 +107,10 @@ socket.onmessage = function (event) {
     } else if(output[0] == 7) {
         //Load Game
         window.open("./../Sites/game.html", "_self");
-    }
-    else {
+    } else if(output[0] == 8) {
+        //ERROR ON JOIN
+        window.open("./../Sites/error_page.html", "_self");
+    } else {
 
         console.log(event.data);
 
