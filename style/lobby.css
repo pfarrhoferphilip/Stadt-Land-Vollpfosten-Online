@@ -156,7 +156,6 @@ body {
     overflow: hidden;
     position: relative;
     font-size: 2vh;
-    cursor: pointer;
 }
 
 .more-text {
@@ -172,4 +171,5 @@ body {
 
 .card:hover .more-text {
     transform: translateY(0);
+    cursor: pointer;
 }
