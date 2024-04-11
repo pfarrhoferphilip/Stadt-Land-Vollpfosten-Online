@@ -222,6 +222,23 @@ function copyRoomCode() {
 
 //SET GAMEOPTIONS
 function setGameoptions(version){
-    console.log(version);
-    
+    let card;
+    switch (version) {
+        case "normal":  
+            card = document.getElementsByClassName('card')[0];
+            break;
+        case "schnell":
+            card = document.getElementsByClassName('card')[1];
+            break;
+        case "senioren":
+            card = document.getElementsByClassName('card')[2];
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("card-normal").style.borderColor = "#fff";
+    document.getElementById("card-schnell").style.borderColor = "#fff";
+    document.getElementById("card-senioren").style.borderColor = "#fff";
+    document.getElementById("card-" + version).style.borderColor = "#4a8a11";
 }
