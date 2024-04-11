@@ -20,10 +20,13 @@
     <div id="game-board">
         <div id="headlines">
             <div id="headline">
+                <p>Stadt</p>
             </div>
             <div id="headline">
+                <p>Land</p>
             </div>
             <div id="headline">
+                <p>Fluss</p>
             </div>
             <div id="headline">
             </div>
