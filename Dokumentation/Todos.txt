@@ -1,0 +1,6 @@
+Balken auf richtige Zeit verschieben bzw. länger machen. 
+Kein gleicher Name und gleiches Bild zwei gleicher Spieler.
+Webserver/socket durchlesen.
+Zeitplan updaten!!! Meilensteine!
+Abstimmung effizienter gestalten. Einfach nur abstimmen für was nicht passt. Ganze Tabelle anschauen unf nur abstimmen für was nicht passt.
+Zwischen den Runden nur Spielername und Punktestand. Zum Schluss die Liste mit den ganzen Punkten (sieht PDF). 
