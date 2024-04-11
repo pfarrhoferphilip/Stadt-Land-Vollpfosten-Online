@@ -1,33 +1,35 @@
 /*-------- Variables --------*/
-let counter = document.getElementById('counter');
+
+let random_letter = generate_random_letter();
 
 /*-------- Random Letter --------*/
+document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 function generate_random_letter() {
     // Generate a random number between 0 and 25 (inclusive)
-    var random_numebr = Math.floor(Math.random() * 26);
+    let random_numebr = Math.floor(Math.random() * 26);
 
     // Map the random number to a corresponding letter in the alphabet
-    var random_letter = String.fromCharCode(97 + random_numebr); // Using ASCII code for lowercase letters
+    let random_letter = String.fromCharCode(97 + random_numebr); // Using ASCII code for lowercase letters
 
     return random_letter;
 }
 
-// Example usage:
-var random_letter = generate_random_letter();
-document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 /*-------- Counter --------*/
-function start_counter(seconds) {
-    let timer = setInterval(function() {
-        counter.innerHTML = seconds;
-        seconds--;
 
-        if (seconds < 0) {
-            clearInterval(timer);
-            console.log("Countdown abgelaufen!");
-        }
-    }, 1000);
+let counter = document.getElementById('counter');
+let seconds = 240;
+
+function start_counter() {
+    counter.innerHTML = seconds;
+    seconds--;
+
+    if (seconds >= 0) {
+        setTimeout(start_counter, 1000);
+    } else {
+        console.log("Countdown abgelaufen!");
+    }
 }
 
-start_counter(240);
+start_counter();
