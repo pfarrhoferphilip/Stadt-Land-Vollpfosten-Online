@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #211c18;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #a56e41;
+      }
+
+      .cls-3 {
+        fill: #66401d;
+      }
+
+      .cls-4 {
+        fill: #dbaf83;
+      }
+
+      .cls-5 {
+        fill: #000;
+      }
+
+      .cls-6 {
+        fill: #f7cca6;
+      }
+
+      .cls-7 {
+        fill: #8e36b2;
+      }
+    </style>
+  </defs>
+  <g id="Hair">
+    <rect class="cls-2" x="196.88" y="193" width="606.25" height="625" rx="72.09" ry="72.09"/>
+  </g>
+  <g id="Face">
+    <rect class="cls-4" x="370.7" y="756.5" width="274" height="131"/>
+    <path class="cls-6" d="M316.85,314.5h381.69c14.43,0,26.15,11.72,26.15,26.15v248.85c0,119.77-97.23,217-217,217h0c-119.77,0-217-97.23-217-217v-248.85c0-14.43,11.72-26.15,26.15-26.15Z"/>
+    <g id="Expression">
+      <circle class="cls-1" cx="428.5" cy="517.5" r="31.5"/>
+      <path class="cls-1" d="M600,515.5c0,17.4-14.1,31.5-31.5,31.5-17.4,0-31.5-14.1-31.5-31.5s14.1-31.5,31.5-31.5c17.4,0,31.5,14.1,31.5,31.5Z"/>
+      <ellipse class="cls-5" cx="500" cy="706" rx="66" ry="38"/>
+    </g>
+    <g id="Hair_face" data-name="Hair face">
+      <rect class="cls-3" x="322" y="407" width="356" height="34"/>
+    </g>
+  </g>
+  <rect class="cls-7" x="178.2" y="869.5" width="659" height="195" rx="60.27" ry="60.27"/>
+</svg>
