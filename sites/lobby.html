@@ -29,12 +29,12 @@
         <!--GAMEOPTIONS-->
         <div id="lobby-gameoptions-box">
             <h2 class="lobby-flex-headline">Spieloptionen</h2>
-            
+
             <!-- //TODO url kopieren-->
             <p id="looby-flex-gameoptions-room-code">Room-code:<span onclick="copyRoomCode()" id="room-code"></span></p>
 
-            <div id="looby-flex-gameoptions-category-box">
-                <div class="card" onclick="setGameoptions('normal')">
+            <div id="looby-flex-gameoptions-category-box-3">
+                <div class="card" onclick="setGameoptions('normal')" id="card-normal">
                     <div class="card-content">
                         <h2>Normal</h2>
                         <div class="more-text">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" onclick="setGameoptions('schnell')">
+                <div class="card" onclick="setGameoptions('schnell')" id="card-schnell">
                     <div class="card-content">
                         <h2>Schnell</h2>
                         <div class="more-text">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" onclick="setGameoptions('senioren')">
+                <div class="card" onclick="setGameoptions('senioren')" id="card-senioren">
                     <div class="card-content">
                         <h2>Senioren</h2>
                         <div class="more-text">
@@ -64,7 +64,26 @@
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            <div id="looby-flex-gameoptions-category-box-5">
+                <div class="category" onclick="setCategory('standard')" id="category-standard">
+                    <h2>Standard</h2>
+                </div>
+                <div class="category" onclick="setCategory('sport')" id="category-sport">
+                    <h2>Sport</h2>
+                </div>
+                <div class="category" onclick="setCategory('rotlicht')" id="category-rotlicht">
+                    <h2>Rotlicht</h2>
+                </div>
+                <div class="category" onclick="setCategory('lask')" id="category-lask">
+                    <h2>Lask</h2>
+                </div>
+                <div class="category" onclick="setCategory('rennsport')" id="category-rennsport">
+                    <h2>Rennsport</h2>
+                </div>
+                <div class="category" onclick="setCategory('haushalt')" id="category-haushalt">
+                    <h2>Haushalt</h2>
+                </div>
             </div>
         </div>
 

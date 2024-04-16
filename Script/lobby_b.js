@@ -167,7 +167,7 @@ function displayPlayers() {
                 <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
             </div>
             `;
-        //PLAYER IS IN GAME
+            //PLAYER IS IN GAME
         } else {
             html_code += `
             <div class="player">
@@ -221,7 +221,58 @@ function copyRoomCode() {
 
 
 //SET GAMEOPTIONS
-function setGameoptions(version){
-    console.log(version);
-    
+function setGameoptions(version) {
+    let card;
+    switch (version) {
+        case "normal":
+            card = document.getElementsByClassName('card')[0];
+            break;
+        case "schnell":
+            card = document.getElementsByClassName('card')[1];
+            break;
+        case "senioren":
+            card = document.getElementsByClassName('card')[2];
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("card-normal").style.borderColor = "#fff";
+    document.getElementById("card-schnell").style.borderColor = "#fff";
+    document.getElementById("card-senioren").style.borderColor = "#fff";
+    document.getElementById("card-" + version).style.borderColor = "#4a8a11";
+}
+//SET CATEGORY
+function setCategory(version) {
+    let category;
+    switch (version) {
+        case "standard":
+            category = document.getElementsByClassName('category')[0];
+            break;
+        case "sport":
+            category = document.getElementsByClassName('category')[1];
+            break;
+        case "rotlicht":
+            category = document.getElementsByClassName('category')[2];
+            break;
+        case "lask":
+            category = document.getElementsByClassName('category')[3];
+            break;
+        case "rennsport":
+            category = document.getElementsByClassName('category')[4];
+            break;
+        case "haushalt":
+            category = document.getElementsByClassName('category')[5];
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("category-standard").style.borderColor = "#fff";
+    document.getElementById("category-sport").style.borderColor = "#fff";
+    document.getElementById("category-rotlicht").style.borderColor = "#fff";
+    document.getElementById("category-lask").style.borderColor = "#fff";
+    document.getElementById("category-rennsport").style.borderColor = "#fff";
+    document.getElementById("category-haushalt").style.borderColor = "#fff";
+    document.getElementById("category-" + version).style.borderColor = "#4a8a11";
 }

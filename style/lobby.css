@@ -141,9 +141,15 @@ body {
     cursor: copy ;
     transition: 0.5s all;
 }
-#looby-flex-gameoptions-category-box{
+#looby-flex-gameoptions-category-box-3{
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-gap: 1vw;
+    margin: 2vh;
+}
+#looby-flex-gameoptions-category-box-5{
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
     grid-gap: 1vw;
     margin: 2vh;
 }
@@ -171,5 +177,17 @@ body {
 
 .card:hover .more-text {
     transform: translateY(0);
+}
+.card:hover {
+    cursor: pointer;
+}
+.category {
+    border: #fff solid 5px;
+    text-align: center;
+    width: 15vh;
+    overflow: hidden;
+    font-size: 1.5vh;
+}
+.category:hover{
     cursor: pointer;
 }
