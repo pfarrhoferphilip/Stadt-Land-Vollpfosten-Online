@@ -264,6 +264,9 @@ function setCategory(version) {
         case "haushalt":
             category = document.getElementsByClassName('category')[5];
             break;
+        case "tier":
+            category = document.getElementsByClassName('tier')[5];
+            break;
         default:
             break;
     }
@@ -274,5 +277,6 @@ function setCategory(version) {
     document.getElementById("category-lask").style.borderColor = "#fff";
     document.getElementById("category-rennsport").style.borderColor = "#fff";
     document.getElementById("category-haushalt").style.borderColor = "#fff";
+    document.getElementById("category-tier").style.borderColor = "#fff";
     document.getElementById("category-" + version).style.borderColor = "#4a8a11";
 }
