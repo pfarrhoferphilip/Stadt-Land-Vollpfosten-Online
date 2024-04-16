@@ -11,6 +11,7 @@ class Room
 {
     public $code;
     public $players = array();
+
     public function __construct($code)
     {
         $this->code = $code;
