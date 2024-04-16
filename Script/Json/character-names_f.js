@@ -119,6 +119,7 @@ let names = {
         { "name": "Manettyl" },
         { "name": "Pabsti" },
         { "name": "Wonka" },
-        { "name": "Abdudli" }
+        { "name": "Abdudli" },
+        { "name": "Baumaxl"}
     ]
 };
