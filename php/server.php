@@ -46,6 +46,7 @@ class Player
     public $client;
     public $is_host;
     public $is_in_game;
+    public $answer_strings = array();
     public function __construct($username, $client, $id, $profile_pic)
     {
         $this->username = $username;
@@ -68,6 +69,10 @@ class Player
 
     public function setProfilePic($profile_pic) {
         $this->profile_pic = $profile_pic;
+    }
+
+    public function setAnswerStrings($answer_strings) {
+        $this->answer_strings = $answer_strings;
     }
 }
 
@@ -203,6 +208,10 @@ class ChatServer implements MessageComponentInterface
                 $player->is_in_game = true;
                 $player->client->send("7");
             }
+        } else if ($msg_arr[0] == 9) {
+            //RECEIVE ANSWER STRING
+            $this->searchPlayerByClient($from, $this->players)->setAnswerStrings(json_decode($msg_arr[1]));
+            var_dump(json_decode($msg_arr[1]));
         }
     }
 
