@@ -146,6 +146,7 @@ function joinRoomViaURL() {
 6: Connect to Websocket
 7: Check if Room exists [room_code]
 8: Load into Game
+9: Send Answer String
 */
 
 function loadGame() {
@@ -187,6 +188,10 @@ function leaveRoom() {
 
 function loadPlayers() {
     socket.send("5;" + room_code);
+}
+
+function sendAnswerString(answer) {
+    socket.send("9;" + JSON.stringify(answer));
 }
 
 //READY UP AND NOTIFY ALL OTHER PLAYERS
