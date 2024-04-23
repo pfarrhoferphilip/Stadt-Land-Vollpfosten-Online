@@ -1,5 +1,4 @@
 /*-------- Variables --------*/
-let headlines = document.getElementById('headlines');
 
 let random_letter = generate_random_letter();
 
@@ -38,11 +37,12 @@ start_counter();
 /*-------- Headlines --------*/
 
 
-let str = `<div id="headline">`;
-let reversedStr = "";
-for (let i = 0; i > 5; i++) {
-    reversedStr += `
-    <p> </p>`;
+let str = ``;
+for (let i = 0; i < 5; i++) {
+    str += `
+    <div id="headline">
+        <p></p>
+    </div>`;
 }
-str = `</div>`;
-console.log(reversedStr);
+str += ``;
+document.getElementById('headlines').innerHTML = str;
