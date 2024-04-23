@@ -29,6 +29,7 @@ socket.onmessage = function (event) {
     //5 = Rejoin Lobby
     //6 = Get if room exists
     //7 = Load Game
+    //8 = Error on join
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -103,11 +104,13 @@ socket.onmessage = function (event) {
             //room does not exist
             joinRoom(room_code);
         }
-    } else if(output[0] == 7) {
+    } else if (output[0] == 7) {
         //Load Game
         window.open("./../Sites/game.html", "_self");
-    }
-    else {
+    } else if (output[0] == 8) {
+        //ERROR ON JOIN
+        window.open("./../Sites/error_page.html", "_self");
+    } else {
 
         console.log(event.data);
 
@@ -156,12 +159,24 @@ function displayPlayers() {
     let html_code = "";
     for (let i = 0; i < Object.keys(players_in_room).length; i++) {
         console.log(players_in_room[Object.keys(players_in_room)[i]]);
-        html_code += `
-        <div class="player">
-            <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
-            <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
-        </div>
-        `;
+        //PLAYER IN LOBBY
+        if (players_in_room[Object.keys(players_in_room)[i]].is_in_game == false) {
+            html_code += `
+            <div class="player">
+                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+            </div>
+            `;
+            //PLAYER IS IN GAME
+        } else {
+            html_code += `
+            <div class="player">
+                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <p style="color: rgba(0, 0, 0, 0.7);">${players_in_room[Object.keys(players_in_room)[i]].username}</p>
+            </div>
+            `;
+        }
+
     }
     document.getElementById("lobby-players-box-players").innerHTML = html_code;
     document.getElementById("room-code").innerHTML = room_code;
@@ -202,4 +217,66 @@ function setUsername(name) {
 function copyRoomCode() {
     navigator.clipboard.writeText(room_code);
     alert("Room Code copied to clipboard.");
+}
+
+
+//SET GAMEOPTIONS
+function setGameoptions(version) {
+    let card;
+    switch (version) {
+        case "normal":
+            card = document.getElementsByClassName('card')[0];
+            break;
+        case "schnell":
+            card = document.getElementsByClassName('card')[1];
+            break;
+        case "senioren":
+            card = document.getElementsByClassName('card')[2];
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("card-normal").style.borderColor = "#fff";
+    document.getElementById("card-schnell").style.borderColor = "#fff";
+    document.getElementById("card-senioren").style.borderColor = "#fff";
+    document.getElementById("card-" + version).style.borderColor = "#4a8a11";
+}
+//SET CATEGORY
+function setCategory(version) {
+    let category;
+    switch (version) {
+        case "standard":
+            category = document.getElementsByClassName('category')[0];
+            break;
+        case "sport":
+            category = document.getElementsByClassName('category')[1];
+            break;
+        case "rotlicht":
+            category = document.getElementsByClassName('category')[2];
+            break;
+        case "lask":
+            category = document.getElementsByClassName('category')[3];
+            break;
+        case "rennsport":
+            category = document.getElementsByClassName('category')[4];
+            break;
+        case "haushalt":
+            category = document.getElementsByClassName('category')[5];
+            break;
+        case "tier":
+            category = document.getElementsByClassName('tier')[5];
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("category-standard").style.borderColor = "#fff";
+    document.getElementById("category-sport").style.borderColor = "#fff";
+    document.getElementById("category-rotlicht").style.borderColor = "#fff";
+    document.getElementById("category-lask").style.borderColor = "#fff";
+    document.getElementById("category-rennsport").style.borderColor = "#fff";
+    document.getElementById("category-haushalt").style.borderColor = "#fff";
+    document.getElementById("category-tier").style.borderColor = "#fff";
+    document.getElementById("category-" + version).style.borderColor = "#4a8a11";
 }

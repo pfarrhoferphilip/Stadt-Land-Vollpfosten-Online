@@ -9,6 +9,12 @@ let animation_interval;
 let animation_frames = [];
 let current_frame_index = 0;
 
+let important_var = new Image();
+important_var.onerror = () => {
+    location.reload();
+};
+important_var.src = './../images/doNOTdelete.jpg';
+
 let image_array = sources.images;
 
 //console.log(lobby_bs)

@@ -52,9 +52,15 @@ let names = {
         { "name": "Cute" },
         { "name": "Kind" },
         { "name": "Brave" },
-        { "name": "Exploded" }
+        { "name": "Exploded" },
+        {"name": "Rizzy"},
+        {"name": "Beta"},
+        {"name": "Gay"},
+        {"name": "Sigma"}
     ],
     "secondpart": [
+        {"name": "Gyat"},
+        {"name": "Rizzler"},
         { "name": "Niqer" },
         { "name": "Whiskers" },
         { "name": "Sunshine" },
@@ -113,6 +119,7 @@ let names = {
         { "name": "Manettyl" },
         { "name": "Pabsti" },
         { "name": "Wonka" },
-        { "name": "Abdudli" }
+        { "name": "Abdudli" },
+        { "name": "Baumaxl"}
     ]
 };

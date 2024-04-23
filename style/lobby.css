@@ -1,5 +1,8 @@
 /*---------Lobby----------*/
 /*---General---*/
+html {
+    background: blue;
+}
 
 body {
     margin: 0;
@@ -9,7 +12,6 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
-    
     user-select: none;
 }
 
@@ -64,9 +66,11 @@ body {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(1);
     }
@@ -87,11 +91,13 @@ body {
     display: flex;
     width: 100vw;
 }
-.lobby-flex-headline{
+
+.lobby-flex-headline {
     text-align: center;
-    font-size: 2em;
+    font-size: 4vh;
 }
-#lobby-players-box{
+
+#lobby-players-box {
     width: 40vw;
     margin-left: 5vw;
     margin-right: 5vw;
@@ -99,20 +105,89 @@ body {
     aspect-ratio: 6/5;
     height: 33.3vw;
 }
-#lobby-players-box-players{
+
+#lobby-players-box-players {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 1vw;
     text-align: center;
     overflow-y: scroll;
 }
-.player-image{
+
+.player-image {
     width: 5vw;
 }
+
 #lobby-gameoptions-box {
     width: 40vw;
     margin-left: 5vw;
     margin-right: 5vw;
     background: rgb(255, 255, 255, 0.7);
     aspect-ratio: 6/5;
+}
+
+#looby-flex-gameoptions-room-code {
+    text-align: center;
+    font-size: 3vh;
+    transition: 0.2s all;
+}
+
+#looby-flex-gameoptions-room-code #room-code {
+    transition: 0.5s all;
+}
+
+#looby-flex-gameoptions-room-code #room-code:hover {
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+    cursor: copy ;
+    transition: 0.5s all;
+}
+#looby-flex-gameoptions-category-box-3{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 1vw;
+    margin: 2vh;
+}
+#looby-flex-gameoptions-category-box-5{
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    grid-gap: 1vw;
+    margin: 2vh;
+}
+
+.card {
+    width: 20vh;
+    aspect-ratio: 1/1;
+    border: #fff solid 5px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    font-size: 2vh;
+}
+
+.more-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1vh;
+    transition: transform 0.5s ease;
+    transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
+}
+
+.card:hover .more-text {
+    transform: translateY(0);
+}
+.card:hover {
+    cursor: pointer;
+}
+.category {
+    border: #fff solid 5px;
+    text-align: center;
+    width: 15vh;
+    overflow: hidden;
+    font-size: 1.5vh;
+}
+.category:hover{
+    cursor: pointer;
 }
