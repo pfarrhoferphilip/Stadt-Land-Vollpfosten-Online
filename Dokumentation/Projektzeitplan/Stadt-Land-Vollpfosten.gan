@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Stadt-Land-Vollpfosten" company="" webLink="http://" view-date="2024-01-08" view-index="0" gantt-divider-location="377" resource-divider-location="300" version="3.3.3305" locale="de_DE">
+<?xml version="1.0" encoding="UTF-8"?><project name="Stadt-Land-Vollpfosten" company="" webLink="http://" view-date="2024-01-15" view-index="0" gantt-divider-location="341" resource-divider-location="300" version="3.3.3307" locale="de_DE">
     <description/>
     <view zooming-state="default:7" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="205" order="0"/>
+        <field id="tpd3" name="Vorgang" width="170" order="0"/>
         <field id="tpd4" name="Anfang" width="70" order="1"/>
         <field id="tpd5" name="Ende" width="100" order="2"/>
         <field id="tpd15" name="Notizen" width="20" order="3"/>
@@ -9,7 +9,7 @@
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
         <option id="filter.inProgressTodayTasks" value="false"/>
-        <timeline><![CDATA[0,1]]></timeline>
+        <timeline><![CDATA[1,0]]></timeline>
         <option id="color.recent"><![CDATA[#ff0033 #0066cc #41c7cd #00c9d7 #99ccff #00ffcc #ccccff #ff9999 #ff9900]]></option>
     </view>
     <view id="resource-table">
@@ -40,39 +40,44 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" uid="46220fdabb1440cb950c7c1cd2a8f38b" name="Organisation" color="#41c7cd" meeting="false" start="2024-01-15" duration="20" complete="80" expand="true">
-            <task id="1" uid="3ba8daa1ec9f41a09396dbb302d06832" name="Projektantrag erstellen" meeting="false" start="2024-01-15" duration="10" complete="100" expand="true"/>
-            <task id="2" uid="5ab262de621d49c6a5e1ba86895d0405" name="Projektzeitplan erstellen" meeting="false" start="2024-01-15" duration="5" complete="100" expand="true"/>
-            <task id="17" uid="fbd52ba3eb0843748f3b8dcad4374d63" name="GitHub Projekt erstellen" meeting="false" start="2024-01-29" duration="5" complete="100" expand="true">
+        <task id="0" uid="46220fdabb1440cb950c7c1cd2a8f38b" name="Organisation" color="#41c7cd" meeting="false" start="2024-01-15" duration="30" complete="0" expand="true">
+            <task id="1" uid="3ba8daa1ec9f41a09396dbb302d06832" name="Projektantrag erstellen" meeting="false" start="2024-01-15" duration="10" complete="0" expand="true"/>
+            <task id="2" uid="5ab262de621d49c6a5e1ba86895d0405" name="Projektzeitplan erstellen" meeting="false" start="2024-01-22" duration="5" complete="0" expand="true"/>
+            <task id="17" uid="fbd52ba3eb0843748f3b8dcad4374d63" name="GitHub Projekt erstellen" meeting="false" start="2024-01-29" duration="5" complete="0" expand="true">
                 <depend id="8" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="19" uid="6107b874b23c486db9e4498c3b2b0303" name="Rechereche zum Thema Recht" meeting="false" start="2024-02-05" duration="5" complete="0" expand="true"/>
+            <task id="20" uid="58279c57cf2a426b8a7646cb16f55a6e" name="Recherche zum Gameplay" meeting="false" start="2024-02-12" duration="10" complete="0" expand="true">
+                <depend id="21" type="2" difference="0" hardness="Strong"/>
+            </task>
         </task>
-        <task id="4" uid="9feed4bffa484c779d673032ceac1a0c" name="BackEnd" color="#0066cc" meeting="false" start="2024-01-29" duration="55" complete="100" expand="true">
-            <task id="18" uid="4c7c1e2e977b4480adc101a5a12dd86e" name="Recherche für Backend" meeting="false" start="2024-01-29" duration="10" complete="100" expand="true"/>
-            <task id="8" uid="473b79580a2a4ebfb0c6b46b4bba7b61" name="Datenspeicherung" meeting="false" start="2024-02-05" duration="10" complete="100" expand="true">
+        <task id="4" uid="9feed4bffa484c779d673032ceac1a0c" name="BackEnd" color="#0066cc" meeting="false" start="2024-01-29" duration="115" complete="0" expand="true">
+            <task id="18" uid="4c7c1e2e977b4480adc101a5a12dd86e" name="Recherche für Backend" meeting="false" start="2024-01-29" duration="10" complete="0" expand="true"/>
+            <task id="21" uid="28cb8fd2f1124f91a9523be1b4878aea" name="Gameplayfunktionen" meeting="false" start="2024-02-26" duration="25" complete="0" expand="true">
+                <depend id="8" type="2" difference="0" hardness="Strong"/>
+                <depend id="11" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="8" uid="473b79580a2a4ebfb0c6b46b4bba7b61" name="Datenspeicherung" meeting="false" start="2024-04-01" duration="20" complete="0" expand="true">
                 <depend id="6" type="2" difference="0" hardness="Strong"/>
                 <depend id="10" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="6" uid="8c08360fff2f43cca43c6547c6e2685c" name="Server erstellen" meeting="false" start="2024-02-19" duration="20" complete="100" expand="true">
+            <task id="6" uid="8c08360fff2f43cca43c6547c6e2685c" name="Server erstellen" meeting="false" start="2024-04-29" duration="30" complete="0" expand="true">
                 <depend id="7" type="2" difference="0" hardness="Strong"/>
                 <depend id="10" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="7" uid="bb63276bcb1d4267b2abcc79461e1138" name="Multiplayerfunktion erstellen" meeting="false" start="2024-03-18" duration="20" complete="100" expand="true">
-                <depend id="11" type="2" difference="0" hardness="Strong"/>
-            </task>
+            <task id="7" uid="bb63276bcb1d4267b2abcc79461e1138" name="Multiplayerfunktion erstellen" meeting="false" start="2024-06-10" duration="20" complete="0" expand="true"/>
         </task>
-        <task id="3" uid="75b0c34b6ce44ff69f40b7a125bc441d" name="FrontEnd" color="#ff0033" meeting="false" start="2024-01-29" duration="75" complete="43" expand="true">
-            <task id="5" uid="2c4b3c2fec2240cc9331c579a51dd9f7" name="Seitengrundstruktur erstellen" meeting="false" start="2024-01-29" duration="10" complete="100" expand="true"/>
-            <task id="9" uid="83c20054331d4296b94c9ed7e7e15341" name="Landing Page erstellen" meeting="false" start="2024-02-12" duration="10" complete="100" expand="true"/>
-            <task id="12" uid="4049fab6a20e4c678e62c3b5869cfa8e" name="andere Webpages erstellen" meeting="false" start="2024-02-26" duration="10" complete="0" expand="true"/>
-            <task id="10" uid="5ac5ac26371a44a5a2d0ac53fd205908" name="Login Page erstellen" meeting="false" start="2024-03-18" duration="15" complete="50" expand="true"/>
-            <task id="11" uid="34bf11d3c4c4429c9e6fe1c34e405016" name="Game Page erstellen" meeting="false" start="2024-04-15" duration="20" complete="5" expand="true"/>
+        <task id="3" uid="75b0c34b6ce44ff69f40b7a125bc441d" name="FrontEnd" color="#ff0033" meeting="false" start="2024-01-29" duration="115" complete="0" expand="true">
+            <task id="5" uid="2c4b3c2fec2240cc9331c579a51dd9f7" name="Seitengrundstruktur erstellen" meeting="false" start="2024-01-29" duration="10" complete="0" expand="true"/>
+            <task id="9" uid="83c20054331d4296b94c9ed7e7e15341" name="Landing Page erstellen" meeting="false" start="2024-02-12" duration="80" complete="0" expand="true"/>
+            <task id="12" uid="4049fab6a20e4c678e62c3b5869cfa8e" name="andere Webpages erstellen" meeting="false" start="2024-02-12" duration="80" complete="0" expand="true"/>
+            <task id="10" uid="5ac5ac26371a44a5a2d0ac53fd205908" name="Login Page erstellen" meeting="false" start="2024-06-10" duration="20" complete="0" expand="true"/>
+            <task id="11" uid="34bf11d3c4c4429c9e6fe1c34e405016" name="Game Page erstellen" meeting="false" start="2024-04-01" duration="70" complete="0" expand="true"/>
         </task>
-        <task id="13" uid="34e052babd1f49849dec064bf806ffc1" name="Medien" meeting="false" start="2024-01-29" duration="60" complete="41" expand="true">
-            <task id="14" uid="e44c98cc7645466088577050dba051b7" name="Charaktere erstellen" meeting="false" start="2024-01-29" duration="60" complete="60" expand="true"/>
-            <task id="15" uid="e905ac2ec2c74d82b7cc2b85dec41f43" name="Grafiken erstellen" meeting="false" start="2024-02-26" duration="15" complete="10" expand="true"/>
-            <task id="16" uid="245937a30d4a434b8b06af287493225e" name="Musik recherchieren" meeting="false" start="2024-03-18" duration="15" complete="0" expand="true"/>
+        <task id="13" uid="34e052babd1f49849dec064bf806ffc1" name="Medien" meeting="false" start="2024-03-11" duration="50" complete="0" expand="true">
+            <task id="14" uid="e44c98cc7645466088577050dba051b7" name="Charaktere erstellen" meeting="false" start="2024-03-11" duration="50" complete="0" expand="true"/>
+            <task id="15" uid="e905ac2ec2c74d82b7cc2b85dec41f43" name="Grafiken erstellen" meeting="false" start="2024-03-18" duration="40" complete="0" expand="true"/>
+            <task id="16" uid="245937a30d4a434b8b06af287493225e" name="Musik recherchieren" meeting="false" start="2024-03-18" duration="40" complete="0" expand="true"/>
         </task>
     </tasks>
     <resources/>
