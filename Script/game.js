@@ -33,3 +33,16 @@ function start_counter() {
 }
 
 start_counter();
+
+/*-------- Headlines --------*/
+
+
+let str = ``;
+for (let i = 0; i < 5; i++) {
+    str += `
+    <div id="headline">
+        <p></p>
+    </div>`;
+}
+str += ``;
+document.getElementById('headlines').innerHTML = str;
