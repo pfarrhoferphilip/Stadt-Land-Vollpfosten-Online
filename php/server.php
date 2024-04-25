@@ -74,6 +74,10 @@ class Player
     public function setAnswerStrings($answer_strings) {
         $this->answer_strings = $answer_strings;
     }
+
+    public function checkIsHost() {
+        return $this->is_host;
+    }
 }
 
 class ChatServer implements MessageComponentInterface
@@ -212,6 +216,11 @@ class ChatServer implements MessageComponentInterface
             //RECEIVE ANSWER STRING
             $this->searchPlayerByClient($from, $this->players)->setAnswerStrings(json_decode($msg_arr[1]));
             var_dump(json_decode($msg_arr[1]));
+        } else if ($msg_arr[0] == 10) {
+            //END COUNTDOWN
+            if ($this->searchPlayerByClient($from, $this->players)->is_host) {
+                echo "Player is host";
+            }
         }
     }
 
