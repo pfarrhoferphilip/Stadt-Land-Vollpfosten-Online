@@ -154,6 +154,10 @@ function loadGame() {
     socket.send("8;" + room_code);
 }
 
+function getGameOptions() {
+    socket.send("11");
+}
+
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
 function displayPlayers() {
     console.log("Displaying Players...")

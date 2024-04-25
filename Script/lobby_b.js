@@ -15,6 +15,7 @@ socket.onopen = function (event) {
     console.log('WebSocket is connected.');
 
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
+    getGameOptions();
 
 };
 
@@ -249,34 +250,34 @@ function setGameoptions(version) {
 }
 //SET CATEGORY
 function setCategory(version) {
-    let category;
+    let category_e;
     switch (version) {
         case "standard":
-            category = document.getElementsByClassName('category')[0];
+            category_e = document.getElementsByClassName('category')[0];
             category = "standard";
             break;
         case "sport":
-            category = document.getElementsByClassName('category')[1];
+            category_e = document.getElementsByClassName('category')[1];
             category = "sport";
             break;
         case "rotlicht":
-            category = document.getElementsByClassName('category')[2];
+            category_e = document.getElementsByClassName('category')[2];
             category = "rotlicht";
             break;
         case "lask":
-            category = document.getElementsByClassName('category')[3];
+            category_e = document.getElementsByClassName('category')[3];
             category = "lask";
             break;
         case "rennsport":
-            category = document.getElementsByClassName('category')[4];
+            category_e = document.getElementsByClassName('category')[4];
             category = "rennsport";
             break;
         case "haushalt":
-            category = document.getElementsByClassName('category')[5];
+            category_e = document.getElementsByClassName('category')[5];
             category = "haushalt";
             break;
         case "tier":
-            category = document.getElementsByClassName('tier')[5];
+            category_e = document.getElementsByClassName('tier')[5];
             category = "tier";
             break;
         default:
