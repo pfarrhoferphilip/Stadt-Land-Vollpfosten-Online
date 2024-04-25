@@ -1,4 +1,6 @@
-/* SERVER ADRESS =>*/ const address = "localhost:8080"; const Protocol = "ws";
+/* SERVER ADRESS =>*/
+const address = "localhost:8080";
+const Protocol = "ws";
 
 let room_code;
 let username = "Gast";
@@ -9,7 +11,7 @@ let player_id = -1;
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
-socket.onopen = function (event) {
+socket.onopen = function(event) {
     console.log('WebSocket is connected.');
 
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
@@ -18,7 +20,7 @@ socket.onopen = function (event) {
 
 
 //HANDLE MESSAGES SENT FROM SERVER
-socket.onmessage = function (event) {
+socket.onmessage = function(event) {
     console.log(event.data);
 
     //0 = set room code
@@ -35,15 +37,13 @@ socket.onmessage = function (event) {
         room_code = output[1];
         localStorage['room_code'] = room_code;
         setUsername(username);
-    }
-    else if (output[0] == 1) {
+    } else if (output[0] == 1) {
         loadPlayers();
-    }
-    else if (output[0] == 2) {
+    } else if (output[0] == 2) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
         //displayPlayers();
-        
+
     } else if (output[0] == 3) {
         player_id = output[1];
         localStorage["player_id"] = output[1];
@@ -105,11 +105,10 @@ socket.onmessage = function (event) {
             //room does not exist
             joinRoom(room_code);
         }
-    } else if(output[0] == 7) {
+    } else if (output[0] == 7) {
         //Load Game
         window.open("./../Sites/game.html", "_self");
-    }
-    else {
+    } else {
 
         console.log(event.data);
 
@@ -130,8 +129,7 @@ function joinRoomViaURL() {
         console.log("joining room via URL...");
     } else if (splited_url[1] == "createRoom") {
         createRoom();
-    }
-    else {
+    } else {
         console.log("no roomcode in URL...");
     }
 }
@@ -192,6 +190,10 @@ function loadPlayers() {
 
 function sendAnswerString(answer) {
     socket.send("9;" + JSON.stringify(answer));
+}
+
+function countdownEnded() {
+    socket.send("10");
 }
 
 //READY UP AND NOTIFY ALL OTHER PLAYERS
