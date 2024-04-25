@@ -67,11 +67,13 @@ class Player
         $this->client = $client;
     }
 
-    public function setProfilePic($profile_pic) {
+    public function setProfilePic($profile_pic)
+    {
         $this->profile_pic = $profile_pic;
     }
 
-    public function setAnswerStrings($answer_strings) {
+    public function setAnswerStrings($answer_strings)
+    {
         $this->answer_strings = $answer_strings;
     }
 }
@@ -205,7 +207,7 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 8) {
             //Load Game for all Players in Room
             if ($this->searchPlayerByClient($from, $this->players)->is_host) {
-                foreach($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
+                foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
                     $player->is_in_game = true;
                     $player->client->send("7");
                 }
