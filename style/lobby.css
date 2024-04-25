@@ -8,11 +8,13 @@ body {
     margin: 0;
     background-image: url(../images/BackgroundImageIndexLight.jpg);
     background-size: cover;
-    background-position: 0vw -25vh;
+    background-position: 0vw 0vh;
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     user-select: none;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -32,14 +34,14 @@ body {
 /*--- Headline ---*/
 
 :root {
-    --fontSizeHeadline: 6vw;
+    --fontSizeHeadline: 3vw;
 }
 
 .headline {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vw;
+    height: 10vw;
     flex-direction: column;
 }
 
@@ -48,12 +50,16 @@ body {
     letter-spacing: 0.73vw;
     font-size: var(--fontSizeHeadline);
     color: #333;
+    /*-webkit-text-stroke: #fff 1px;*/
+    text-shadow: 0 0 3px #fff ;
 }
 
 .headline-text2 {
     font-weight: bold;
     font-size: var(--fontSizeHeadline);
     color: #f00;
+    /*-webkit-text-stroke: #fff 1px;*/
+    text-shadow: 0 0 1px #fff ;
     letter-spacing: 0vw;
     margin-top: -0.5vw;
 }
