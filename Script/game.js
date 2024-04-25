@@ -19,7 +19,7 @@ function generate_random_letter() {
 /*-------- Counter --------*/
 
 let counter = document.getElementById('counter');
-let seconds = 10;
+let seconds = 240;
 
 function start_counter() {
     counter.innerHTML = seconds;
@@ -36,7 +36,7 @@ function start_counter() {
 start_counter();
 
 /*-------- Headlines --------*/
-/*- im backend socket.send(10) -*/
+
 
 let str = ``;
 for (let i = 0; i < 5; i++) {
