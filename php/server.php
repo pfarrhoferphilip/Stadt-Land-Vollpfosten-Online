@@ -74,10 +74,6 @@ class Player
     public function setAnswerStrings($answer_strings) {
         $this->answer_strings = $answer_strings;
     }
-
-    public function checkIsHost() {
-        return $this->is_host;
-    }
 }
 
 class ChatServer implements MessageComponentInterface
@@ -208,9 +204,11 @@ class ChatServer implements MessageComponentInterface
             }
         } else if ($msg_arr[0] == 8) {
             //Load Game for all Players in Room
-            foreach($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
-                $player->is_in_game = true;
-                $player->client->send("7");
+            if ($this->searchPlayerByClient($from, $this->players)->is_host) {
+                foreach($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
+                    $player->is_in_game = true;
+                    $player->client->send("7");
+                }
             }
         } else if ($msg_arr[0] == 9) {
             //RECEIVE ANSWER STRING
