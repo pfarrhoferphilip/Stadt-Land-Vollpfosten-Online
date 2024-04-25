@@ -11,7 +11,7 @@ let player_id = -1;
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
-socket.onopen = function(event) {
+socket.onopen = function (event) {
     console.log('WebSocket is connected.');
 
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
@@ -20,7 +20,7 @@ socket.onopen = function(event) {
 
 
 //HANDLE MESSAGES SENT FROM SERVER
-socket.onmessage = function(event) {
+socket.onmessage = function (event) {
     console.log(event.data);
 
     //0 = set room code
@@ -31,6 +31,7 @@ socket.onmessage = function(event) {
     //5 = Rejoin Lobby
     //6 = Get if room exists
     //7 = Load Game
+    //8 = Reveive game options
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -108,7 +109,10 @@ socket.onmessage = function(event) {
     } else if (output[0] == 7) {
         //Load Game
         window.open("./../Sites/game.html", "_self");
-    } else {
+    } else if (output[0] == 8) {
+        
+    }
+    else {
 
         console.log(event.data);
 
@@ -117,9 +121,6 @@ socket.onmessage = function(event) {
         `;*/
 
     }
-
-
-
 };
 
 function joinRoomViaURL() {

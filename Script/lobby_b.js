@@ -215,7 +215,7 @@ function setUsername(name) {
 }
 
 function copyRoomCode() {
-    navigator.clipboard.writeText(room_code);
+    navigator.clipboard.writeText(window.location.href.split("?")[0] + "?" + room_code);
     alert("Room Code copied to clipboard.");
 }
 
