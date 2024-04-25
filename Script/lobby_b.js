@@ -150,7 +150,7 @@ function joinRoomViaURL() {
 */
 
 function loadGame() {
-    socket.send("8;" + room_code);
+    socket.send("8;" + room_code + ";");
 }
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
