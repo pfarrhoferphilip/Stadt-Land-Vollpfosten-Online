@@ -209,7 +209,8 @@ class ChatServer implements MessageComponentInterface
             if ($this->searchPlayerByClient($from, $this->players)->is_host) {
                 foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
                     $player->is_in_game = true;
-                    $player->client->send("7");
+                    $player->client->send("7;");
+                    $player->client->send("8;" . $msg_arr[2] . ";" . $msg_arr[3]);
                 }
             }
         } else if ($msg_arr[0] == 9) {
