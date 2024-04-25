@@ -5,6 +5,8 @@ let username = "Gast";
 let profile_pic;
 let players_in_room = [];
 let player_id = -1;
+let game_speed = "normal";
+let category = "standard"
 
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
@@ -13,6 +15,7 @@ socket.onopen = function (event) {
     console.log('WebSocket is connected.');
 
     //sendServerMessage(`${localStorage.getItem("username")} has joined the Channel.`);
+    getGameOptions();
 
 };
 
@@ -150,7 +153,7 @@ function joinRoomViaURL() {
 */
 
 function loadGame() {
-    socket.send("8;" + room_code);
+    socket.send("8;" + room_code + ";" + game_speed + ";" + category);
 }
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
@@ -226,12 +229,15 @@ function setGameoptions(version) {
     switch (version) {
         case "normal":
             card = document.getElementsByClassName('card')[0];
+            game_speed = "normal";
             break;
         case "schnell":
             card = document.getElementsByClassName('card')[1];
+            game_speed = "schnell";
             break;
         case "senioren":
             card = document.getElementsByClassName('card')[2];
+            game_speed = "senioren";
             break;
         default:
             break;
@@ -244,28 +250,35 @@ function setGameoptions(version) {
 }
 //SET CATEGORY
 function setCategory(version) {
-    let category;
+    let category_e;
     switch (version) {
         case "standard":
-            category = document.getElementsByClassName('category')[0];
+            category_e = document.getElementsByClassName('category')[0];
+            category = "standard";
             break;
         case "sport":
-            category = document.getElementsByClassName('category')[1];
+            category_e = document.getElementsByClassName('category')[1];
+            category = "sport";
             break;
         case "rotlicht":
-            category = document.getElementsByClassName('category')[2];
+            category_e = document.getElementsByClassName('category')[2];
+            category = "rotlicht";
             break;
         case "lask":
-            category = document.getElementsByClassName('category')[3];
+            category_e = document.getElementsByClassName('category')[3];
+            category = "lask";
             break;
         case "rennsport":
-            category = document.getElementsByClassName('category')[4];
+            category_e = document.getElementsByClassName('category')[4];
+            category = "rennsport";
             break;
         case "haushalt":
-            category = document.getElementsByClassName('category')[5];
+            category_e = document.getElementsByClassName('category')[5];
+            category = "haushalt";
             break;
         case "tier":
-            category = document.getElementsByClassName('tier')[5];
+            category_e = document.getElementsByClassName('tier')[5];
+            category = "tier";
             break;
         default:
             break;

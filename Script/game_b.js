@@ -40,6 +40,7 @@ socket.onmessage = function(event) {
         setUsername(username);
     } else if (output[0] == 1) {
         loadPlayers();
+        getGameOptions();
     } else if (output[0] == 2) {
         players_in_room = JSON.parse(output[1]);
         console.log(players_in_room);
@@ -152,6 +153,10 @@ function joinRoomViaURL() {
 
 function loadGame() {
     socket.send("8;" + room_code);
+}
+
+function getGameOptions() {
+    socket.send("11");
 }
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
