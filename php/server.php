@@ -11,6 +11,8 @@ class Room
 {
     public $code;
     public $players = array();
+    public $game_speed = "normal";
+    public $category = "standard";
 
     public function __construct($code)
     {
@@ -35,6 +37,11 @@ class Room
         foreach ($this->players as $player) {
             $player->client->send($msg);
         }
+    }
+
+    public function setGameOptions($speed, $cat) {
+        $this->game_speed = $speed;
+        $this->category = $cat;
     }
 }
 
@@ -207,10 +214,12 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 8) {
             //Load Game for all Players in Room
             if ($this->searchPlayerByClient($from, $this->players)->is_host) {
+                echo "33\n\n\n";
+                $this->searchRoomByCode($msg_arr[1], $this->rooms)->setGameOptions($msg_arr[2], $msg_arr[3]);
+                echo $this->searchRoomByCode($msg_arr[1], $this->rooms)->category . "\n";
                 foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
                     $player->is_in_game = true;
                     $player->client->send("7;");
-                    $player->client->send("8;" . $msg_arr[2] . ";" . $msg_arr[3]);
                 }
             }
         } else if ($msg_arr[0] == 9) {
@@ -222,6 +231,10 @@ class ChatServer implements MessageComponentInterface
             if ($this->searchPlayerByClient($from, $this->players)->is_host) {
                 echo "Player is host";
             }
+        } else if ($msg_arr[0] == 11) {
+            //SEND GAME OPTIONS
+            $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
+            $from->send("8;" . $r->game_speed . ";" . $r->category);
         }
     }
 

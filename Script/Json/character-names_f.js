@@ -64,7 +64,7 @@ let names = {
         { "name": "Niqer" },
         { "name": "Whiskers" },
         { "name": "Sunshine" },
-        { "name": "Mevwer" },
+        { "name": "Mewer" },
         { "name": "Meadow" },
         { "name": "Breezey" },
         { "name": "Harmony" },
