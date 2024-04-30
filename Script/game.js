@@ -38,11 +38,12 @@ start_counter();
 /*-------- Headlines --------*/
 
 
+
 let str = ``;
 for (let i = 0; i < 5; i++) {
     str += `
     <div id="headline">
-        <p></p>
+        <p>${gameoption}</p>
     </div>`;
 }
 str += ``;

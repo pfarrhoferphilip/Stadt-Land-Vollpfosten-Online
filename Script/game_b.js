@@ -8,6 +8,9 @@ let profile_pic;
 let players_in_room = [];
 let player_id = -1;
 
+let category;
+let gameoption;
+
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
 const socket = new WebSocket(`${Protocol}://${address}`);
@@ -113,7 +116,9 @@ socket.onmessage = function(event) {
     } else if (output[0] == 8) {
         //output[1] => Gameoptions;
         console.log(output[1]);
+        gameoption = output[1];
         console.log(output[2]);
+        category = output[2];
         //output[2] => Categories;
     } else {
 
