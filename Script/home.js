@@ -21,7 +21,7 @@ let image_array = sources.images;
 
 localStorage.clear();
 
-random_char_img();
+
 
 /*--- JoinRoom() ---*/
 function joinRoom() {
@@ -81,14 +81,26 @@ function jumpNextField(next_input_id) {
 /*--- CharacterSelect ---*/
 
 console.log(image_array);
+let currentChar = 1;
+let currentIndex = 0; // Keep track of the current index of the image being displayed
+function changeChar(direction) {
+    currentIndex += direction; // Update the current index based on the direction
 
-function randomCharImg() {
-    localStorage['image_id'] = getRandomNumberFromArray(image_array);
-    char_img_box.innerHTML = `
-        <img id="char-select-image-image" src="../images/characters/character-${localStorage['image_id']}.jpg">
-    `;
+    // Check bounds to ensure it loops back to the beginning or end if necessary
+    if (currentIndex < 0) {
+        currentIndex = image_array.length - 1;
+    } else if (currentIndex >= image_array.length) {
+        currentIndex = 0;
+    }
+
+    // Save the current index to localStorage
+    
+
+    // Update the image source
+    let char_img = image_array[currentIndex].source;
+    localStorage['image_id'] = char_img;
+    document.getElementById('char-select-image-image').src = "../images/characters/" + localStorage['image_id'];
 }
-
 function getRandomNumberFromArray(array) {
     if (!Array.isArray(array) || array.length === 0) {
         return "Invalid array";
