@@ -8,7 +8,7 @@ let profile_pic;
 let players_in_room = [];
 let player_id = -1;
 
-let answer_string = ""; //MIT ; TRENNEN
+let answer_string = ""; //ALS JSON
 
 let category;
 let gameoption;
