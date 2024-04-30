@@ -1,8 +1,5 @@
-/*-------- Variables --------*/
-
-let random_letter = generate_random_letter();
-
 /*-------- Random Letter --------*/
+let random_letter = generate_random_letter();
 document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 function generate_random_letter() {
