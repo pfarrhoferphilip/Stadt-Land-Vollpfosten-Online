@@ -230,6 +230,7 @@ class ChatServer implements MessageComponentInterface
             //END COUNTDOWN
             if ($this->searchPlayerByClient($from, $this->players)->is_host) {
                 echo "Player is host";
+                $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms)->sendToAllPlayers("9");
             }
         } else if ($msg_arr[0] == 11) {
             //SEND GAME OPTIONS
