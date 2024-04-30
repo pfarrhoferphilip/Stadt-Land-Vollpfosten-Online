@@ -8,6 +8,8 @@ let profile_pic;
 let players_in_room = [];
 let player_id = -1;
 
+let answer_string = ""; //MIT ; TRENNEN
+
 let category;
 let gameoption;
 
@@ -35,6 +37,7 @@ socket.onmessage = function(event) {
     //6 = Get if room exists
     //7 = Load Game
     //8 = Reveive game options
+    //9 = countdown finish
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -120,6 +123,9 @@ socket.onmessage = function(event) {
         console.log(output[2]);
         category = output[2];
         //output[2] => Categories;
+    } else if (output[0] == 9) {
+        //countdown finished
+        sendAnswerString(answer_string);
     } else {
 
         console.log(event.data);
