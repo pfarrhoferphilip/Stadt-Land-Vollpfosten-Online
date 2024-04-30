@@ -122,6 +122,7 @@ socket.onmessage = function(event) {
         gameoption = output[1];
         console.log(output[2]);
         category = output[2];
+        setGameoptions(gameoption, category);
         //output[2] => Categories;
     } else if (output[0] == 9) {
         //countdown finished

@@ -37,7 +37,9 @@ start_counter();
 
 /*-------- Headlines --------*/
 
-
+function setGameoptions(gameoption, category) {
+    console.log(gameoption + " : " + category);
+}
 
 let str = ``;
 for (let i = 0; i < 5; i++) {
