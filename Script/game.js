@@ -1,8 +1,5 @@
-/*-------- Variables --------*/
-
-let random_letter = generate_random_letter();
-
 /*-------- Random Letter --------*/
+let random_letter = generate_random_letter();
 document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 function generate_random_letter() {
@@ -38,12 +35,16 @@ start_counter();
 /*-------- Headlines --------*/
 
 
+function setGameoptions(gameoption, category) {
+    console.log(gameoption + " : " + category);
+}
+
 
 let str = ``;
 for (let i = 0; i < 5; i++) {
     str += `
     <div id="headline">
-        <p>${gameoption}</p>
+        <p>${gameoptionuse}</p>
     </div>`;
 }
 str += ``;
