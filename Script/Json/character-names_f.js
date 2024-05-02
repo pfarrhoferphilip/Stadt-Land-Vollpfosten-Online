@@ -57,7 +57,8 @@ let names = {
         {"name": "Beta"},
         {"name": "Gay"},
         {"name": "Sigma"},
-        {"name": "Touching"}
+        {"name": "Touching"},
+        {"name": "Bony"}
     ],
     "secondpart": [
         {"name": "Gyat"},
@@ -123,6 +124,8 @@ let names = {
         { "name": "Abdudli" },
         { "name": "Baumaxl"},
         {"name": "Rufus"},
-        {"name": "Kids"}
+        {"name": "Kids"},
+        {"name": "Man"},
+        {"name": "Thomas"}
     ]
 };
