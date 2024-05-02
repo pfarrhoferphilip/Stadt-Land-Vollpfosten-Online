@@ -17,3 +17,13 @@ Zeitplan updaten!!! Meilensteine! - done (Tobi)
 7. Zwischen den Runden nur Spielername und Punktestand. 
 
 8. Zum Schluss die Liste mit den ganzen Punkten (sieht PDF). 
+
+9. HTML Injections beim Name verbieten
+
+10. Gameplay erstellen
+
+11. Max 8 Spieler
+
+12. Scrollbar entfernen
+
+13. Standartmässig soll Modus Normal und Standard ausgewählt sein
