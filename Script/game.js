@@ -1,5 +1,7 @@
 /*-------- Random Letter --------*/
 let random_letter = generate_random_letter();
+let gameoptionn;
+let categoryy;
 document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 function generate_random_letter() {
@@ -16,27 +18,44 @@ function generate_random_letter() {
 /*-------- Counter --------*/
 
 let counter = document.getElementById('counter');
-let seconds = 240;
+let seconds = 0;
 
 function start_counter() {
     counter.innerHTML = seconds;
-    seconds--;
+    //seconds--;
+
+    if (gameoptionn == "normal") {
+        seconds = 240;
+    } else if (gameoptionn == "schnell") {
+        seconds = 190;
+    } else {
+        seconds = 320;
+    }
+    console.log("Countdown started");
+    count_down();
+}
+
+function count_down() {
+    counter.innerHTML = seconds;
+    seconds -= 1;
+    console.log("Count down");
 
     if (seconds >= 0) {
-        setTimeout(start_counter, 1000);
+        setTimeout(count_down, 1000);
     } else {
         console.log("Countdown abgelaufen!");
         countdownEnded();
     }
 }
 
-start_counter();
-
 /*-------- Headlines --------*/
 
 
-function setGameoptions(gameoption, category) {
-    console.log(gameoption + " : " + category);
+function setGameoptions(_gameoption, _category) {
+    console.log(_gameoption + " : " + _category);
+    gameoptionn = _gameoption;
+    categoryy = _category;
+    start_counter();
 }
 
 
