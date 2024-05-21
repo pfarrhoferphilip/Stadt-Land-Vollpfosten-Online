@@ -13,6 +13,8 @@ class Room
     public $players = array();
     public $game_speed = "normal";
     public $category = "standard";
+    public $letter = "L";
+    public $letter_array = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
     public function __construct($code)
     {
@@ -42,6 +44,7 @@ class Room
     public function setGameOptions($speed, $cat) {
         $this->game_speed = $speed;
         $this->category = $cat;
+        $this->letter = $this->letter_array[random_int(0, count($this->letter_array))];
     }
 }
 
@@ -235,7 +238,7 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 11) {
             //SEND GAME OPTIONS
             $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
-            $from->send("8;" . $r->game_speed . ";" . $r->category);
+            $from->send("8;" . $r->game_speed . ";" . $r->category . ";" . $r->letter);
         }
     }
 

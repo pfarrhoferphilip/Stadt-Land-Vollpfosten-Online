@@ -2,6 +2,7 @@
 let random_letter = generate_random_letter();
 let gameoptionn;
 let categoryy;
+let letterr;
 document.getElementById('random-letter').innerHTML = random_letter.toUpperCase();
 
 function generate_random_letter() {
@@ -51,10 +52,11 @@ function count_down() {
 /*-------- Headlines --------*/
 
 
-function setGameoptions(_gameoption, _category) {
-    console.log(_gameoption + " : " + _category);
+function setGameoptions(_gameoption, _category, _letter) {
+    console.log(_gameoption + " : " + _category + " : " + _letter);
     gameoptionn = _gameoption;
     categoryy = _category;
+    letterr = _letter;
     start_counter();
 }
 
