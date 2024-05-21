@@ -58,6 +58,7 @@ let names = {
         {"name": "Gay"},
         {"name": "Sigma"},
         {"name": "Touching"},
+        {"name": "Bony"},
         {"name": "Kebap"},
 
     ],
@@ -126,6 +127,8 @@ let names = {
         { "name": "Baumaxl"},
         {"name": "Rufus"},
         {"name": "Kids"},
+        {"name": "Man"},
+        {"name": "Thomas"},
         {"name": "Kerim"},
 
     ]

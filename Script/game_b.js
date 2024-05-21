@@ -1,5 +1,5 @@
 /* SERVER ADRESS =>*/
-const address = "07f0-193-170-158-243.ngrok-free.app";
+const address = "localhost:8080";
 const Protocol = "ws";
 
 let room_code;
@@ -11,7 +11,8 @@ let player_id = -1;
 let answer_string = ""; //ALS JSON
 
 let category;
-let gameoption;
+let gameoption = null;
+let letter = null;
 
 //CONNECT TO Server.php
 console.log(`Establishing connection to Websocket: ${Protocol}://${address}`)
@@ -122,7 +123,8 @@ socket.onmessage = function(event) {
         gameoption = output[1];
         console.log(output[2]);
         category = output[2];
-        setGameoptions(gameoption, category);
+        letter = output[3];
+        setGameoptions(gameoption, category, letter);
         //output[2] => Categories;
     } else if (output[0] == 9) {
         //countdown finished
@@ -168,8 +170,10 @@ function loadGame() {
 }
 
 function getGameOptions() {
-    socket.send("11");
-}
+    if (gameoption == null) {
+        socket.send("11");
+    }
+}   
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
 function displayPlayers() {
