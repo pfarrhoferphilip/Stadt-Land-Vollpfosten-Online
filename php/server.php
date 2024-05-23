@@ -228,6 +228,7 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 9) {
             //RECEIVE ANSWER STRING
             $this->searchPlayerByClient($from, $this->players)->setAnswerStrings(json_decode($msg_arr[1]));
+            var_dump($this->searchPlayerByClient($from, $this->players)->answer_strings . "\n");
             var_dump(json_decode($msg_arr[1]));
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
