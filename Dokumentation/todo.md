@@ -29,3 +29,5 @@ Zeitplan updaten!!! Meilensteine! - done (Tobi)
 13. Standartmässig soll Modus Normal und Standard ausgewählt sein
 
 14. Manche Characterbilder auf der Lobbyseite sieht nicht sichtbar
+
+15. Kategorien von SQL Datenbank holen
