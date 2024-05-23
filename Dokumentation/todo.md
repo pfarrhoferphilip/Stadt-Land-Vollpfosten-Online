@@ -27,3 +27,5 @@ Zeitplan updaten!!! Meilensteine! - done (Tobi)
 12. Scrollbar entfernen
 
 13. Standartmässig soll Modus Normal und Standard ausgewählt sein
+
+14. Manche Characterbilder auf der Lobbyseite sieht nicht sichtbar

@@ -124,7 +124,7 @@ socket.onmessage = function(event) {
         console.log(output[2]);
         category = output[2];
         letter = output[3];
-        setGameoptions(gameoption, category, letter);
+        setGameoptions();
         //output[2] => Categories;
     } else if (output[0] == 9) {
         //countdown finished
@@ -173,7 +173,7 @@ function getGameOptions() {
     if (gameoption == null) {
         socket.send("11");
     }
-}   
+}
 
 //DISPLAY ALL PLAYERS IN CURRENT ROOM
 function displayPlayers() {
