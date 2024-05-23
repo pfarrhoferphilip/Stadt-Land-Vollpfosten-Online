@@ -64,6 +64,7 @@ function setGameoptions() {
 
     }
 
+    //Todo: Get Categories
 
     let str = ``;
     for (let i = 0; i < box_length; i++) {
