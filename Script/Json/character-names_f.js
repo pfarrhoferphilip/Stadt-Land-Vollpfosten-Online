@@ -60,7 +60,7 @@ let names = {
         {"name": "Touching"},
         {"name": "Bony"},
         {"name": "Kebap"},
-
+        {"name": "Ben"},
     ],
     "secondpart": [
         {"name": "Gyat"},
@@ -130,6 +130,6 @@ let names = {
         {"name": "Man"},
         {"name": "Thomas"},
         {"name": "Kerim"},
-
+        {"name": "Dover"},
     ]
 };
