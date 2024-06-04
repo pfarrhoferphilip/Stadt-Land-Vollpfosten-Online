@@ -199,3 +199,21 @@ body {
 .category:hover{
     cursor: pointer;
 }
+
+#startButton{
+    position: absolute;
+    top: 50vh;
+    left: 47vw;
+    font-size: 2em;
+    width: 6vw;
+    padding: 1vh;
+    border: #fff solid 2px;
+    border-radius: 8px;
+    background-color: #f00;
+    color: #fff;
+    transition: 0.5s all;
+}
+#startButton:hover{
+    background-color: green;
+    transition: 0.5s all;
+}
