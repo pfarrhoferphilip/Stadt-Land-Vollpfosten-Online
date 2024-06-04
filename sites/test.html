@@ -5,33 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST</title>
-    <script src="../Script/lobby_b.js" defer></script>
+    <link rel="stylesheet" href="../Style/game.css">
+    <!-- <script src="../Script/game.js" defer></script>
+    <script src="../Script/game_b.js" defer></script>
+    <script src="../Script/Json/categories.js" defer></script> -->
+    <script src="../Script/test.js" defer></script>
 </head>
 
 <style>
-    .lobby-flex-container {
-        display: flex;
+    #rating-box {
         width: 100%;
     }
 
-    .lobby-flex-item {
-        width: 50%;
+    .rating-row {
+        display: flex;
+        width: 100%;
+        height: 10vh;
+        margin-top: 2%;
+    }
+
+    .answer {
+        width: 20%;
+        background-color: rgb(208, 208, 208);
+        margin-right: 2%;
+        font-size: 200%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .answer:hover {
+        cursor: pointer;
+        background-color: red;
     }
 </style>
 
 <body>
-    <h1>TEST</h1>
-    <div class="lobby-flex-container">
-        <!--LOBBY SCREEN-->
-        <div class="lobby-flex-item">
-            <div id="players">
-
+    <h1>Bewertung Test</h1>
+    
+    <div id="rating-box">
+        <div class="rating-row">
+            <div class="answer">
+                <p>Orange</p>
             </div>
-        </div>
-
-        <!--CHARACTER CUSTOMIZATION-->
-        <div class="lobby-flex-item">
-
+            <div class="answer">
+                <p>Saft</p>
+            </div>
         </div>
     </div>
 </body>
