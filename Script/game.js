@@ -1,6 +1,8 @@
 let counter = document.getElementById('counter');
 let seconds = parseInt(localStorage.getItem('seconds')) || 0;
 let countdownActive = false;
+let box_length = 0;
+
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
 window.onload = function() {
@@ -33,7 +35,7 @@ function start_counter() {
 function count_down() {
     counter.innerHTML = seconds;
     seconds--;
-    console.log("Count down");
+    //console.log("Count down");
 
     // Speichere den aktuellen Wert in localStorage
     localStorage.setItem('seconds', seconds);
@@ -50,16 +52,27 @@ function count_down() {
 }
 
 function setGameoptions() {
+
+
     start_counter();
     document.getElementById('random-letter').innerHTML = letter;
-}
+    if (gameoption === "schnell") {
+        box_length = 8;
+        console.log(1);
+    }
+    if (category === "Standard") {
 
-let str = ``;
-for (let i = 0; i < 5; i++) {
-    str += `
+    }
+
+    //Todo: Get Categories
+
+    let str = ``;
+    for (let i = 0; i < box_length; i++) {
+        str += `
     <div id="headline">
-        <p>${gameoptionuse}</p>
+        <p>Category</p>
     </div>`;
+    }
+    str += ``;
+    document.getElementById('headlines').innerHTML = str;
 }
-str += ``;
-document.getElementById('headlines').innerHTML = str;
