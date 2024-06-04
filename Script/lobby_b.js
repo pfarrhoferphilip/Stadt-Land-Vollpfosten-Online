@@ -83,7 +83,7 @@ socket.onmessage = function (event) {
         if (localStorage['image_id']) {
             profile_pic = localStorage['image_id'];
         } else {
-            profile_pic = 1;
+            profile_pic = "character-1.jpg";
         }
 
 
@@ -166,7 +166,7 @@ function displayPlayers() {
         if (players_in_room[Object.keys(players_in_room)[i]].is_in_game == false) {
             html_code += `
             <div class="player">
-                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <img class="player-image" src="../images/characters/${players_in_room[Object.keys(players_in_room)[i]].profile_pic}" alt="char1">
                 <p>${players_in_room[Object.keys(players_in_room)[i]].username}</p>
             </div>
             `;
