@@ -52,16 +52,21 @@ function count_down() {
 }
 
 function setGameoptions() {
-
-
     start_counter();
     document.getElementById('random-letter').innerHTML = letter;
-    if (gameoption === "schnell") {
-        box_length = 8;
-        console.log(1);
-    }
-    if (category === "Standard") {
+    category = category.charAt(0).toUpperCase() + category.slice(1);
+    console.log(category);
+    console.log(categories[category]);
 
+
+    if (gameoption === "schnell") {
+        box_length = 5;
+    }
+    if (gameoption === "normal") {
+        box_length = 8;
+    }
+    if (gameoption === "senioren") {
+        box_length = 6;
     }
 
     //Todo: Get Categories
