@@ -72,13 +72,14 @@ function setGameoptions() {
 
     //Todo: Get Categories
 
-    let str = ``;
+    let str = `<div id="headlines">`;
     for (let i = 0; i < box_length; i++) {
         str += `
     <div id="headline">
         <p>${categories[category][i]["category" + (i + 1)]}</p>
     </div>`;
     }
-    str += ``;
-    document.getElementById('headlines').innerHTML = str;
+    str += `</div>`;
+
+    document.getElementById('game-board').innerHTML = str;
 }
