@@ -7,7 +7,6 @@ body {
 }
 
 
-
 /*-----letter and counter-----*/
 
 #letter-counter {
@@ -50,14 +49,55 @@ body {
 
 /*---Game Board---*/
 
-#game-board {
+table {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: center;
+    border-spacing: 0;
+}
+
+tr {
+    margin: 0;
+}
+
+th {
+    font-size: 1.5em;
+    border-bottom: solid 1px #000;
+    border-left: 1px solid #000;
+    padding: 1vw;
+    margin: 0;
+}
+
+td {
+    padding: 1vw;
+    border-left: 1px solid #000;
+    margin: 0;
+}
+
+.left {
+    border-left: none;
+}
+
+#button-submit {
+    margin-top: 10vh;
+    margin-left: 46vw;
+    margin-right: auto;
+    background-color: #fff;
+    border: solid #000 0.1vw;
+    padding: 0.5vw;
+    width: 8vw;
+    font-size: 1vw;
+}
+
+
+/* #game-board {
     border: 1px solid black;
     margin: 1vw;
     height: 85vh;
 }
 
 #headlines {
-    /* border: 1px solid black; */
     height: 10%;
     width: auto;
     justify-content: left;
@@ -67,4 +107,4 @@ body {
 #headline {
     border: 1px solid black;
     width: 100%;
-}
+} */

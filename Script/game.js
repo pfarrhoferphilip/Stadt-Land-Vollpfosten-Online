@@ -72,14 +72,40 @@ function setGameoptions() {
 
     //Todo: Get Categories
 
-    let str = `<div id="headlines">`;
+    let str = `<tr>`;
     for (let i = 0; i < box_length; i++) {
-        str += `
-    <div id="headline">
-        <p>${categories[category][i]["category" + (i + 1)]}</p>
-    </div>`;
+        if (i == 0) {
+            str += `
+            <th class="left">
+                ${categories[category][i]["category" + (i + 1)]}
+            </th>`;
+        } else {
+            str += `
+            <th>
+                ${categories[category][i]["category" + (i + 1)]}
+            </th>`;
+        }
     }
-    str += `</div>`;
+    str += `</tr>`;
+
+    let str2 = `<tr>`;
+    for (let i = 0; i < box_length; i++) {
+        if (i == 0) {
+            str2 += `
+            <th class="left">
+              <input type="text">
+            </th>`;
+        } else {
+            str2 += `
+            <th>
+            <input type="text">
+            </th>`;
+        }
+    }
+    str2 += `</tr>`;
 
     document.getElementById('game-board').innerHTML = str;
+    document.getElementById('game-board').innerHTML += str2;
+
+
 }
