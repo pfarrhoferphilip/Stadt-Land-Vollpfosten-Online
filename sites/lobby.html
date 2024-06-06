@@ -32,26 +32,43 @@
 
             <!-- //TODO url kopieren-->
             <p id="looby-flex-gameoptions-room-code">Room-code:<span onclick="copyRoomCode()" id="room-code"></span></p>
-
-            <div id="looby-flex-gameoptions-category-box-3">
-                <div class="card" onclick="setGameoptions('normal')" id="card-normal">
-                    <div class="card-content">
-                        <h2>Normal</h2>
-                        <div class="more-text">
-                            <p>Runden: 3x</p>
-                            <p>Rundenzeit: 2min</p>
-                            <p>Kategorien: 8</p>
+            <div id="lobby-gameoptions-grid">
+                <div id="looby-flex-gameoptions-category-box-3">
+                    <div class="card" onclick="setGameoptions('normal')" id="card-normal">
+                        <div class="card-content">
+                            <h2>Normal</h2>
+                            <div class="more-text">
+                                <p>Runden: 3x</p>
+                                <p>Rundenzeit: 2min</p>
+                                <p>Kategorien: 8</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" onclick="setGameoptions('schnell')" id="card-schnell">
+                        <div class="card-content">
+                            <h2>Schnell</h2>
+                            <div class="more-text">
+                                <p>Runden: 1x</p>
+                                <p>Rundenzeit: 1min</p>
+                                <p>Kategorien: 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" onclick="setGameoptions('senioren')" id="card-senioren">
+                        <div class="card-content">
+                            <h2>Senioren</h2>
+                            <div class="more-text">
+                                <p>Runden: 5x</p>
+                                <p>Rundenzeit: 4min</p>
+                                <p>Kategorien: 6</p>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card" onclick="setGameoptions('schnell')" id="card-schnell">
-                    <div class="card-content">
-                        <h2>Schnell</h2>
-                        <div class="more-text">
-                            <p>Runden: 1x</p>
-                            <p>Rundenzeit: 1min</p>
-                            <p>Kategorien: 5</p>
-                        </div>
+                <div id="looby-flex-gameoptions-category-box-5">
+                    <div class="category" onclick="setCategory('standard')" id="category-standard">
+                        <h2>Standard</h2>
                     </div>
                 </div>
                 <div class="card" onclick="setGameoptions('senioren')" id="card-senioren">
