@@ -33,6 +33,7 @@ socket.onmessage = function (event) {
     //6 = Get if room exists
     //7 = Load Game
     //8 = Error on join
+    //9 = Get is_host
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -113,9 +114,13 @@ socket.onmessage = function (event) {
     } else if (output[0] == 8) {
         //ERROR ON JOIN
         window.open("./../Sites/error_page.html", "_self");
+    } else if (output[0] == 9) {
+        console.log(output[1]);
+        if (output[1] == true)
+            createStartButton();
     } else {
 
-        console.log(event.data);
+        //console.log(event.data);
 
         /*document.getElementById("output").innerHTML += `
             <p>${event.data}</p>
@@ -174,7 +179,7 @@ function displayPlayers() {
         } else {
             html_code += `
             <div class="player">
-                <img class="player-image" src="../images/characters/character-${players_in_room[Object.keys(players_in_room)[i]].profile_pic}.jpg" alt="char1">
+                <img class="player-image" src="../images/characters/${players_in_room[Object.keys(players_in_room)[i]].profile_pic}" alt="char1">
                 <p style="color: rgba(0, 0, 0, 0.7);">${players_in_room[Object.keys(players_in_room)[i]].username}</p>
             </div>
             `;
@@ -183,6 +188,16 @@ function displayPlayers() {
     }
     document.getElementById("lobby-players-box-players").innerHTML = html_code;
     document.getElementById("room-code").innerHTML = room_code;
+
+    createButtonForHost();
+}
+
+function createButtonForHost() {
+    socket.send("12");
+}
+
+function createStartButton() {
+    document.getElementById("start-button-container").innerHTML = `<button onclick="loadGame()" type="submit" id="startButton">Start</button>`;
 }
 
 //CREATE A ROOM

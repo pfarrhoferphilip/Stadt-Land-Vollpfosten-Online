@@ -240,6 +240,9 @@ class ChatServer implements MessageComponentInterface
             //SEND GAME OPTIONS
             $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
             $from->send("8;" . $r->game_speed . ";" . $r->category . ";" . $r->letter);
+        } else if ($msg_arr[0] == 12) {
+            //SEND IS_HOST
+            $from->send("9;" .  $this->searchPlayerByClient($from, $this->players)->is_host);
         }
     }
 
