@@ -27,16 +27,19 @@
     </div>
 
     <div id="main">
-        <div id="char-select">
+        <div class="content-box" id="char-select">
             <div id="char-select-image-box">
                 <img id="char-select-image-image" src="../images/characters/character-1.jpg">
             </div>
-            <div id="char-select-left-box">
-                <img id="char-select-refresh-image" src="../images/characters/left.png" onclick="changeChar(-1)">
+            <div id="char-left-right-box"> 
+                <div id="char-select-left-box">
+                    <img class="char-select-refresh-image" src="../images/characters/left.png" onclick="changeChar(-1)">
+                </div>
+                <div id="char-select-right-box">
+                    <img class="char-select-refresh-image" src="../images/characters/right.png" onclick="changeChar(1)">
+                </div>
             </div>
-            <div id="char-select-right-box">
-                <img id="char-select-refresh-image" src="../images/characters/right.png" onclick="changeChar(1)">
-            </div>
+            
             <div id="char-select-username-box">
                 <input type="text" name="char-select-username-input" id="char-select-username-input" onchange="console.log('onchange activated');">
                 <div id="char-select-username-dice-box">
@@ -44,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div id="room-code-box">
+        <div class="content-box" id="room-code-box">
             <div class="room-code-inputs">
                 <input id="input1" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input2')" onkeydown="handleBackspace(this, 'input1')">
                 <input id="input2" class="room-code-input" type="text" placeholder="X" maxlength="1" oninput="handleInput(this, 'input3')" onkeydown="handleBackspace(this, 'input1')">

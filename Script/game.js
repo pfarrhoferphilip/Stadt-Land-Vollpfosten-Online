@@ -58,7 +58,6 @@ function setGameoptions() {
     console.log(category);
     console.log(categories[category]);
 
-
     if (gameoption === "schnell") {
         box_length = 5;
     }
@@ -69,16 +68,66 @@ function setGameoptions() {
         box_length = 6;
     }
 
-
-    //Todo: Get Categories
-
-    let str = ``;
+    // Erzeugen der Tabellenzeilen für Kategorien
+    let str = `<tr>`;
     for (let i = 0; i < box_length; i++) {
-        str += `
-    <div id="headline">
-        <p>${categories[category][i]["category" + (i + 1)]}</p>
-    </div>`;
+        if (i === 0) {
+            str += `
+                <th class="left">
+                    ${categories[category][i]["category" + (i + 1)]}
+                </th>`;
+        } else {
+            str += `
+                <th>
+                    ${categories[category][i]["category" + (i + 1)]}
+                </th>`;
+        }
     }
-    str += ``;
-    document.getElementById('headlines').innerHTML = str;
+    str += `</tr>`;
+
+    // Erzeugen der Tabellenzeilen für Input-Felder
+    let str2 = `<tr>`;
+    for (let i = 0; i < box_length; i++) {
+        if (i === 0) {
+            str2 += `
+                <th class="left">
+                    <input type="text" name="text" class="input error-border" data-index="${i}">
+                </th>`;
+        } else {
+            str2 += `
+                <th>
+                    <input type="text" name="text" class="input error-border" data-index="${i}">
+                </th>`;
+        }
+    }
+    str2 += `</tr>`;
+
+    // Einsetzen der erzeugten Tabellenzeilen in das Spielbrett
+    document.getElementById('game-board').innerHTML = str + str2;
+
+    // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
+    const inputs = document.getElementsByClassName('input');
+    for (let input of inputs) {
+        input.addEventListener('keydown', function(event) {
+            // Überprüfe auf Tastatureingaben
+            const index = parseInt(input.getAttribute('data-index'));
+            const nextIndex = (index + 1) % box_length; // Circular navigation
+            if (event.key === "Enter") {
+                event.preventDefault(); // Verhindern des Standardverhaltens der Enter-Taste (Formular absenden)
+                inputs[nextIndex].focus(); // Fokussiere das nächste Input-Feld
+            }
+
+            // Überprüfung auf leeren Input
+            if (input.value.trim() === '') {
+                input.classList.add('error-border'); // Füge rote Border hinzu
+            } else {
+                input.classList.remove('error-border'); // Entferne rote Border
+            }
+        });
+    }
+
+    // Fokusiere das erste Input-Feld beim Start
+    if (inputs.length > 0) {
+        inputs[0].focus();
+    }
 }
