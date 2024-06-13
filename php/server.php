@@ -41,10 +41,19 @@ class Room
         }
     }
 
-    public function setGameOptions($speed, $cat) {
+    public function setGameOptions($speed, $cat)
+    {
         $this->game_speed = $speed;
         $this->category = $cat;
-        $this->letter = $this->letter_array[random_int(0, count($this->letter_array))];
+        $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
+    }
+
+    public function generateNewLetter() {
+        $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
+    }
+
+    public function getLetter() {
+        return $this->letter;
     }
 }
 
@@ -56,7 +65,8 @@ class Player
     public $client;
     public $is_host;
     public $is_in_game;
-    public $answer_strings = array();
+    public $answer_strings = "";
+    public $votings = array();
     public function __construct($username, $client, $id, $profile_pic)
     {
         $this->username = $username;
@@ -85,6 +95,31 @@ class Player
     public function setAnswerStrings($answer_strings)
     {
         $this->answer_strings = $answer_strings;
+    }
+
+    public function addToAnswerStrings($answer_strings)
+    {
+        $this->answer_strings = $this->answer_strings . "," . $answer_strings;
+    }
+
+    public function emptyAnswerStrings()
+    {
+        $this->answer_strings = "";
+    }
+
+    public function getAnswerStrings()
+    {
+        return $this->answer_strings;
+    }
+
+    public function setVotings($v)
+    {
+        $this->votings = $v;
+    }
+
+    public function getVotings()
+    {
+        return $this->votings;
     }
 }
 
@@ -227,22 +262,26 @@ class ChatServer implements MessageComponentInterface
             }
         } else if ($msg_arr[0] == 9) {
             //RECEIVE ANSWER STRING
-            $this->searchPlayerByClient($from, $this->players)->setAnswerStrings(json_decode($msg_arr[1]));
+            $this->searchPlayerByClient($from, $this->players)->setAnswerStrings($msg_arr[1]);
             var_dump($this->searchPlayerByClient($from, $this->players)->answer_strings . "\n");
             var_dump(json_decode($msg_arr[1]));
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
-            if ($this->searchPlayerByClient($from, $this->players)->is_host) {
-                echo "Player is host";
-                $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms)->sendToAllPlayers("9");
-            }
+            echo "Player is host";
+            $room = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
+            $room->generateNewLetter();
+            $room->sendToAllPlayers("9;" . $room->getLetter());
         } else if ($msg_arr[0] == 11) {
             //SEND GAME OPTIONS
             $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
             $from->send("8;" . $r->game_speed . ";" . $r->category . ";" . $r->letter);
         } else if ($msg_arr[0] == 12) {
             //SEND IS_HOST
-            $from->send("9;" .  $this->searchPlayerByClient($from, $this->players)->is_host);
+            $from->send("9;" . $this->searchPlayerByClient($from, $this->players)->is_host);
+        } else if ($msg_arr[0] == 13) {
+            //SEND ANSWERS
+            //$msg_arr[1] == Player
+            $from->send("10;" . $this->searchPlayerById($msg_arr[1], $this->players)->getAnswerStrings());
         }
     }
 
