@@ -39,6 +39,7 @@ socket.onmessage = function(event) {
     //7 = Load Game
     //8 = Reveive game options
     //9 = countdown finish
+    //10 = Get answers from other players
 
     let output = event.data.split(';');
     if (output[0] == 0) {
@@ -129,6 +130,8 @@ socket.onmessage = function(event) {
     } else if (output[0] == 9) {
         //countdown finished
         sendAnswerString(answer_string);
+    } else if(output[0] == 10) {
+        console.log(output[1]);
     } else {
 
         console.log(event.data);
@@ -164,6 +167,10 @@ function joinRoomViaURL() {
 8: Load into Game
 9: Send Answer String
 */
+
+function getAnswers(player_id) {
+    socket.send("13;" + player_id);
+}
 
 function loadGame() {
     socket.send("8;" + room_code);
