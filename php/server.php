@@ -44,7 +44,7 @@ class Room
     public function setGameOptions($speed, $cat) {
         $this->game_speed = $speed;
         $this->category = $cat;
-        $this->letter = $this->letter_array[random_int(0, count($this->letter_array))];
+        $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
     }
 }
 
