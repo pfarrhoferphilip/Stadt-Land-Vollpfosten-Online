@@ -1,7 +1,7 @@
-let answer_string = "A;Altenberg;Albanien;Attersee;Alhamdulia;Aquamarine;B;Berlin;Bulgarien;Bodensee;Ben;Blau";
+let answer_string = "A;Altenberg;Albanien;Attersee;Alhamdulia;Aquamarine;123;123;B;Berlin;Bulgarien;Bodensee;Ben;Blau;123;123;";
 let answers = answer_string.split(";");
 
-let categories_count = 6
+let categories_count = 8
 let rating_box = document.getElementById('rating-box')
 let html_code = `<tr>
             <th class="left"></th>
@@ -9,6 +9,8 @@ let html_code = `<tr>
             <th>Land</th>
             <th>Fluss</th>
             <th>Name</th>
+            <th>Farbe</th>
+            <th>Farbe</th>
             <th>Farbe</th>
         </tr>
         <tr>`;
