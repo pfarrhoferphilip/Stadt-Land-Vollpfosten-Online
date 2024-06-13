@@ -47,6 +47,14 @@ class Room
         $this->category = $cat;
         $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
     }
+
+    public function generateNewLetter() {
+        $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
+    }
+
+    public function getLetter() {
+        return $this->letter;
+    }
 }
 
 class Player
@@ -260,7 +268,9 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
             echo "Player is host";
-            $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms)->sendToAllPlayers("9");
+            $room = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
+            $room->generateNewLetter();
+            $room->sendToAllPlayers("9;" . $room->getLetter());
         } else if ($msg_arr[0] == 11) {
             //SEND GAME OPTIONS
             $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);

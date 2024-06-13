@@ -129,6 +129,8 @@ socket.onmessage = function(event) {
         //output[2] => Categories;
     } else if (output[0] == 9) {
         //countdown finished
+        letter = output[1];
+        console.log(letter);
         sendAnswerString(answer_string);
         addNewRow();
     } else if(output[0] == 10) {
@@ -221,7 +223,7 @@ function loadPlayers() {
 }
 
 function sendAnswerString(answer) {
-    
+
     socket.send("9;" + JSON.stringify(answer));
 }
 
