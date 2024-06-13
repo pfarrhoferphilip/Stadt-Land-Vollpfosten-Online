@@ -14,9 +14,11 @@
         <span class="headline-text1">STADT LAND</span>
         <span class="headline-text2">VOLLPFOSTEN</span>
     </div>
-    <div class="lobby-flex-container">
+
+    <!-- LOBBY CONTENT -->
+    <div class="lobby-grid-container">
         <!--CHARACTER LIST-->
-        <div id="lobby-players-box">
+        <div class="content-box" id="lobby-players-box">
             <h2 class="lobby-flex-headline">Spieler</h2>
             <div id="lobby-players-box-players">
                 <div class="player">
@@ -26,12 +28,17 @@
             </div>
         </div>
 
+        <!-- START BUTTON-->
+        <div id="start-button-container">
+
+        </div>
+
         <!--GAMEOPTIONS-->
-        <div id="lobby-gameoptions-box">
+        <div class="content-box" id="lobby-gameoptions-box">
             <h2 class="lobby-flex-headline">Spieloptionen</h2>
 
             <!-- //TODO url kopieren-->
-            <p id="looby-flex-gameoptions-room-code">Room-code:<span onclick="copyRoomCode()" id="room-code"></span></p>
+            <p id="looby-flex-gameoptions-room-code">Room-code: <span onclick="copyRoomCode()" id="room-code"></span></p>
             <div id="lobby-gameoptions-grid">
                 <div id="looby-flex-gameoptions-category-box-3">
                     <div class="card" onclick="setGameoptions('normal')" id="card-normal">
@@ -91,12 +98,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-    <div id="start-button-container">
 
     </div>
+    
 </body>
 
 </html>

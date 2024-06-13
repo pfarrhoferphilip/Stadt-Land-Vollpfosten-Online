@@ -19,7 +19,7 @@ body {
 
 
 
-/*--- Main *---*/
+/*--- Main ---*/
 
 #main {
     display: flex;
@@ -28,6 +28,124 @@ body {
 
 #room-code {
     color: red;
+}
+
+
+.content-box{
+    border-radius: 1vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+
+/*--- Skalierung ---*/
+
+/* When the screen width is 1601px or more */
+@media (min-width: 1600px) {
+    .lobby-grid-container {
+        margin: 1vw;
+        display: grid;
+        grid-template-columns: 45% 10% 45%;
+        width: 98vw;
+        row-gap: 1vw;
+    }
+
+    #lobby-players-box{
+        order: 1;
+    }
+    #start-button-container{
+        order: 2;
+    }
+    #lobby-gameoptions-box{
+        order: 3;
+    }
+
+
+}
+@media (max-width: 1600px) {
+    .lobby-grid-container {
+        margin: 1vw;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 90% 10%;
+        width: 97vw;
+        column-gap: 1vw;
+        row-gap: 1vw;
+
+    }
+    #lobby-players-box{
+        order: 1;
+    }
+    #lobby-gameoptions-box{
+        order: 2;
+    }#start-button-container{
+        order: 3;
+    }
+    
+}
+
+
+@media (min-aspect-ratio: 84/48) {
+    #lobby-gameoptions-grid{
+        display: grid;
+        grid-template-columns: auto ;
+        grid-template-rows: auto auto;
+    }
+
+    #looby-flex-gameoptions-category-box-3 {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 1vw;
+        margin: 2vh;
+    }
+
+    #looby-flex-gameoptions-category-box-5{
+        display: grid;
+        grid-template-columns: auto auto auto ;
+        grid-gap: 0.5vw;
+        margin: 2vh;
+    }
+    
+}
+
+/* When the screen width is 1600px or less */
+@media (max-aspect-ratio: 84/48) {
+    #lobby-gameoptions-grid{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto ;
+        margin: 2vh;
+
+    }
+
+
+    #looby-flex-gameoptions-category-box-3 {
+        display: grid;
+        grid-gap: 0.5vw;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+
+    }
+
+    #looby-flex-gameoptions-category-box-5{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 0.5vw;
+        margin: 2vh;
+    }
+
+    .more-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1vh;
+        transition: transform 0.5s ease;
+        transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
+    }
+    
 }
 
 
@@ -93,10 +211,7 @@ body {
     width: 20%;
 }
 
-.lobby-flex-container {
-    display: flex;
-    width: 100vw;
-}
+
 
 .lobby-flex-headline {
     text-align: center;
@@ -104,12 +219,10 @@ body {
 }
 
 #lobby-players-box {
-    width: 40vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    
+
     background: rgba(255, 255, 255, 0.7);
     aspect-ratio: 6/5;
-    height: 33.3vw;
 }
 
 #lobby-players-box-players {
@@ -127,9 +240,6 @@ body {
 }
 
 #lobby-gameoptions-box {
-    width: 40vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
     background: rgb(255, 255, 255, 0.7);
     aspect-ratio: 6/5;
 }
@@ -150,57 +260,7 @@ body {
     transition: 0.5s all;
 }
 
-/* When the screen width is 1601px or more */
-@media (min-aspect-ratio: 84/48) {
-    #lobby-gameoptions-grid{
-        display: grid;
-        grid-template-columns: auto ;
-        grid-template-rows: auto auto;
-    }
 
-    #looby-flex-gameoptions-category-box-3 {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        grid-gap: 1vw;
-        margin: 2vh;
-    }
-
-    #looby-flex-gameoptions-category-box-5{
-        display: grid;
-        grid-template-columns: auto auto auto ;
-        grid-gap: 0.5vw;
-        margin: 2vh;
-    }
-    
-}
-
-/* When the screen width is 1600px or less */
-@media (max-aspect-ratio: 83/48) {
-    #lobby-gameoptions-grid{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto ;
-        margin: 2vh;
-
-    }
-
-
-    #looby-flex-gameoptions-category-box-3 {
-        display: grid;
-        grid-gap: 0.5vw;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-
-    }
-
-    #looby-flex-gameoptions-category-box-5{
-        display: grid;
-        grid-template-columns: auto;
-        grid-gap: 0.5vw;
-        margin: 2vh;
-    }
-    
-}
 
 
 
@@ -214,18 +274,14 @@ body {
     overflow: hidden;
     position: relative;
     font-size: 2vh;
+    justify-self: center;
 }
 
-.more-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    padding: 1vh;
-    transition: transform 0.5s ease;
-    transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
+.card-content{
+    height: 100%;
+    align-content: center;
 }
+
 
 .card:hover .more-text {
     transform: translateY(0);
@@ -244,10 +300,15 @@ body {
     cursor: pointer;
 }
 
+#start-button-container{
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    justify-self: center;
+}
+
 #startButton{
-    position: absolute;
-    top: 50vh;
-    left: 47vw;
     font-size: 2em;
     width: 6vw;
     padding: 1vh;
@@ -262,3 +323,4 @@ body {
     background-color: green;
     transition: 0.5s all;
 }
+

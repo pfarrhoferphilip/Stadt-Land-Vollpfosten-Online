@@ -22,6 +22,9 @@ socket.onopen = function(event) {
 };
 
 
+setGameoptions("normal");
+setCategory("standard");
+
 //HANDLE MESSAGES SENT FROM SERVER
 socket.onmessage = function(event) {
     console.log(event.data);
@@ -264,6 +267,8 @@ function setGameoptions(version) {
 }
 //SET CATEGORY
 function setCategory(version) {
+    
+
     let category_e;
     switch (version) {
         case "standard":
