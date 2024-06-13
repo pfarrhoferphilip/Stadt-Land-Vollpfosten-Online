@@ -35,10 +35,12 @@ td {
     padding: 1vw;
     border-left: 1px solid #000;
     margin: 0;
+    cursor: pointer;
 }
 
 .left {
     border-left: none;
+    cursor: default;
 }
 
 #button-submit {

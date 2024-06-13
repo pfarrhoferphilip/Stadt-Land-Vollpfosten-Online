@@ -3,7 +3,15 @@ let answers = answer_string.split(";");
 
 let categories_count = 6
 let rating_box = document.getElementById('rating-box')
-let html_code = `<tr`;
+let html_code = `<tr>
+            <th class="left"></th>
+            <th>Stadt</th>
+            <th>Land</th>
+            <th>Fluss</th>
+            <th>Name</th>
+            <th>Farbe</th>
+        </tr>
+        <tr>`;
 
 for (let i = 0; i < answers.length; i++) {
     console.log(answers[i]);
@@ -13,7 +21,7 @@ for (let i = 0; i < answers.length; i++) {
             <tr>
                 <td class="left" id="table-${i}">${answers[i]}</td>
             `;
-    }else{
+    } else {
         console.log(i);
         html_code += `
             <td onclick="markFalse(${i})" id="table-${i}">${answers[i]}</td>
