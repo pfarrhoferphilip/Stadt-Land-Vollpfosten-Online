@@ -41,7 +41,8 @@ class Room
         }
     }
 
-    public function setGameOptions($speed, $cat) {
+    public function setGameOptions($speed, $cat)
+    {
         $this->game_speed = $speed;
         $this->category = $cat;
         $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
@@ -88,23 +89,28 @@ class Player
         $this->answer_strings = $answer_strings;
     }
 
-    public function addToAnswerStrings($answer_strings) {
+    public function addToAnswerStrings($answer_strings)
+    {
         $this->answer_strings = $this->answer_strings . "," . $answer_strings;
     }
 
-    public function emptyAnswerStrings() {
+    public function emptyAnswerStrings()
+    {
         $this->answer_strings = "";
     }
 
-    public function getAnswerStrings() {
+    public function getAnswerStrings()
+    {
         return $this->answer_strings;
     }
 
-    public function setVotings($v) {
+    public function setVotings($v)
+    {
         $this->votings = $v;
     }
 
-    public function getVotings() {
+    public function getVotings()
+    {
         return $this->votings;
     }
 }
@@ -253,18 +259,15 @@ class ChatServer implements MessageComponentInterface
             var_dump(json_decode($msg_arr[1]));
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
-            if ($this->searchPlayerByClient($from, $this->players)->is_host) {
-                echo "Player is host";
-                $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms)->sendToAllPlayers("9");
-                
-            }
+            echo "Player is host";
+            $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms)->sendToAllPlayers("9");
         } else if ($msg_arr[0] == 11) {
             //SEND GAME OPTIONS
             $r = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
             $from->send("8;" . $r->game_speed . ";" . $r->category . ";" . $r->letter);
         } else if ($msg_arr[0] == 12) {
             //SEND IS_HOST
-            $from->send("9;" .  $this->searchPlayerByClient($from, $this->players)->is_host);
+            $from->send("9;" . $this->searchPlayerByClient($from, $this->players)->is_host);
         } else if ($msg_arr[0] == 13) {
             //SEND ANSWERS
             //$msg_arr[1] == Player

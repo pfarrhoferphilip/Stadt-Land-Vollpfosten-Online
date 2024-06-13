@@ -130,6 +130,7 @@ socket.onmessage = function(event) {
     } else if (output[0] == 9) {
         //countdown finished
         sendAnswerString(answer_string);
+        addNewRow();
     } else if(output[0] == 10) {
         console.log(output[1]);
     } else {
@@ -220,6 +221,7 @@ function loadPlayers() {
 }
 
 function sendAnswerString(answer) {
+    
     socket.send("9;" + JSON.stringify(answer));
 }
 
