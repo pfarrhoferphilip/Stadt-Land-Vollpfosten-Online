@@ -2,7 +2,7 @@ let counter = document.getElementById('counter');
 let seconds = parseInt(localStorage.getItem('seconds')) || 0;
 let countdownActive = false;
 let box_length = 0;
-
+const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
 window.onload = function() {
@@ -61,15 +61,25 @@ function finished() {
             allFilled = false;
         } else {
             input.classList.remove('error-border');
+            // Ersetze das input-Feld durch ein p-Element mit dem Textinhalt
+            //der wechsel von input zu p soll erst bei jedem aufruf von addNewRow passieren (siehe Chatgpt)
+            const pElement = document.createElement('p');
+            pElement.textContent = input.value.trim();
+            pElement.style.fontSize = "1vw";
+            input.parentNode.replaceChild(pElement, input);
         }
     });
 
     if (allFilled) {
-        countdownEnded(); // Function to add a new row of input fields
+        // Erfassen Sie die Texte der Input-Felder mit einem Semikolon als Trennzeichen
+        const filledTexts = Array.from(inputs).map(input => input.value.trim()).join(';');
+        console.log(filledTexts);
+        countdownEnded(); // Hier könnte die Funktion aufgerufen werden, die den erfassten Text verarbeitet
     } else {
-        alert("NICHT FERTIG!");
+        alert("Bitte füllen Sie alle Felder aus");
     }
 }
+
 
 function addNewRow() {
     // Construct the HTML for new input fields
@@ -100,12 +110,8 @@ function addNewRow() {
         });
     });
 
-    // Focus on the first input field of the new row
-    if (newInputs.length > 0) {
-        newInputs[0].focus();
-    }
+    inputSwitch();
 }
-
 
 function setGameoptions() {
     start_counter();
@@ -161,6 +167,11 @@ function setGameoptions() {
     // Einsetzen der erzeugten Tabellenzeilen in das Spielbrett
     document.getElementById('game-board').innerHTML = str + str2;
 
+    inputSwitch();
+
+}
+
+function inputSwitch() {
     // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
     const inputs = document.getElementsByClassName('input');
     for (let input of inputs) {
