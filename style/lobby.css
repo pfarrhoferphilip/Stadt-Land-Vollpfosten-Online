@@ -8,15 +8,15 @@ body {
     margin: 0;
     background-image: url(../images/BackgroundImageIndexLight.jpg);
     background-size: cover;
-    background-position: 0vw 0vh;
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     user-select: none;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
-
 
 
 /*--- Main ---*/
@@ -63,13 +63,16 @@ body {
 
 
 }
-@media (max-width: 1600px) {
+
+/* When the screen width is 1600px or less */
+@media (max-width: 1700px) {
     .lobby-grid-container {
         margin: 1vw;
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: 90% 10%;
         width: 97vw;
+        height: 80vh;
         column-gap: 1vw;
         row-gap: 1vw;
 
@@ -81,12 +84,13 @@ body {
         order: 2;
     }#start-button-container{
         order: 3;
+        grid-area: 2 / 1 / 2 / 3;
     }
     
 }
 
-
-@media (min-aspect-ratio: 84/48) {
+/* Breiter Screen */
+@media (min-aspect-ratio: 84/58) {
     #lobby-gameoptions-grid{
         display: grid;
         grid-template-columns: auto ;
@@ -102,15 +106,28 @@ body {
 
     #looby-flex-gameoptions-category-box-5{
         display: grid;
-        grid-template-columns: auto auto auto ;
+        grid-template-columns: auto auto ;
         grid-gap: 0.5vw;
         margin: 2vh;
+        justify-content: center;
+
+    }
+
+    .more-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1vh;
+        transition: transform 0.5s ease;
+        transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
     }
     
 }
 
-/* When the screen width is 1600px or less */
-@media (max-aspect-ratio: 84/48) {
+/* Schmaler Screen */
+@media (max-aspect-ratio: 84/58) {
     #lobby-gameoptions-grid{
         display: grid;
         grid-template-columns: auto auto;
@@ -132,7 +149,9 @@ body {
         display: grid;
         grid-template-columns: auto;
         grid-gap: 0.5vw;
-        margin: 2vh;
+        margin: 0 auto;
+        justify-content: center;
+
     }
 
     .more-text {
@@ -268,7 +287,7 @@ body {
 
 .card {
     width: 20vh;
-    height: auto;
+    height: 13vh;
     border: #fff solid 5px;
     text-align: center;
     overflow: hidden;
@@ -284,7 +303,7 @@ body {
 
 
 .card:hover .more-text {
-    transform: translateY(0);
+    transform: translateY(12%);
 }
 .card:hover {
     cursor: pointer;
@@ -292,12 +311,19 @@ body {
 .category {
     border: #fff solid 5px;
     text-align: center;
-    width: 20vh;
+    width: 20vw;
+    height: auto;
     overflow: hidden;
     font-size: 1.5vh;
 }
 .category:hover{
     cursor: pointer;
+}
+
+.category h2 {
+    padding: 0;
+    justify-self: center;
+    text-align: center;
 }
 
 #start-button-container{
@@ -310,7 +336,7 @@ body {
 
 #startButton{
     font-size: 2em;
-    width: 6vw;
+    width: auto;
     padding: 1vh;
     border: #fff solid 2px;
     border-radius: 8px;

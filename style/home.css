@@ -7,11 +7,13 @@ body {
     margin: 0;
     background-image: url(../images/BackgroundImageIndexLight.jpg);
     background-size: cover;
-    background-position: 0vw -25vh;
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     user-select: none;
+    width: 100vw;
+    height: 100vh;
 }
 
 img {
