@@ -51,6 +51,62 @@ function count_down() {
     }
 }
 
+function finished() {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    let allFilled = true;
+
+    inputs.forEach(input => {
+        if (input.value.trim() === '') {
+            input.classList.add('error-border');
+            allFilled = false;
+        } else {
+            input.classList.remove('error-border');
+        }
+    });
+
+    if (allFilled) {
+        countdownEnded(); // Function to add a new row of input fields
+    } else {
+        alert("NICHT FERTIG!");
+    }
+}
+
+function addNewRow() {
+    // Construct the HTML for new input fields
+    let newRowHTML = '<tr>';
+    for (let i = 0; i < box_length; i++) {
+        if (i === 0) {
+            newRowHTML += `
+                <th class="left">
+                    <input type="text" name="text" class="input error-border" data-index="${i}">
+                </th>`;
+        } else {
+            newRowHTML += `
+                <th>
+                    <input type="text" name="text" class="input error-border" data-index="${i}">
+                </th>`;
+        }
+    }
+    newRowHTML += '</tr>';
+
+    // Append the new row to the game board
+    document.getElementById('game-board').insertAdjacentHTML('beforeend', newRowHTML);
+
+    // Add event listeners to the new input fields
+    const newInputs = document.querySelectorAll('#game-board tr:last-child input');
+    newInputs.forEach(input => {
+        input.addEventListener('keydown', function(event) {
+            // Similar event handling as in setGameoptions()
+        });
+    });
+
+    // Focus on the first input field of the new row
+    if (newInputs.length > 0) {
+        newInputs[0].focus();
+    }
+}
+
+
 function setGameoptions() {
     start_counter();
     document.getElementById('random-letter').innerHTML = letter;
