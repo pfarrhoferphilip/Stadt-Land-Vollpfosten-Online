@@ -22,6 +22,9 @@ socket.onopen = function(event) {
 };
 
 
+setGameoptions("normal");
+setCategory("standard");
+
 //HANDLE MESSAGES SENT FROM SERVER
 socket.onmessage = function(event) {
     console.log(event.data);
@@ -238,7 +241,12 @@ function copyRoomCode() {
 
 
 //SET GAMEOPTIONS
-function setGameoptions(version) {
+function setGameoptions(kind) {
+
+    let version = kind;   
+
+    console.log(version);
+
     let card;
     switch (version) {
         case "normal":
@@ -256,14 +264,20 @@ function setGameoptions(version) {
         default:
             break;
     }
-
+    /*
     document.getElementById("card-normal").style.borderColor = "#fff";
     document.getElementById("card-schnell").style.borderColor = "#fff";
     document.getElementById("card-senioren").style.borderColor = "#fff";
     document.getElementById("card-" + version).style.borderColor = "#4a8a11";
+    */
 }
 //SET CATEGORY
-function setCategory(version) {
+function setCategory(kind) {
+    
+    let version = kind;
+    
+    console.log(version);
+
     let category_e;
     switch (version) {
         case "standard":
@@ -298,6 +312,7 @@ function setCategory(version) {
             break;
     }
 
+    /*
     document.getElementById("category-standard").style.borderColor = "#fff";
     document.getElementById("category-sport").style.borderColor = "#fff";
     document.getElementById("category-rotlicht").style.borderColor = "#fff";
@@ -306,4 +321,6 @@ function setCategory(version) {
     document.getElementById("category-haushalt").style.borderColor = "#fff";
     document.getElementById("category-tierliebhaber").style.borderColor = "#fff";
     document.getElementById("category-" + version).style.borderColor = "#4a8a11";
+
+    */
 }
