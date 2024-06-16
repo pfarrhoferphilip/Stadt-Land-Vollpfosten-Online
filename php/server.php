@@ -264,10 +264,9 @@ class ChatServer implements MessageComponentInterface
             //RECEIVE ANSWER STRING
             $this->searchPlayerByClient($from, $this->players)->setAnswerStrings($msg_arr[1]);
             var_dump($this->searchPlayerByClient($from, $this->players)->answer_strings . "\n");
-            var_dump(json_decode($msg_arr[1]));
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
-            echo "Player is host";
+            echo "Player is host\n";
             $room = $this->searchRoomByPlayer($this->searchPlayerByClient($from, $this->players), $this->rooms);
             $room->generateNewLetter();
             $room->sendToAllPlayers("9;" . $room->getLetter());
