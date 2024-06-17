@@ -63,9 +63,9 @@ function count_down() {
         countdownEnded();
     }
 }
-
+let inputs;
 function finished() {
-    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs = document.querySelectorAll('input[type="text"]');
     let allFilled = true;
 
     inputs.forEach(input => {
@@ -94,12 +94,14 @@ function finished() {
 }
 
 function generateAnswerString() {
-    const inputs = document.querySelectorAll('input[type="text"]');
+    //const inputs = document.querySelectorAll('input[type="text"]');
     let count = 0;
     let answer_string = "";
 
+    console.log(inputs.length)
     inputs.forEach(input => {
         count++;
+        console.log(count)
 
         if (count < inputs.length) {
             answer_string += input.value + ',';
