@@ -135,6 +135,7 @@ socket.onmessage = function(event) {
         start_counter();
     } else if(output[0] == 10) {
         console.log(output[1]);
+        displayAnswers(output[1]);
     } else {
 
         console.log(event.data);
