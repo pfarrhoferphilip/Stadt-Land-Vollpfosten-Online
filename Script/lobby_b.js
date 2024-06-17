@@ -264,12 +264,12 @@ function setGameoptions(kind) {
         default:
             break;
     }
-    /*
+    
     document.getElementById("card-normal").style.borderColor = "#fff";
     document.getElementById("card-schnell").style.borderColor = "#fff";
     document.getElementById("card-senioren").style.borderColor = "#fff";
     document.getElementById("card-" + version).style.borderColor = "#4a8a11";
-    */
+    
 }
 //SET CATEGORY
 function setCategory(kind) {
@@ -312,7 +312,7 @@ function setCategory(kind) {
             break;
     }
 
-    /*
+    
     document.getElementById("category-standard").style.borderColor = "#fff";
     document.getElementById("category-sport").style.borderColor = "#fff";
     document.getElementById("category-rotlicht").style.borderColor = "#fff";
@@ -322,5 +322,5 @@ function setCategory(kind) {
     document.getElementById("category-tierliebhaber").style.borderColor = "#fff";
     document.getElementById("category-" + version).style.borderColor = "#4a8a11";
 
-    */
+    
 }
