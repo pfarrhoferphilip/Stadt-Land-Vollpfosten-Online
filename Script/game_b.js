@@ -8,8 +8,6 @@ let profile_pic;
 let players_in_room = [];
 let player_id = -1;
 
-let answer_string = ""; //ALS JSON
-
 let category;
 let gameoption = null;
 let letter = null;
@@ -131,8 +129,10 @@ socket.onmessage = function(event) {
         //countdown finished
         letter = output[1];
         console.log(letter);
-        sendAnswerString(answer_string);
+        sendAnswerString(generateAnswerString());
         addNewRow();
+        setLetter();
+        start_counter();
     } else if(output[0] == 10) {
         console.log(output[1]);
     } else {
@@ -223,11 +223,11 @@ function loadPlayers() {
 }
 
 function sendAnswerString(answer) {
-
-    socket.send("9;" + JSON.stringify(answer));
+    socket.send("9;" + answer);
 }
 
 function countdownEnded() {
+    localStorage["seconds"] = null;
     socket.send("10");
 }
 

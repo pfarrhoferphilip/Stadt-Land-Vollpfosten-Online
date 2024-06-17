@@ -5,17 +5,16 @@ let box_length = 0;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
-window.onload = function() {
+window.onload = function () {
     if (seconds > 0) {
         counter.innerHTML = seconds;
-        countdownActive = true;
-        count_down();
+        //countdownActive = true;
+        //setTimeout(count_down, 1000);
+        //start_counter();
     }
 };
 
-function start_counter() {
-    if (countdownActive) return;
-
+function setCountdown() {
     if (gameoption == "normal") {
         seconds = 240;
     } else if (gameoption == "schnell") {
@@ -23,18 +22,32 @@ function start_counter() {
     } else {
         seconds = 320;
     }
+}
+
+function start_counter() {
+    //if (!countdownActive) {
+    if (gameoption == "normal") {
+        seconds = 240;
+    } else if (gameoption == "schnell") {
+        seconds = 190;
+    } else {
+        seconds = 320;
+    }
+    //}
+    //seconds = parseInt(localStorage.getItem('seconds'));
+
 
     // Speichere den initialen Wert in localStorage
     localStorage.setItem('seconds', seconds);
 
     console.log("Countdown started");
     countdownActive = true;
-    count_down();
+    setTimeout(count_down, 1000);
 }
 
 function count_down() {
-    counter.innerHTML = seconds;
     seconds--;
+    counter.innerHTML = seconds;
     //console.log("Count down");
 
     // Speichere den aktuellen Wert in localStorage
@@ -80,6 +93,24 @@ function finished() {
     }
 }
 
+function generateAnswerString() {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    let count = 0;
+    let answer_string = "";
+
+    inputs.forEach(input => {
+        count++;
+
+        if (count < inputs.length) {
+            answer_string += input.value + ',';
+        } else {
+            answer_string += input.value;
+        }
+    });
+
+    console.log(answer_string);
+    return answer_string;
+}
 
 function addNewRow() {
     // Construct the HTML for new input fields
@@ -105,7 +136,7 @@ function addNewRow() {
     // Add event listeners to the new input fields
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
-        input.addEventListener('keydown', function(event) {
+        input.addEventListener('keydown', function (event) {
             // Similar event handling as in setGameoptions()
         });
     });
@@ -113,9 +144,11 @@ function addNewRow() {
     inputSwitch();
 }
 
+
 function setGameoptions() {
-    start_counter();
-    document.getElementById('random-letter').innerHTML = letter;
+    if (!countdownActive)
+        start_counter();
+    setLetter();
     category = category.charAt(0).toUpperCase() + category.slice(1);
     console.log(category);
     console.log(categories[category]);
@@ -175,7 +208,7 @@ function inputSwitch() {
     // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
     const inputs = document.getElementsByClassName('input');
     for (let input of inputs) {
-        input.addEventListener('keydown', function(event) {
+        input.addEventListener('keydown', function (event) {
             // Überprüfe auf Tastatureingaben
             const index = parseInt(input.getAttribute('data-index'));
             const nextIndex = (index + 1) % box_length; // Circular navigation
