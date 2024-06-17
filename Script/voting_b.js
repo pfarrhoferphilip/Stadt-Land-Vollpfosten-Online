@@ -1,17 +1,11 @@
-setTimeout(start, 1000);
+setTimeout(start, 100);
 
-let answer_string;
-
-function displayAnswers(a_string) {
-    answer_string = a_string;
-    let answers = answer_string.split(',');
-
+function start() {
     let rating_box = document.getElementById('rating-box');
     rating_box.innerHTML = "";
 
-    //answer_string = "A;Altenberg;Albanien;Attersee;Alhamdulia;Aquamarine;123;123;400;B;Berlin;Bulgarien;Bodensee;Ben;Blau;123;123;500";
-    //answer_string = getAnswers(player_id);
-    //let answers = answer_string.split(',');
+    let answer_string = "A;Altenberg;Albanien;Attersee;Alhamdulia;Aquamarine;123;123;400;B;Berlin;Bulgarien;Bodensee;Ben;Blau;123;123;500";
+    let answers = answer_string.split(";");
 
     let box_length;
     if (gameoption === "schnell") {
@@ -58,11 +52,6 @@ function displayAnswers(a_string) {
     }
     html_code += "</tr>";
     rating_box.innerHTML += html_code;
-}
-
-function start() {
-
-    getAnswers(2);
 }
 
 function markFalse(id) {

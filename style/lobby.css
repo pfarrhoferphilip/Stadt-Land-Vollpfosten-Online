@@ -66,104 +66,18 @@ body {
 
 /* When the screen width is 1600px or less */
 @media (max-width: 1700px) {
-    .lobby-grid-container {
-        margin: 1vw;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 90% 10%;
-        width: 97vw;
-        height: 80vh;
-        column-gap: 1vw;
-        row-gap: 1vw;
 
-    }
-    #lobby-players-box{
-        order: 1;
-    }
-    #lobby-gameoptions-box{
-        order: 2;
-    }#start-button-container{
-        order: 3;
-        grid-area: 2 / 1 / 2 / 3;
-    }
     
 }
 
 /* Breiter Screen */
 @media (min-aspect-ratio: 84/58) {
-    #lobby-gameoptions-grid{
-        display: grid;
-        grid-template-columns: auto ;
-        grid-template-rows: auto auto;
-    }
-
-    #looby-flex-gameoptions-category-box-3 {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        grid-gap: 1vw;
-        margin: 2vh;
-    }
-
-    #looby-flex-gameoptions-category-box-5{
-        display: grid;
-        grid-template-columns: auto auto ;
-        grid-gap: 0.5vw;
-        margin: 2vh;
-        justify-content: center;
-
-    }
-
-    .more-text {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        padding: 1vh;
-        transition: transform 0.5s ease;
-        transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
-    }
+    
     
 }
 
 /* Schmaler Screen */
 @media (max-aspect-ratio: 84/58) {
-    #lobby-gameoptions-grid{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto ;
-        margin: 2vh;
-
-    }
-
-
-    #looby-flex-gameoptions-category-box-3 {
-        display: grid;
-        grid-gap: 0.5vw;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-
-    }
-
-    #looby-flex-gameoptions-category-box-5{
-        display: grid;
-        grid-template-columns: auto;
-        grid-gap: 0.5vw;
-        margin: 0 auto;
-        justify-content: center;
-
-    }
-
-    .more-text {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        padding: 1vh;
-        transition: transform 0.5s ease;
-        transform: translateY(calc(100% + 1vh)); /* Startet außerhalb des Kartenbereichs */
-    }
     
 }
 
