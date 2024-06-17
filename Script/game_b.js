@@ -225,10 +225,12 @@ function loadPlayers() {
 
 function sendAnswerString(answer) {
     socket.send("9;" + answer);
+    console.log(answer)
 }
 
 function countdownEnded() {
     localStorage["seconds"] = null;
+    inputs = document.querySelectorAll('input[type="text"]');
     socket.send("10");
 }
 

@@ -241,9 +241,9 @@ function copyRoomCode() {
 
 
 //SET GAMEOPTIONS
-function setGameoptions(version) {
+function setGameoptions(kind) {
 
-    //let version = kind;   
+    let version = kind;   
 
     console.log(version);
 
@@ -264,17 +264,17 @@ function setGameoptions(version) {
         default:
             break;
     }
-    
+    /*
     document.getElementById("card-normal").style.borderColor = "#fff";
     document.getElementById("card-schnell").style.borderColor = "#fff";
     document.getElementById("card-senioren").style.borderColor = "#fff";
     document.getElementById("card-" + version).style.borderColor = "#4a8a11";
-    
+    */
 }
 //SET CATEGORY
-function setCategory(version) {
+function setCategory(kind) {
     
-    //let version = kind;
+    let version = kind;
     
     console.log(version);
 
@@ -312,7 +312,7 @@ function setCategory(version) {
             break;
     }
 
-    
+    /*
     document.getElementById("category-standard").style.borderColor = "#fff";
     document.getElementById("category-sport").style.borderColor = "#fff";
     document.getElementById("category-rotlicht").style.borderColor = "#fff";
@@ -322,5 +322,5 @@ function setCategory(version) {
     document.getElementById("category-tierliebhaber").style.borderColor = "#fff";
     document.getElementById("category-" + version).style.borderColor = "#4a8a11";
 
-    
+    */
 }

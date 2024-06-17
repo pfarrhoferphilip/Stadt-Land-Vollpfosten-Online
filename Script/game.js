@@ -5,7 +5,7 @@ let box_length = 0;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
-window.onload = function() {
+window.onload = function () {
     if (seconds > 0) {
         counter.innerHTML = seconds;
         //countdownActive = true;
@@ -63,10 +63,11 @@ function count_down() {
         countdownEnded();
     }
 }
-
+let inputs;
 function finished() {
-    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs = document.querySelectorAll('input[type="text"]');
     let allFilled = true;
+
     inputs.forEach(input => {
         if (input.value.trim() === '') {
             input.classList.add('error-border');
@@ -74,7 +75,7 @@ function finished() {
         } else {
             input.classList.remove('error-border');
             // Ersetze das input-Feld durch ein p-Element mit dem Textinhalt
-            //der wechsel von input zu p soll erst bei jedem aufruf von addNewRow passieren
+            //der wechsel von input zu p soll erst bei jedem aufruf von addNewRow passieren (siehe Chatgpt)
             const pElement = document.createElement('p');
             pElement.textContent = input.value.trim();
             pElement.style.fontSize = "1vw";
@@ -93,12 +94,14 @@ function finished() {
 }
 
 function generateAnswerString() {
-    const inputs = document.querySelectorAll('input[type="text"]');
+    //const inputs = document.querySelectorAll('input[type="text"]');
     let count = 0;
     let answer_string = "";
 
+    console.log(inputs.length)
     inputs.forEach(input => {
         count++;
+        console.log(count)
 
         if (count < inputs.length) {
             answer_string += input.value + ',';
@@ -135,7 +138,7 @@ function addNewRow() {
     // Add event listeners to the new input fields
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
-        input.addEventListener('keydown', function(event) {
+        input.addEventListener('keydown', function (event) {
             // Similar event handling as in setGameoptions()
         });
     });
@@ -211,7 +214,7 @@ function inputSwitch() {
     // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
     const inputs = document.getElementsByClassName('input');
     for (let input of inputs) {
-        input.addEventListener('keydown', function(event) {
+        input.addEventListener('keydown', function (event) {
             // Überprüfe auf Tastatureingaben
             const index = parseInt(input.getAttribute('data-index'));
             const nextIndex = (index + 1) % box_length; // Circular navigation

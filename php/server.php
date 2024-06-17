@@ -257,12 +257,13 @@ class ChatServer implements MessageComponentInterface
                 echo $this->searchRoomByCode($msg_arr[1], $this->rooms)->category . "\n";
                 foreach ($this->searchRoomByCode($msg_arr[1], $this->rooms)->players as $player) {
                     $player->is_in_game = true;
+                    $player->emptyAnswerStrings();
                     $player->client->send("7;");
                 }
             }
         } else if ($msg_arr[0] == 9) {
             //RECEIVE ANSWER STRING
-            $this->searchPlayerByClient($from, $this->players)->setAnswerStrings($msg_arr[1]);
+            $this->searchPlayerByClient($from, $this->players)->addToAnswerStrings($msg_arr[1]);
             var_dump($this->searchPlayerByClient($from, $this->players)->answer_strings . "\n");
         } else if ($msg_arr[0] == 10) {
             //END COUNTDOWN
