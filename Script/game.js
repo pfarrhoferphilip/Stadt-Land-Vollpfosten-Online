@@ -8,8 +8,9 @@ const submitButton = document.getElementById("button-submit");
 window.onload = function() {
     if (seconds > 0) {
         counter.innerHTML = seconds;
-        countdownActive = true;
-        setTimeout(count_down, 1000);
+        //countdownActive = true;
+        //setTimeout(count_down, 1000);
+        //start_counter();
     }
 };
 
@@ -21,25 +22,37 @@ function setCountdown() {
     } else {
         seconds = 320;
     }
-
-    // Speichere den initialen Wert in localStorage
-    localStorage.setItem('seconds', seconds);
 }
 
 function start_counter() {
-    setCountdown();
+    //if (!countdownActive) {
+    if (gameoption == "normal") {
+        seconds = 240;
+    } else if (gameoption == "schnell") {
+        seconds = 190;
+    } else {
+        seconds = 320;
+    }
+    //}
+    //seconds = parseInt(localStorage.getItem('seconds'));
+
+    // Speichere den initialen Wert in localStorage
+    localStorage.setItem('seconds', seconds);
+
+    console.log("Countdown started");
     countdownActive = true;
     setTimeout(count_down, 1000);
 }
 
 function count_down() {
-    if (seconds > 0) {
-        seconds--;
-        counter.innerHTML = seconds;
+    seconds--;
+    counter.innerHTML = seconds;
+    //console.log("Count down");
 
-        // Speichere den aktuellen Wert in localStorage
-        localStorage.setItem('seconds', seconds);
+    // Speichere den aktuellen Wert in localStorage
+    localStorage.setItem('seconds', seconds);
 
+    if (seconds >= 0) {
         setTimeout(count_down, 1000);
     } else {
         console.log("Countdown abgelaufen!");
@@ -49,7 +62,6 @@ function count_down() {
         countdownEnded();
     }
 }
-
 let inputs;
 
 function finished() {
@@ -62,6 +74,12 @@ function finished() {
             allFilled = false;
         } else {
             input.classList.remove('error-border');
+            // Ersetze das input-Feld durch ein p-Element mit dem Textinhalt
+            //der wechsel von input zu p soll erst bei jedem aufruf von addNewRow passieren (siehe Chatgpt)
+            const pElement = document.createElement('p');
+            pElement.textContent = input.value.trim();
+            pElement.style.fontSize = "1vw";
+            input.parentNode.replaceChild(pElement, input);
         }
     });
 
@@ -76,6 +94,7 @@ function finished() {
 }
 
 function generateAnswerString() {
+    //const inputs = document.querySelectorAll('input[type="text"]');
     let count = 0;
     let answer_string = "";
 
@@ -96,15 +115,7 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
-    // Replace existing inputs with p elements
-    inputs.forEach(input => {
-        const pElement = document.createElement('p');
-        pElement.textContent = input.value.trim();
-        pElement.style.fontSize = "1vw";
-        input.parentNode.replaceChild(pElement, input);
-    });
-
-    // Create new row with input elements
+    // Construct the HTML for new input fields
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
         if (i === 0) {
@@ -121,29 +132,18 @@ function addNewRow() {
     }
     newRowHTML += '</tr>';
 
+    // Append the new row to the game board
     document.getElementById('game-board').insertAdjacentHTML('beforeend', newRowHTML);
 
+    // Add event listeners to the new input fields
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
         input.addEventListener('keydown', function(event) {
-            const index = parseInt(input.getAttribute('data-index'));
-            const nextIndex = (index + 1) % box_length;
-            if (event.key === "Enter") {
-                event.preventDefault();
-                newInputs[nextIndex].focus();
-            }
-
-            if (input.value.trim() === '') {
-                input.classList.add('error-border');
-            } else {
-                input.classList.remove('error-border');
-            }
+            // Similar event handling as in setGameoptions()
         });
     });
 
-    if (newInputs.length > 0) {
-        newInputs[0].focus();
-    }
+    inputSwitch();
 }
 
 function setLetter() {
@@ -151,9 +151,8 @@ function setLetter() {
 }
 
 function setGameoptions() {
-    if (!countdownActive) {
+    if (!countdownActive)
         start_counter();
-    }
     setLetter();
     category = category.charAt(0).toUpperCase() + category.slice(1);
     console.log(category);
@@ -169,6 +168,7 @@ function setGameoptions() {
         box_length = 6;
     }
 
+    // Erzeugen der Tabellenzeilen für Kategorien
     let str = `<tr>`;
     for (let i = 0; i < box_length; i++) {
         if (i === 0) {
@@ -185,6 +185,7 @@ function setGameoptions() {
     }
     str += `</tr>`;
 
+    // Erzeugen der Tabellenzeilen für Input-Felder
     let str2 = `<tr>`;
     for (let i = 0; i < box_length; i++) {
         if (i === 0) {
@@ -201,30 +202,35 @@ function setGameoptions() {
     }
     str2 += `</tr>`;
 
+    // Einsetzen der erzeugten Tabellenzeilen in das Spielbrett
     document.getElementById('game-board').innerHTML = str + str2;
 
     inputSwitch();
 }
 
 function inputSwitch() {
+    // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
     const inputs = document.getElementsByClassName('input');
     for (let input of inputs) {
         input.addEventListener('keydown', function(event) {
+            // Überprüfe auf Tastatureingaben
             const index = parseInt(input.getAttribute('data-index'));
-            const nextIndex = (index + 1) % box_length;
+            const nextIndex = (index + 1) % box_length; // Circular navigation
             if (event.key === "Enter") {
-                event.preventDefault();
-                inputs[nextIndex].focus();
+                event.preventDefault(); // Verhindern des Standardverhaltens der Enter-Taste (Formular absenden)
+                inputs[nextIndex].focus(); // Fokussiere das nächste Input-Feld
             }
 
+            // Überprüfung auf leeren Input
             if (input.value.trim() === '') {
-                input.classList.add('error-border');
+                input.classList.add('error-border'); // Füge rote Border hinzu
             } else {
-                input.classList.remove('error-border');
+                input.classList.remove('error-border'); // Entferne rote Border
             }
         });
     }
 
+    // Fokusiere das erste Input-Feld beim Start
     if (inputs.length > 0) {
         inputs[0].focus();
     }
