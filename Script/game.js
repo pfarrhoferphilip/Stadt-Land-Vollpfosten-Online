@@ -2,6 +2,7 @@ let counter = document.getElementById('counter');
 let seconds = parseInt(localStorage.getItem('seconds')) || 0;
 let countdownActive = false;
 let box_length = 0;
+let runden;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
@@ -79,7 +80,7 @@ function finished() {
             const pElement = document.createElement('p');
             pElement.textContent = input.value.trim();
             pElement.style.fontSize = "1vw";
-            input.parentNode.replaceChild(pElement, input);
+            //input.parentNode.replaceChild(pElement, input);
         }
     });
 
@@ -97,6 +98,7 @@ function generateAnswerString() {
     //const inputs = document.querySelectorAll('input[type="text"]');
     let count = 0;
     let answer_string = "";
+    runden--;
 
     console.log(inputs.length)
     inputs.forEach(input => {
@@ -115,7 +117,7 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
-    runden--;
+    // runden--;
     // Construct the HTML for new input fields
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
@@ -146,15 +148,14 @@ function addNewRow() {
 
     inputSwitch();
 
-    if (runden == 0) {
-        window.location.href = "voting.html";
-    }
+    // if (runden == 0) {
+    //     window.location.href = "voting.html";
+    // }
 }
 
 function setLetter() {
     document.getElementById("random-letter").innerHTML = letter;
 }
-let runden;
 
 function setGameoptions() {
     if (!countdownActive)

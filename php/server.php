@@ -281,7 +281,7 @@ class ChatServer implements MessageComponentInterface
         } else if ($msg_arr[0] == 13) {
             //SEND ANSWERS
             //$msg_arr[1] == Player
-            $from->send("10;" . $this->searchPlayerById($msg_arr[1], $this->players)->getAnswerStrings());
+            $from->send("10;" . $this->searchPlayerById($msg_arr[1], $this->players)->answer_strings);
         }
     }
 

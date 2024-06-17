@@ -226,6 +226,9 @@ function loadPlayers() {
 function sendAnswerString(answer) {
     socket.send("9;" + answer);
     console.log(answer)
+    if (runden == 0) {
+        window.location.href = "voting.html";
+    }
 }
 
 function countdownEnded() {
