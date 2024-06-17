@@ -115,6 +115,7 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
+    runden--;
     // Construct the HTML for new input fields
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
@@ -144,11 +145,16 @@ function addNewRow() {
     });
 
     inputSwitch();
+
+    if (runden == 0) {
+        window.location.href = "voting.html";
+    }
 }
 
 function setLetter() {
     document.getElementById("random-letter").innerHTML = letter;
 }
+let runden;
 
 function setGameoptions() {
     if (!countdownActive)
@@ -160,12 +166,15 @@ function setGameoptions() {
 
     if (gameoption === "schnell") {
         box_length = 5;
+        runden = 1;
     }
     if (gameoption === "normal") {
         box_length = 8;
+        runden = 3;
     }
     if (gameoption === "senioren") {
         box_length = 6;
+        runden = 5;
     }
 
     // Erzeugen der Tabellenzeilen für Kategorien
