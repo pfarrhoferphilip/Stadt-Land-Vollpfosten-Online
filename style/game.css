@@ -1,11 +1,16 @@
 /*---General---*/
-
 body {
     margin: 0;
+    background-image: url(../images/BackgroundImageIndexLight.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
     user-select: none;
+    width: 100vw;
+    height: 100vh;
 }
-
 
 /*-----letter and counter-----*/
 
