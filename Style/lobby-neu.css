@@ -41,8 +41,8 @@ body {
 
 /*--- Skalierung ---*/
 
-/* When the screen width is 1601px or more */
-@media (min-width: 1600px) {
+/* When the screen width is 1601px or more 
+@media (min-width: 1600px) {*/
     .lobby-grid-container {
         margin: 1vw;
         display: grid;
@@ -62,8 +62,9 @@ body {
     }
 
 
+/*
 }
-
+*/
 /* When the screen width is 1600px or less */
 @media (max-width: 1700px) {
 
