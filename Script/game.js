@@ -5,7 +5,7 @@ let box_length = 0;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
-window.onload = function () {
+window.onload = function() {
     if (seconds > 0) {
         counter.innerHTML = seconds;
         //countdownActive = true;
@@ -36,7 +36,6 @@ function start_counter() {
     //}
     //seconds = parseInt(localStorage.getItem('seconds'));
 
-
     // Speichere den initialen Wert in localStorage
     localStorage.setItem('seconds', seconds);
 
@@ -64,6 +63,7 @@ function count_down() {
     }
 }
 let inputs;
+
 function finished() {
     inputs = document.querySelectorAll('input[type="text"]');
     let allFilled = true;
@@ -115,6 +115,7 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
+    runden--;
     // Construct the HTML for new input fields
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
@@ -138,18 +139,22 @@ function addNewRow() {
     // Add event listeners to the new input fields
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
-        input.addEventListener('keydown', function (event) {
+        input.addEventListener('keydown', function(event) {
             // Similar event handling as in setGameoptions()
         });
     });
 
     inputSwitch();
+
+    if (runden == 0) {
+        window.location.href = "voting.html";
+    }
 }
 
 function setLetter() {
     document.getElementById("random-letter").innerHTML = letter;
 }
-
+let runden;
 
 function setGameoptions() {
     if (!countdownActive)
@@ -161,12 +166,15 @@ function setGameoptions() {
 
     if (gameoption === "schnell") {
         box_length = 5;
+        runden = 1;
     }
     if (gameoption === "normal") {
         box_length = 8;
+        runden = 3;
     }
     if (gameoption === "senioren") {
         box_length = 6;
+        runden = 5;
     }
 
     // Erzeugen der Tabellenzeilen für Kategorien
@@ -207,14 +215,13 @@ function setGameoptions() {
     document.getElementById('game-board').innerHTML = str + str2;
 
     inputSwitch();
-
 }
 
 function inputSwitch() {
     // Event Listener für Tastatureingaben (Enter-Taste und andere Tastatureingaben)
     const inputs = document.getElementsByClassName('input');
     for (let input of inputs) {
-        input.addEventListener('keydown', function (event) {
+        input.addEventListener('keydown', function(event) {
             // Überprüfe auf Tastatureingaben
             const index = parseInt(input.getAttribute('data-index'));
             const nextIndex = (index + 1) % box_length; // Circular navigation
