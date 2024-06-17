@@ -146,6 +146,10 @@ function addNewRow() {
     inputSwitch();
 }
 
+function setLetter() {
+    document.getElementById("random-letter").innerHTML = letter;
+}
+
 
 function setGameoptions() {
     if (!countdownActive)
