@@ -1,4 +1,4 @@
-let counter = document.getElementById('counter');
+// let counter = document.getElementById('counter');
 let seconds = parseInt(localStorage.getItem('seconds')) || 0;
 let countdownActive = false;
 let box_length = 0;
@@ -6,63 +6,63 @@ let runden;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
-window.onload = function() {
-    if (seconds > 0) {
-        counter.innerHTML = seconds;
-        //countdownActive = true;
-        //setTimeout(count_down, 1000);
-        //start_counter();
-    }
-};
+// window.onload = function() {
+//     if (seconds > 0) {
+//         counter.innerHTML = seconds;
+//         //countdownActive = true;
+//         //setTimeout(count_down, 1000);
+//         //start_counter();
+//     }
+// };
 
-function setCountdown() {
-    if (gameoption == "normal") {
-        seconds = 120;
-    } else if (gameoption == "schnell") {
-        seconds = 60;
-    } else {
-        seconds = 240;
-    }
-}
+// function setCountdown() {
+//     if (gameoption == "normal") {
+//         seconds = 120;
+//     } else if (gameoption == "schnell") {
+//         seconds = 60;
+//     } else {
+//         seconds = 240;
+//     }
+// }
 
-function start_counter() {
-    //if (!countdownActive) {
-    if (gameoption == "normal") {
-        seconds = 120;
-    } else if (gameoption == "schnell") {
-        seconds = 60;
-    } else {
-        seconds = 240;
-    }
-    //}
-    //seconds = parseInt(localStorage.getItem('seconds'));
+// function start_counter() {
+//     //if (!countdownActive) {
+//     if (gameoption == "normal") {
+//         seconds = 120;
+//     } else if (gameoption == "schnell") {
+//         seconds = 60;
+//     } else {
+//         seconds = 240;
+//     }
+//     //}
+//     //seconds = parseInt(localStorage.getItem('seconds'));
 
-    // Speichere den initialen Wert in localStorage
-    localStorage.setItem('seconds', seconds);
+//     // Speichere den initialen Wert in localStorage
+//     localStorage.setItem('seconds', seconds);
 
-    console.log("Countdown started");
-    countdownActive = true;
-    setTimeout(count_down, 1000);
-}
+//     console.log("Countdown started");
+//     countdownActive = true;
+//     setTimeout(count_down, 1000);
+// }
 
-function count_down() {
-    seconds--;
-    counter.innerHTML = seconds;
-    //console.log("Count down");
+// function count_down() {
+//     seconds--;
+//     counter.innerHTML = seconds;
+//     //console.log("Count down");
 
-    // Speichere den aktuellen Wert in localStorage
-    localStorage.setItem('seconds', seconds);
+//     // Speichere den aktuellen Wert in localStorage
+//     localStorage.setItem('seconds', seconds);
 
-    if (seconds >= 0) {
-        setTimeout(count_down, 1000);
-    } else {
-        console.log("Countdown abgelaufen!");
-        countdownActive = false;
-        // Countdown ist abgelaufen, lösche den Wert aus localStorage
-        localStorage.removeItem('seconds');
-        countdownEnded();
-    }
-}
+//     if (seconds >= 0) {
+//         setTimeout(count_down, 1000);
+//     } else {
+//         console.log("Countdown abgelaufen!");
+//         countdownActive = false;
+//         // Countdown ist abgelaufen, lösche den Wert aus localStorage
+//         localStorage.removeItem('seconds');
+//         countdownEnded();
+//     }
+// }
 let inputs;
 
 function finished() {
@@ -88,7 +88,7 @@ function finished() {
         // Erfassen Sie die Texte der Input-Felder mit einem Semikolon als Trennzeichen
         const filledTexts = Array.from(inputs).map(input => input.value.trim()).join(';');
         console.log(filledTexts);
-        countdownEnded(); // Hier könnte die Funktion aufgerufen werden, die den erfassten Text verarbeitet
+        // countdownEnded(); // Hier könnte die Funktion aufgerufen werden, die den erfassten Text verarbeitet
     } else {
         alert("Bitte füllen Sie alle Felder aus");
     }
@@ -170,8 +170,8 @@ function setLetter() {
 }
 
 function setGameoptions() {
-    if (!countdownActive)
-        start_counter();
+    // if (!countdownActive)
+    //     start_counter();
     setLetter();
     category = category.charAt(0).toUpperCase() + category.slice(1);
     console.log(category);
