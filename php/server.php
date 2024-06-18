@@ -48,11 +48,13 @@ class Room
         $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
     }
 
-    public function generateNewLetter() {
+    public function generateNewLetter()
+    {
         $this->letter = $this->letter_array[random_int(0, count($this->letter_array) - 1)];
     }
 
-    public function getLetter() {
+    public function getLetter()
+    {
         return $this->letter;
     }
 }
@@ -114,7 +116,14 @@ class Player
 
     public function setVotings($v)
     {
-        $this->votings = $v;
+        if (!empty($this->votings)) {
+            for ($i = 0; $i < sizeof($this->votings); $i++) {
+                $this->votings[$i] += $v[$i];
+            }
+        } else {
+            $this->votings = $v;
+        }
+
     }
 
     public function getVotings()
@@ -282,6 +291,11 @@ class ChatServer implements MessageComponentInterface
             //SEND ANSWERS
             //$msg_arr[1] == Player
             $from->send("10;" . $this->searchPlayerById($msg_arr[1], $this->players)->answer_strings);
+        } else if ($msg_arr[0] == 14) {
+            //RECEIVE VOTES
+            echo "Get Votes";
+            $this->searchPlayerById((int) $msg_arr[1], $this->players)->setVotings(json_decode($msg_arr[2]));
+            var_dump($this->searchPlayerById((int) $msg_arr[1], $this->players)->votings);
         }
     }
 
