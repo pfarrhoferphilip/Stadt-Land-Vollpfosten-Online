@@ -206,7 +206,6 @@ function setGameoptions() {
         }
     }
     str += `</tr>`;
-
     // Erzeugen der Tabellenzeilen für Input-Felder
     let str2 = `<tr>`;
     for (let i = 0; i < box_length; i++) {
