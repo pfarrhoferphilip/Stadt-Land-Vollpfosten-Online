@@ -78,6 +78,14 @@ body {
     border: 1px solid red;
 }
 
+#table-style {
+    width: 40vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: center;
+    border-spacing: 0;
+}
+
 table {
     width: 40vw;
     margin-left: 10vw;
