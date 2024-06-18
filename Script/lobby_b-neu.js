@@ -273,9 +273,9 @@ function setGameoptions(version) {
 }
 //SET CATEGORY
 function setCategory(version) {
-
+    
     //let version = kind;
-
+    
     console.log(version);
 
     let category_e;
@@ -322,5 +322,5 @@ function setCategory(version) {
     document.getElementById("category-tierliebhaber").style.borderColor = "#fff";
     document.getElementById("category-" + version).style.borderColor = "#4a8a11";
     */
-
+    
 }
