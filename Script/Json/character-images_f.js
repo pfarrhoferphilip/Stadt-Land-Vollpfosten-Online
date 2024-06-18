@@ -17,6 +17,12 @@ let sources = {
         },
         {
             "source": "character-6.jpg"
+        },
+        {
+            "source": "character-7.jpg"
+        },
+        {
+            "source": "character-8.jpg"
         }
     ]
 }
