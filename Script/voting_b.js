@@ -1,6 +1,7 @@
 setTimeout(start, 1000);
 
 let answer_string;
+let votes = [];
 
 function displayAnswers(a_string) {
     answer_string = a_string;
@@ -44,15 +45,16 @@ function displayAnswers(a_string) {
     let html_code = str + ``;
 
     for (let i = 0; i < answers.length; i++) {
-        if (i % categories_count == 0) {
+        votes[i] = 0;
+        if (i % categories_count < 0) {
             html_code += `
             </tr>
             <tr>
-                <td class="left" id="table-${i}">${answers[i]}</td>
+                <td class="left" id="table-${i}">${answers[i + 1]}</td>
             `;
         } else {
             html_code += `
-            <td onclick="markFalse(${i})" id="table-${i}">${answers[i]}</td>
+            <td onclick="markFalse(${i})" class="vote" id="table-${i}">${answers[i + 1]}</td>
         `;
         }
     }
@@ -61,16 +63,44 @@ function displayAnswers(a_string) {
 }
 
 function start() {
+    //console.log(getNextPlayer());
+    displayAnswers(getNextPlayer()["answer_strings"]);
+    getAnswers(getNextPlayer());
+}
 
-    getAnswers(2);
+function sendVotes() {
+    socket.send("14;" + id_of_last_player + ";" + JSON.stringify(votes));
+    displayAnswers(getNextPlayer()["answer_strings"]);
+}
+
+let id_of_last_player = -1;
+let new_id = 0;
+
+function getNextPlayer() {
+    new_id = parseInt(id_of_last_player);
+    console.log(new_id);
+    for (let i = id_of_last_player + 1; i < parseInt(Object.getOwnPropertyNames(players_in_room)[0]) + 1; i++) {
+        if (typeof players_in_room[i] != 'undefined') {
+            id_of_last_player = players_in_room[i]["id"];
+            return players_in_room[i];
+        }
+    }
+
+    if (new_id == id_of_last_player) {
+        window.open("./../Sites/home.html", "_self");
+        console.log("new: " + new_id);
+        console.log("old: " + id_of_last_player);
+    }
 }
 
 function markFalse(id) {
+    votes[id] = 1;
     document.getElementById('table-' + id).style.backgroundColor = "rgb(255, 60, 60)";
     document.getElementById('table-' + id).setAttribute("onclick", "javascript: markTrue(" + id + ");");
 }
 
 function markTrue(id) {
+    votes[id] = 0;
     document.getElementById('table-' + id).style.backgroundColor = "rgb(255, 255, 255)";
     document.getElementById('table-' + id).setAttribute("onclick", "javascript: markFalse(" + id + ");");
 }
