@@ -1,4 +1,4 @@
-let counter = document.getElementById('counter');
+// let counter = document.getElementById('counter');
 let seconds = parseInt(localStorage.getItem('seconds')) || 0;
 let countdownActive = false;
 let box_length = 0;
@@ -6,63 +6,63 @@ let runden;
 const submitButton = document.getElementById("button-submit");
 
 // Überprüfen und Wiederherstellen des gespeicherten Status beim Laden der Seite
-window.onload = function() {
-    if (seconds > 0) {
-        counter.innerHTML = seconds;
-        //countdownActive = true;
-        //setTimeout(count_down, 1000);
-        //start_counter();
-    }
-};
+// window.onload = function() {
+//     if (seconds > 0) {
+//         counter.innerHTML = seconds;
+//         //countdownActive = true;
+//         //setTimeout(count_down, 1000);
+//         //start_counter();
+//     }
+// };
 
-function setCountdown() {
-    if (gameoption == "normal") {
-        seconds = 240;
-    } else if (gameoption == "schnell") {
-        seconds = 190;
-    } else {
-        seconds = 320;
-    }
-}
+// function setCountdown() {
+//     if (gameoption == "normal") {
+//         seconds = 120;
+//     } else if (gameoption == "schnell") {
+//         seconds = 60;
+//     } else {
+//         seconds = 240;
+//     }
+// }
 
-function start_counter() {
-    //if (!countdownActive) {
-    if (gameoption == "normal") {
-        seconds = 240;
-    } else if (gameoption == "schnell") {
-        seconds = 190;
-    } else {
-        seconds = 320;
-    }
-    //}
-    //seconds = parseInt(localStorage.getItem('seconds'));
+// function start_counter() {
+//     //if (!countdownActive) {
+//     if (gameoption == "normal") {
+//         seconds = 120;
+//     } else if (gameoption == "schnell") {
+//         seconds = 60;
+//     } else {
+//         seconds = 240;
+//     }
+//     //}
+//     //seconds = parseInt(localStorage.getItem('seconds'));
 
-    // Speichere den initialen Wert in localStorage
-    localStorage.setItem('seconds', seconds);
+//     // Speichere den initialen Wert in localStorage
+//     localStorage.setItem('seconds', seconds);
 
-    console.log("Countdown started");
-    countdownActive = true;
-    setTimeout(count_down, 1000);
-}
+//     console.log("Countdown started");
+//     countdownActive = true;
+//     setTimeout(count_down, 1000);
+// }
 
-function count_down() {
-    seconds--;
-    counter.innerHTML = seconds;
-    //console.log("Count down");
+// function count_down() {
+//     seconds--;
+//     counter.innerHTML = seconds;
+//     //console.log("Count down");
 
-    // Speichere den aktuellen Wert in localStorage
-    localStorage.setItem('seconds', seconds);
+//     // Speichere den aktuellen Wert in localStorage
+//     localStorage.setItem('seconds', seconds);
 
-    if (seconds >= 0) {
-        setTimeout(count_down, 1000);
-    } else {
-        console.log("Countdown abgelaufen!");
-        countdownActive = false;
-        // Countdown ist abgelaufen, lösche den Wert aus localStorage
-        localStorage.removeItem('seconds');
-        countdownEnded();
-    }
-}
+//     if (seconds >= 0) {
+//         setTimeout(count_down, 1000);
+//     } else {
+//         console.log("Countdown abgelaufen!");
+//         countdownActive = false;
+//         // Countdown ist abgelaufen, lösche den Wert aus localStorage
+//         localStorage.removeItem('seconds');
+//         countdownEnded();
+//     }
+// }
 let inputs;
 
 function finished() {
@@ -88,7 +88,7 @@ function finished() {
         // Erfassen Sie die Texte der Input-Felder mit einem Semikolon als Trennzeichen
         const filledTexts = Array.from(inputs).map(input => input.value.trim()).join(';');
         console.log(filledTexts);
-        countdownEnded(); // Hier könnte die Funktion aufgerufen werden, die den erfassten Text verarbeitet
+        // countdownEnded(); // Hier könnte die Funktion aufgerufen werden, die den erfassten Text verarbeitet
     } else {
         alert("Bitte füllen Sie alle Felder aus");
     }
@@ -117,8 +117,15 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
-    // runden--;
-    // Construct the HTML for new input fields
+    // Ersetze alle existierenden Eingabefelder durch p-Elemente
+    inputs.forEach(input => {
+        const pElement = document.createElement('p');
+        pElement.textContent = input.value.trim();
+        pElement.style.fontSize = "1vw";
+        input.parentNode.replaceChild(pElement, input);
+    });
+
+    // Konstruiere den HTML-Code für neue Eingabefelder
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
         if (i === 0) {
@@ -135,31 +142,36 @@ function addNewRow() {
     }
     newRowHTML += '</tr>';
 
-    // Append the new row to the game board
+    // Füge die neue Zeile dem Spielbrett hinzu
     document.getElementById('game-board').insertAdjacentHTML('beforeend', newRowHTML);
 
-    // Add event listeners to the new input fields
+    // Füge Event Listener zu den neuen Eingabefeldern hinzu
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
         input.addEventListener('keydown', function(event) {
-            // Similar event handling as in setGameoptions()
+            // Ähnliches Event Handling wie in setGameoptions()
         });
     });
 
+    // Aktualisiere die inputs-Variable mit den neuen Eingabefeldern
+    inputs = document.querySelectorAll('input[type="text"]');
+
     inputSwitch();
 
-    // if (runden == 0) {
-    //     window.location.href = "voting.html";
-    // }
+    // Wenn alle Runden beendet sind, zur Abstimmungsseite weiterleiten
+    if (runden == 0) {
+        window.location.href = "voting.html";
+    }
 }
+
 
 function setLetter() {
     document.getElementById("random-letter").innerHTML = letter;
 }
 
 function setGameoptions() {
-    if (!countdownActive)
-        start_counter();
+    // if (!countdownActive)
+    //     start_counter();
     setLetter();
     category = category.charAt(0).toUpperCase() + category.slice(1);
     console.log(category);
@@ -194,7 +206,6 @@ function setGameoptions() {
         }
     }
     str += `</tr>`;
-
     // Erzeugen der Tabellenzeilen für Input-Felder
     let str2 = `<tr>`;
     for (let i = 0; i < box_length; i++) {
