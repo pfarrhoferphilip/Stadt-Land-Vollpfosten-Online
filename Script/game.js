@@ -17,22 +17,22 @@ window.onload = function() {
 
 function setCountdown() {
     if (gameoption == "normal") {
-        seconds = 240;
+        seconds = 120;
     } else if (gameoption == "schnell") {
-        seconds = 190;
+        seconds = 60;
     } else {
-        seconds = 320;
+        seconds = 240;
     }
 }
 
 function start_counter() {
     //if (!countdownActive) {
     if (gameoption == "normal") {
-        seconds = 240;
+        seconds = 120;
     } else if (gameoption == "schnell") {
-        seconds = 190;
+        seconds = 60;
     } else {
-        seconds = 320;
+        seconds = 240;
     }
     //}
     //seconds = parseInt(localStorage.getItem('seconds'));
@@ -117,8 +117,15 @@ function generateAnswerString() {
 }
 
 function addNewRow() {
-    // runden--;
-    // Construct the HTML for new input fields
+    // Ersetze alle existierenden Eingabefelder durch p-Elemente
+    inputs.forEach(input => {
+        const pElement = document.createElement('p');
+        pElement.textContent = input.value.trim();
+        pElement.style.fontSize = "1vw";
+        input.parentNode.replaceChild(pElement, input);
+    });
+
+    // Konstruiere den HTML-Code für neue Eingabefelder
     let newRowHTML = '<tr>';
     for (let i = 0; i < box_length; i++) {
         if (i === 0) {
@@ -135,23 +142,28 @@ function addNewRow() {
     }
     newRowHTML += '</tr>';
 
-    // Append the new row to the game board
+    // Füge die neue Zeile dem Spielbrett hinzu
     document.getElementById('game-board').insertAdjacentHTML('beforeend', newRowHTML);
 
-    // Add event listeners to the new input fields
+    // Füge Event Listener zu den neuen Eingabefeldern hinzu
     const newInputs = document.querySelectorAll('#game-board tr:last-child input');
     newInputs.forEach(input => {
         input.addEventListener('keydown', function(event) {
-            // Similar event handling as in setGameoptions()
+            // Ähnliches Event Handling wie in setGameoptions()
         });
     });
 
+    // Aktualisiere die inputs-Variable mit den neuen Eingabefeldern
+    inputs = document.querySelectorAll('input[type="text"]');
+
     inputSwitch();
 
-    // if (runden == 0) {
-    //     window.location.href = "voting.html";
-    // }
+    // Wenn alle Runden beendet sind, zur Abstimmungsseite weiterleiten
+    if (runden == 0) {
+        window.location.href = "voting.html";
+    }
 }
+
 
 function setLetter() {
     document.getElementById("random-letter").innerHTML = letter;
